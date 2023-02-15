@@ -4,6 +4,7 @@
 
 from resilient_circuits import AppFunctionComponent, app_function, FunctionResult
 from resilient_lib import IntegrationError, validate_fields
+from fn_pa_firewall.components.modules.Palo_Alto_Firewall_API import Palo_Alto_Firewall_API
 
 PACKAGE_NAME = "fn_pa_firewall"
 FN_NAME = "palo_alto_firewall_create_a_new_tag"
@@ -25,56 +26,29 @@ class FunctionComponent(AppFunctionComponent):
 
         yield self.status_message(f"Starting App Function: '{FN_NAME}'")
 
-        # Example validating app_configs
-        # validate_fields([
-        #     {"name": "api_key", "placeholder": "<your-api-key>"},
-        #     {"name": "base_url", "placeholder": "<api-base-url>"}],
-        #     self.app_configs)
+        server_ip = str(self.options.get("server_palo_alto_ip", None))
+        server_version = str(self.options.get("palo_alto_version", None))
+        server_api = str(self.options.get("palo_alto_api_key", None))
 
-        # Example validating required fn_inputs
-        # validate_fields(["required_input_one", "required_input_two"], fn_inputs)
+        tag = fn_inputs.palo_alto_tag
 
-        # Example accessing optional attribute in fn_inputs and initializing it to None if it does not exist (this is similar for app_configs)
-        # optional_input =  getattr(fn_inputs, "optional_input", None)
+        self.LOG.info("[+] A new tag: {0}".format(tag))
 
-        # Example getting access to self.get_fn_msg()
-        # fn_msg = self.get_fn_msg()
-        # self.LOG.info("fn_msg: %s", fn_msg)
+        palo_alto_fw_api = Palo_Alto_Firewall_API(palo_alto_ip=server_ip, palo_alto_version=server_version, api_key=server_api)
 
-        # Example interacting with REST API
-        # res_client = self.rest_client()
-        # function_details = res_client.get(f"/functions/{FN_NAME}?handle_format=names")
+        if palo_alto_fw_api.createNewTag(tagName=tag):
+            self.LOG.info("Create a new tag \"{0}\" succeeded.".format(tag))
+            results = {
+                "status": "success",
+                "message": "Create a new tag \"{0}\" succeeded.".format(tag)
+            }
+        else:
+            self.LOG.info("Create a new tag \"{0}\" has failed.".format(tag))
+            results = {
+                "status": "false",
+                "message": "Create a new tag \"{0}\" has failed.".format(tag)
+            }
 
-        # Example raising an exception
-        # raise IntegrationError("Example raising custom error")
-
-        ##############################################
-        # PUT YOUR FUNCTION IMPLEMENTATION CODE HERE #
-        ##############################################
-
-        # Call API implementation example:
-        # params = {
-        #     "api_key": self.app_configs.api_key,
-        #     "ip_address": fn_inputs.artifact_value
-        # }
-        #
-        # response = self.rc.execute(
-        #     method="get",
-        #     url=self.app_configs.api_base_url,
-        #     params=params
-        # )
-        #
-        # results = response.json()
-        #
-        # yield self.status_message(f"Endpoint reached successfully and returning results for App Function: '{FN_NAME}'")
-        #
-        # yield FunctionResult(results)
-        ##############################################
-
+        
         yield self.status_message(f"Finished running App Function: '{FN_NAME}'")
-
-        # Note this is only used for demo purposes! Put your own key/value pairs here that you want to access on the Platform
-        results = {"mock_key": "Mock Value!"}
-
         yield FunctionResult(results)
-        # yield FunctionResult({}, success=False, reason="Bad call")

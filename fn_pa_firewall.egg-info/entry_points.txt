@@ -1,0 +1,11 @@
+[resilient.circuits.components]
+FunctPaloAltoCreateANewTagFunctionComponent = fn_pa_firewall.components.funct_palo_alto_create_a_new_tag:FunctionComponent
+
+[resilient.circuits.configsection]
+gen_config = fn_pa_firewall.util.config:config_section_data
+
+[resilient.circuits.customize]
+customize = fn_pa_firewall.util.customize:customization_data
+
+[resilient.circuits.selftest]
+selftest = fn_pa_firewall.util.selftest:selftest_function

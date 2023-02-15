@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: fn-pa-firewall
+Version: 1.0.0
+Summary: SOAR Components to Integrate with the Palo Alto Firewall
+Home-page: https;//cmctssg.v
+Author: CMCTSSG SOC
+Author-email: scenterportal@cmc.com.vn
+License: MIT
+Platform: any
+Classifier: Programming Language :: Python
+Requires-Python: >=3.6
+
+This integration contains Functions to interact with address groups, addresses, Global Protect User within Palo Alto Firewall.

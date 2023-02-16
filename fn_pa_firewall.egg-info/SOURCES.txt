@@ -24,6 +24,7 @@ fn_pa_firewall/util/__init__.py
 fn_pa_firewall/util/config.py
 fn_pa_firewall/util/customize.py
 fn_pa_firewall/util/selftest.py
+fn_pa_firewall/util/__pycache__/config.cpython-310.pyc
 fn_pa_firewall/util/__pycache__/config.cpython-311.pyc
 fn_pa_firewall/util/__pycache__/customize.cpython-311.pyc
 fn_pa_firewall/util/data/export.res

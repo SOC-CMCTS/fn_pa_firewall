@@ -51,7 +51,7 @@ def customization_data(client=None):
         - palo_alto_firewall_block_ip
         - palo_alto_firewall_create_a_new_tag
     - Rules:
-        - Palo Alto Firewall: Block IP
+        - Palo Alto Firewall: Block external IP
         - Palo Alto Firewall: Create a new tag
     """
 

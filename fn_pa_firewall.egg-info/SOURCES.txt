@@ -15,13 +15,16 @@ fn_pa_firewall.egg-info/entry_points.txt
 fn_pa_firewall.egg-info/requires.txt
 fn_pa_firewall.egg-info/top_level.txt
 fn_pa_firewall/components/__init__.py
-fn_pa_firewall/components/funct_palo_alto_create_a_new_tag.py
+fn_pa_firewall/components/funct_palo_alto_firewall_block_ip.py
+fn_pa_firewall/components/funct_palo_alto_firewall_create_a_new_tag.py
 fn_pa_firewall/components/modules/Palo_Alto_Firewall_API.py
 fn_pa_firewall/components/modules/__init__.py
 fn_pa_firewall/util/__init__.py
 fn_pa_firewall/util/config.py
 fn_pa_firewall/util/customize.py
 fn_pa_firewall/util/selftest.py
+fn_pa_firewall/util/__pycache__/config.cpython-311.pyc
+fn_pa_firewall/util/__pycache__/customize.cpython-311.pyc
 fn_pa_firewall/util/data/export.res
 icons/app_logo.png
 icons/company_logo.png

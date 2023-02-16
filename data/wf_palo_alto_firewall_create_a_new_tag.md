@@ -23,7 +23,10 @@ inputs.palo_alto_firewall_tag_name = rule.properties.palo_alto_firewall_tag_name
 
 ### Post-Processing Script
 ```python
-None
+if not results.success:
+  incident.addNote("Create a new tag has error.")
+else:
+  incident.addNote(results.content['message'])
 ```
 
 ---

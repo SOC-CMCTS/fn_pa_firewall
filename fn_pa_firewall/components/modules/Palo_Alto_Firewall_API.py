@@ -45,7 +45,7 @@ class Palo_Alto_Firewall_API:
         }
         try:
             response = requests.post(self.server_url + path, headers=self.header, json=data, verify=False)
-            if response.json()["@status"] == "success":
+            if "@status" in response.json() and response.json()["@status"] == "success":
                 return True
             return response.json()
         except:

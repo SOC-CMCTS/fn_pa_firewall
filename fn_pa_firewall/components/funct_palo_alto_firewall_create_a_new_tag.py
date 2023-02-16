@@ -36,17 +36,18 @@ class FunctionComponent(AppFunctionComponent):
 
         palo_alto_fw_api = Palo_Alto_Firewall_API(palo_alto_ip=server_ip, palo_alto_version=server_version, api_key=server_api)
 
-        if palo_alto_fw_api.createNewTag(tagName=tag):
+        response = palo_alto_fw_api.createNewTag(tagName=tag)
+        if response:
             self.LOG.info("Create a new tag \"{0}\" succeeded.".format(tag))
             results = {
                 "status": "success",
                 "message": "Create a new tag \"{0}\" succeeded.".format(tag)
             }
         else:
-            self.LOG.info("Create a new tag \"{0}\" has failed.".format(tag))
+            self.LOG.info("Create a new tag \"{0}\" has failed. {1}".format(tag, response['message']))
             results = {
                 "status": "false",
-                "message": "Create a new tag \"{0}\" has failed.".format(tag)
+                "message": "Create a new tag \"{0}\" has failed. {1}".format(tag, response['message'])
             }
 
         

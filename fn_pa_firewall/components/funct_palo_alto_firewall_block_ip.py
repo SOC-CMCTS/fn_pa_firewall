@@ -45,8 +45,16 @@ class FunctionComponent(AppFunctionComponent):
                 response = pa_fw_api.createNewAddress(addressIP=blacklistIP, tagName=tag)
                 if response == True:
                     self.LOG.info("[+] Block IP: \"{0}\" succeeded.".format(blacklistIP))
+                    results = {
+                        "status": "success",
+                        "message": "Block ip: \"{0}\" succeeded".format(blacklistIP)
+                    }
                 else:
                     self.LOG.info("[+] Block IP: \"{0}\" has failed. {1}".format(blacklistIP, response['message']))
+                    results = {
+                        "status": "false",
+                        "message": "Block IP: \"{0}\" has failed. {1}".format(blacklistIP, response['message'])
+                    }
             else:
                 self.LOG.info("Can't block ip: \"{0}\". Not found tag name: \"{1}\"".format(blacklistIP, tag))
                 results = {

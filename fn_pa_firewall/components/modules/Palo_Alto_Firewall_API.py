@@ -22,6 +22,17 @@ class Palo_Alto_Firewall_API:
         except:
             return None
 
+    def getTagName(self, tagName):
+        requests.packages.urllib3.disable_warnings()
+        path = "/objects/tags?location=vsys&vsys=vsys1&name={0}".format(tagName)
+        
+        try:
+            response = requests.get(self.server_url + path, headers=self.header, verify=False)
+            if response.json()["@status"] == "success":
+                return True
+        except:
+            return False
+
     def createNewTag(self, tagName):
         requests.packages.urllib3.disable_warnings()
         path = "/objects/tags?location=vsys&vsys=vsys1&name={0}".format(tagName)
@@ -38,5 +49,25 @@ class Palo_Alto_Firewall_API:
             return response.json()
         except:
             return False
+    
+    def createNewAddress(self, addressIP, tagName):
+        requests.packages.urllib3.disable_warnings()
+        path = "/Objects/Addresses?location=shared&name=".format(addressIP)
+
+        data = {
+            "entry": [
+                {
+                    "@location": "vsys",
+                    "@name": "blacklist-{0}".format(addressIP),
+                    "description": "",
+                    "ip-netmask": "{0}".format(addressIP),
+                    "tag": {
+                        "member": [
+                            "blacklist"
+                        ]
+                    }
+                }
+            ]
+        }
 
 

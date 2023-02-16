@@ -1,4 +1,5 @@
 import logging
+import json
 import requests
 
 class Palo_Alto_Firewall_API:
@@ -52,22 +53,33 @@ class Palo_Alto_Firewall_API:
     
     def createNewAddress(self, addressIP, tagName):
         requests.packages.urllib3.disable_warnings()
-        path = "/Objects/Addresses?location=shared&name=".format(addressIP)
+        path = "/Objects/Addresses?location=vsys&vsys=vsys1&name=blacklist-{0}".format(addressIP)
 
-        data = {
+        body = {
             "entry": [
                 {
                     "@location": "vsys",
                     "@name": "blacklist-{0}".format(addressIP),
-                    "description": "",
-                    "ip-netmask": "{0}".format(addressIP),
+                    "description": "blacklist-{0}".format(addressIP),
+                    "ip-netmask": addressIP,
                     "tag": {
                         "member": [
-                            "blacklist"
+                            tagName
                         ]
                     }
                 }
             ]
         }
+
+        try:
+            response = requests.post(self.server_url + path, headers=self.header, data=json.dumps(body), verify=False)
+            if "@status" in response.json() and response.json()["@status"] == "success":
+                return True
+            return response.json()
+
+        except Exception as e:
+            return "Error in request. {0}".format(e)
+
+
 
 

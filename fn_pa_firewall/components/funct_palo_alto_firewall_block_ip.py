@@ -5,6 +5,7 @@
 from resilient_circuits import AppFunctionComponent, app_function, FunctionResult
 from resilient_lib import IntegrationError, validate_fields
 from fn_pa_firewall.components.modules.Palo_Alto_Firewall_API import Palo_Alto_Firewall_API
+from fn_pa_firewall.components.modules.ultils import is_valid_ipv4_address
 PACKAGE_NAME = "fn_pa_firewall"
 FN_NAME = "palo_alto_firewall_block_ip"
 
@@ -35,17 +36,29 @@ class FunctionComponent(AppFunctionComponent):
         self.LOG.info("Tag: {}".format(tag))
         self.LOG.info("Black list IP: {0}".format(blacklistIP))
 
-        palo_alto_fw_api = Palo_Alto_Firewall_API(palo_alto_ip=server_ip, palo_alto_version=server_version, api_key=server_api)
+        if is_valid_ipv4_address(blacklistIP):
+            pa_fw_api = Palo_Alto_Firewall_API(palo_alto_ip=server_ip, palo_alto_version=server_version, api_key=server_api)
 
-        results = None
-        if palo_alto_fw_api.getTagName(tagName=tag):
-            self.LOG.info("Tag name: {}".format(tag))
+            results = None
+            
+            if pa_fw_api.getTagName(tagName=tag) == True:
+                response = pa_fw_api.createNewAddress(addressIP=blacklistIP, tagName=tag)
+                if response == True:
+                    self.LOG.info("[+] Block IP: \"{0}\" succeeded.".format(blacklistIP))
+                else:
+                    self.LOG.info("[+] Block IP: \"{0}\" has failed. {1}".format(blacklistIP, response['message']))
+            else:
+                self.LOG.info("Can't block ip: \"{0}\". Not found tag name: \"{1}\"".format(blacklistIP, tag))
+                results = {
+                    "status": "false",
+                    "message": "Can't block ip: \"{0}\". Not found tag name: \"{1}\"".format(blacklistIP, tag)
+                }
         else:
+            self.LOG.info("Error! The input is not correct")
             results = {
                 "status": "false",
-                "message": "Can't get tag name: \"{0}\".".format(tag)
+                "message": "Error! The input is not correct"
             }
-
 
         yield self.status_message(f"Finished running App Function: '{FN_NAME}'")
         yield FunctionResult(results)

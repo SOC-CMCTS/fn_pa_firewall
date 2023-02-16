@@ -19,6 +19,7 @@ fn_pa_firewall/components/funct_palo_alto_firewall_block_ip.py
 fn_pa_firewall/components/funct_palo_alto_firewall_create_a_new_tag.py
 fn_pa_firewall/components/modules/Palo_Alto_Firewall_API.py
 fn_pa_firewall/components/modules/__init__.py
+fn_pa_firewall/components/modules/ultils.py
 fn_pa_firewall/util/__init__.py
 fn_pa_firewall/util/config.py
 fn_pa_firewall/util/customize.py

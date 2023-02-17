@@ -4,7 +4,7 @@
 
 from resilient_circuits import AppFunctionComponent, app_function, FunctionResult
 from resilient_lib import IntegrationError, validate_fields
-from fn_pa_firewall.components.modules.Palo_Alto_Firewall_API import Palo_Alto_Firewall_API
+from fn_pa_firewall.components.modules import Palo_Alto_Firewall_API
 
 PACKAGE_NAME = "fn_pa_firewall"
 FN_NAME = "palo_alto_firewall_create_a_new_tag"
@@ -34,7 +34,7 @@ class FunctionComponent(AppFunctionComponent):
 
         self.LOG.info("[+] A new tag: {0}".format(tag))
 
-        palo_alto_fw_api = Palo_Alto_Firewall_API(palo_alto_ip=server_ip, palo_alto_version=server_version, api_key=server_api)
+        palo_alto_fw_api = Palo_Alto_Firewall_API.restAPI(palo_alto_ip=server_ip, palo_alto_version=server_version, api_key=server_api)
 
         response = palo_alto_fw_api.createNewTag(tagName=tag)
         if response:

@@ -4,7 +4,7 @@
 
 from resilient_circuits import AppFunctionComponent, app_function, FunctionResult
 from resilient_lib import IntegrationError, validate_fields
-from fn_pa_firewall.components.modules.Palo_Alto_Firewall_API import Palo_Alto_Firewall_API
+from fn_pa_firewall.components.modules import Palo_Alto_Firewall_API
 from fn_pa_firewall.components.modules.ultils import is_valid_ipv4_address
 PACKAGE_NAME = "fn_pa_firewall"
 FN_NAME = "palo_alto_firewall_block_ip"
@@ -37,7 +37,7 @@ class FunctionComponent(AppFunctionComponent):
         self.LOG.info("Black list IP: {0}".format(blacklistIP))
 
         if is_valid_ipv4_address(blacklistIP):
-            pa_fw_api = Palo_Alto_Firewall_API(palo_alto_ip=server_ip, palo_alto_version=server_version, api_key=server_api)
+            pa_fw_api = Palo_Alto_Firewall_API.restAPI(palo_alto_ip=server_ip, palo_alto_version=server_version, api_key=server_api)
 
             results = None
             

@@ -2,7 +2,7 @@ import logging
 import json
 import requests
 
-class Palo_Alto_Firewall_API:
+class restAPI:
     def __init__(self, palo_alto_ip, palo_alto_version, api_key):
         self.api_key = api_key
         self.LOG = logging.getLogger(__name__)
@@ -80,6 +80,18 @@ class Palo_Alto_Firewall_API:
         except Exception as e:
             return "Error in request. {0}".format(e)
 
+class xmlAPI:
+    def __init__(self, palo_alto_ip, api_key):
+        self.api_key = api_key
+        self.LOG = logging.getLogger(__name__)
 
+        self.server_url = "https://{0}/api/?key={1}&type=op&cmd=".format(palo_alto_ip, api_key)
+        self.header = {
+            "Content-type": "application/json",
+            "X-PAN-KEY": api_key
+        }
+
+        
+    
 
 

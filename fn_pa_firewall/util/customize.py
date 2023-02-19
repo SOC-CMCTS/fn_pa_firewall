@@ -21,14 +21,9 @@ def codegen_reload_data():
     return {
         "package": u"fn_pa_firewall",
         "message_destinations": [u"palo_alto_firewall_integration_for_soar"],
-        "functions": [u"palo_alto_firewall_block_ip", u"palo_alto_firewall_create_a_new_tag", u"palo_alto_firewall_disconnect_user", u"palo_alto_firewall_quarantine_device"],
-<<<<<<< HEAD
+        "functions": [u"palo_alto_firewall_block_ip", u"palo_alto_firewall_create_a_new_tag", u"palo_alto_firewall_quarantine_device"],
         "workflows": [u"palo_alto_firewall_block_ip", u"palo_alto_firewall_create_a_new_tag", u"palo_alto_firewall_quarantine_device"],
         "actions": [u"Palo Alto Firewall: Block IP", u"Palo Alto Firewall: Create a new tag", u"Palo Alto Firewall: Quarantine Device"],
-=======
-        "workflows": [u"palo_alto_firewall_block_ip", u"palo_alto_firewall_create_a_new_tag"],
-        "actions": [u"Palo Alto Firewall: Block IP", u"Palo Alto Firewall: Create a new tag"],
->>>>>>> e029ddd4824a7cdc6acff0f11e31a5066e2f7540
         "incident_fields": [],
         "incident_artifact_types": [],
         "incident_types": [],

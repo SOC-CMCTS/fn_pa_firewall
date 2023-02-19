@@ -17,62 +17,36 @@ class FunctionComponent(AppFunctionComponent):
 
     @app_function(FN_NAME)
     def _app_function(self, fn_inputs):
-        """
-        Function: None
-        Inputs:
-            -   fn_inputs.palo_alto_firewall_user
-            -   fn_inputs.palo_alto_firewall_computer
-            -   fn_inputs.palo_alto_firewall_gateway
-            -   fn_inputs.palo_alto_firewall_reason
-        """
 
         yield self.status_message(f"Starting App Function: '{FN_NAME}'")
 
-        # Example validating app_configs
-        # validate_fields([
-        #     {"name": "api_key", "placeholder": "<your-api-key>"},
-        #     {"name": "base_url", "placeholder": "<api-base-url>"}],
-        #     self.app_configs)
+        server_ip = str(self.options.get("server_palo_alto_ip", None))
+        server_version = str(self.options.get("palo_alto_version", None))
+        server_api = str(self.options.get("palo_alto_api_key", None))
 
-        # Example validating required fn_inputs
-        # validate_fields(["required_input_one", "required_input_two"], fn_inputs)
+        gateway = fn_inputs.palo_alto_firewall_gateway
+        user = fn_inputs.palo_alto_firewall_user
+        reason = fn_inputs.palo_alto_firewall_reason
+        computer = fn_inputs.palo_alto_firewall_computer
 
-        # Example accessing optional attribute in fn_inputs and initializing it to None if it does not exist (this is similar for app_configs)
-        # optional_input =  getattr(fn_inputs, "optional_input", None)
+        self.LOG.info("[+] Disconnect a GlobalProtect user: {0}".format(user))
 
-        # Example getting access to self.get_fn_msg()
-        # fn_msg = self.get_fn_msg()
-        # self.LOG.info("fn_msg: %s", fn_msg)
+        palo_alto_fw_api = Palo_Alto_Firewall_API(
+            palo_alto_ip=server_ip, palo_alto_version=server_version, api_key=server_api)
 
-        # Example interacting with REST API
-        # res_client = self.rest_client()
-        # function_details = res_client.get(f"/functions/{FN_NAME}?handle_format=names")
-
-        # Example raising an exception
-        # raise IntegrationError("Example raising custom error")
-
-        ##############################################
-        # PUT YOUR FUNCTION IMPLEMENTATION CODE HERE #
-        ##############################################
-
-        # Call API implementation example:
-        # params = {
-        #     "api_key": self.app_configs.api_key,
-        #     "ip_address": fn_inputs.artifact_value
-        # }
-        #
-        # response = self.rc.execute(
-        #     method="get",
-        #     url=self.app_configs.api_base_url,
-        #     params=params
-        # )
-        #
-        # results = response.json()
-        #
-        # yield self.status_message(f"Endpoint reached successfully and returning results for App Function: '{FN_NAME}'")
-        #
-        # yield FunctionResult(results)
-        ##############################################
+        if palo_alto_fw_api.disconnect_a_GlobalProtect_user(gateway=gateway, user=user, reason=reason, computer=computer):
+            self.LOG.info(
+                "Create a new user \"{0}\" has succeeded.".format(user))
+            results = {
+                "status": "success",
+                "message": "Create a new user \"{0}\" has succeeded.".format(user)
+            }
+        else:
+            self.LOG.info("Create a new user \"{0}\" has failed.".format(user))
+            results = {
+                "status": "false",
+                "message": "Create a new user \"{0}\" has failed.".format(disconnect_user)
+            }
 
         yield self.status_message(f"Finished running App Function: '{FN_NAME}'")
 

@@ -1,18 +1,2 @@
 stages:          # List of stages for jobs, and their order of execution
   - release
-
-release:
-    stage: release
-
-    only:
-        - main
-
-    tags:
-        - main
-
-    before_script:
-        - echo $CI_PROJECT_NAME
-        - pip2 install resilient-sdk
-        - rm -rf dist/*
-        - resilient-sdk package -p ../$CI_PROJECT_NAME
-

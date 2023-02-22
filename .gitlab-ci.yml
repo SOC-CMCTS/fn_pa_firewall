@@ -4,11 +4,15 @@ stages:          # List of stages for jobs, and their order of execution
 
 build-job:
     stage: build
+    tags:
+        - build-product
     script:
         - pwn
 
 release-product:
     stage: release
+    tags:
+        - build-product
     script:
         - pwn
 

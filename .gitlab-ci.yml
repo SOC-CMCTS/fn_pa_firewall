@@ -1,2 +1,9 @@
 stages:          # List of stages for jobs, and their order of execution
   - release
+
+release_product:
+  stage: release
+  tags:
+    - build-product
+
+    

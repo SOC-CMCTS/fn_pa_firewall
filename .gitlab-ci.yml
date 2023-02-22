@@ -20,6 +20,9 @@ build-job:
     script:
         - pwd
         - resilient-sdk package -p ../$CI_PROJECT_NAME
+        - mkdir ../temp
+        - cp dist/ ../temp/
+        - ls ../temp
 
 release-product:
     stage: release
@@ -35,7 +38,10 @@ release-product:
     before_script:
       - pip2 install resilient-sdk
     script:
+        - cd ../temp
         - pwd
+        - git clone https://gitlab.cmctssg.vn/tier2/fn_pa_firewall.git
+
 
 cleanup-project:
   stage: cleanup
@@ -51,4 +57,5 @@ cleanup-project:
   script:
     - pwd
     - rm -rf ../$CI_PROJECT_NAME
+    - rm -rf ../temp
 

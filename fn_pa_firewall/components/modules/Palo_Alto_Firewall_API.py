@@ -90,41 +90,33 @@ class restAPI:
         except Exception as e:
             return "Error in request. {0}".format(e)
 
-    def disconnect_a_GlobalProtect_user(self, gateway, user, reason, computer):
-        requests.packages.urllib3.disable_warnings()
-        path = "/api/?type=op&cmd="
-        body = {
-            """
-            <request>
-                <global-protect-gateway>
-                    <client-logout>
-                        <gateway>SOC_DC_Gateway-N</gateway>
-                        <user>npdai</user>
-                        <reason>force-logout</reason>
-                        <computer>S-CSGLANBK-11</computer>
-                    </client-logout>
-                </global-protect-gateway>
-            </request>
-            """
-        }
-        try:
-            response = requests.post(
-                self.server_url + path, headers=self.header, data=json.dumps(body), verify=False)
-            if "@status" in response.json() and response.json()["@status"] == "success":
-                return True
-            return response.json()
-        except Exception as e:
-            return "Error in request. {0}".format(e)
-
 
 class xmlAPI:
     def __init__(self, palo_alto_ip, api_key):
         self.api_key = api_key
         self.LOG = logging.getLogger(__name__)
 
-        self.server_url = "https://{0}/api/?key={1}&type=op&cmd=".format(
-            palo_alto_ip, api_key)
+        self.server_url = "https://{0}/api/?type=op&cmd=".format(
+            palo_alto_ip)
         self.header = {
             "Content-type": "application/json",
             "X-PAN-KEY": api_key
         }
+
+    def disconnect_a_GlobalProtect_user(self, gateway, user, reason, computer):
+        requests.packages.urllib3.disable_warnings()
+        body = """
+            <request>
+                <global-protect-gateway>
+                    <client-logout>
+                        <gateway>{0}</gateway>
+                        <user>{1}</user>
+                        <reason>{2}</reason>
+                        <computer>{3}</computer>
+                    </client-logout>
+                </global-protect-gateway>
+            </request>
+            """.format(gateway, user, reason, computer)
+        response = requests.post(
+            self.server_url, headers=self.header, data=json.dumps(body), verify=False)
+        self.LOG.info("Ressponse: " + str(json.dumps(body)))

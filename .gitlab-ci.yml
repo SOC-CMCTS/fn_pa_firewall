@@ -1,6 +1,7 @@
 stages:          # List of stages for jobs, and their order of execution
     - build
     - release
+    - cleanup
 
 build-job:
     stage: build
@@ -12,6 +13,7 @@ build-job:
         - if: $CI_PIPELINE_SOURCE == "schedule"
           when: never
         - when: on_success
+    
     before_script:
       - pip2 install resilient-sdk
 
@@ -29,9 +31,24 @@ release-product:
         - if: $CI_PIPELINE_SOURCE == "schedule"
           when: never
         - when: on_success
+    
     before_script:
       - pip2 install resilient-sdk
     script:
         - pwd
 
+cleanup-project:
+  stage: cleanup
+  tags:
+    - build-product
+
+  rules:
+        - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+          when: never
+        - if: $CI_PIPELINE_SOURCE == "schedule"
+          when: never
+        - when: on_success
+  script:
+    - pwd
+    - rm -rf ../$CI_PROJECT_NAME
 

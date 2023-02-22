@@ -2,7 +2,7 @@ stages:          # List of stages for jobs, and their order of execution
     - build
     - release
 
-image: ubuntu:latest
+# image: ubuntu:latest
 
 build-job:
     stage: build
@@ -16,6 +16,6 @@ release-product:
     tags:
         - build-product
     script:
-        - pwn
+        - pwd
 
 

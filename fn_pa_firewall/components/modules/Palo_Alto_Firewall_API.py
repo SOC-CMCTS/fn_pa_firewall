@@ -85,13 +85,12 @@ class xmlAPI:
         self.api_key = api_key
         self.LOG = logging.getLogger(__name__)
 
-        self.server_url = "https://{0}/api/?key={1}&type=op&cmd=".format(palo_alto_ip, api_key)
+        self.server_url = "https://{0}/api/?type=op&cmd=".format(palo_alto_ip)
         self.header = {
             "Content-type": "application/json",
             "X-PAN-KEY": api_key
         }
 
-        
     
 
 

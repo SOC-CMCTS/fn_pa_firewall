@@ -2,12 +2,13 @@ stages:          # List of stages for jobs, and their order of execution
     - build
     - release
 
-# image: ubuntu:latest
-
 build-job:
     stage: build
     tags:
         - build-product
+    rules:
+        - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+          when: never
     script:
         - ls
 
@@ -15,6 +16,9 @@ release-product:
     stage: release
     tags:
         - build-product
+    rules:
+        - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+          when: never
     script:
         - pwd
 

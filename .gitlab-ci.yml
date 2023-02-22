@@ -6,9 +6,9 @@ build-job:
     stage: build
     tags:
         - build-product
-    rules:
-        - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-          when: never
+    # rules:
+    #     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    #       when: never
     script:
         - ls
 

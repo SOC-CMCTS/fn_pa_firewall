@@ -118,5 +118,5 @@ class xmlAPI:
             </request>
             """.format(gateway, user, reason, computer)
         response = requests.post(
-            self.server_url, headers=self.header, data=json.dumps(body), verify=False)
-        self.LOG.info("Ressponse: " + str(json.dumps(body)))
+            self.server_url + (str(body)).strip(), headers=self.header, verify=False)
+        self.LOG.info("Ressponse: " + self.server_url + (str(body)).strip())

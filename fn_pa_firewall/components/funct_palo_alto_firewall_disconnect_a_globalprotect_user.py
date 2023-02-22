@@ -4,6 +4,7 @@
 
 from resilient_circuits import AppFunctionComponent, app_function, FunctionResult
 from resilient_lib import IntegrationError, validate_fields
+from fn_pa_firewall.components.modules import Palo_Alto_Firewall_API
 
 PACKAGE_NAME = "fn_pa_firewall"
 FN_NAME = "palo_alto_firewall_disconnect_a_globalprotect_user"
@@ -31,21 +32,22 @@ class FunctionComponent(AppFunctionComponent):
 
         self.LOG.info("[+] Disconnect a GlobalProtect user: {0}".format(user))
 
-        palo_alto_fw_api = Palo_Alto_Firewall_API(
-            palo_alto_ip=server_ip, palo_alto_version=server_version, api_key=server_api)
+        palo_alto_fw_api = Palo_Alto_Firewall_API.xmlAPI(
+            palo_alto_ip=server_ip, api_key=server_api)
 
         if palo_alto_fw_api.disconnect_a_GlobalProtect_user(gateway=gateway, user=user, reason=reason, computer=computer):
             self.LOG.info(
-                "Create a new user \"{0}\" has succeeded.".format(user))
+                "Disable the Global Protect \"{0}\" user has succeeded.".format(user))
             results = {
                 "status": "success",
-                "message": "Create a new user \"{0}\" has succeeded.".format(user)
+                "message": "Disable the Global Protect \"{0}\" user has succeeded.".format(user)
             }
         else:
-            self.LOG.info("Create a new user \"{0}\" has failed.".format(user))
+            self.LOG.info(
+                "Disable the Global Protect \"{0}\" user has failed.".format(user))
             results = {
                 "status": "false",
-                "message": "Create a new user \"{0}\" has failed.".format(disconnect_user)
+                "message": "Disable the Global Protect \"{0}\" user has failed.".format(user)
             }
 
         yield self.status_message(f"Finished running App Function: '{FN_NAME}'")

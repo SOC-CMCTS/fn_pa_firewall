@@ -19,6 +19,7 @@ build-job:
 
     script:
         - pwd
+        - ls
         - resilient-sdk package -p ../$CI_PROJECT_NAME
 
 release-product:

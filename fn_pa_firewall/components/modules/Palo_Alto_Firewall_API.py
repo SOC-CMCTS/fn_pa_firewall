@@ -119,4 +119,4 @@ class xmlAPI:
             """.format(gateway, user, reason, computer)
         response = requests.post(
             self.server_url + (str(body)).strip(), headers=self.header, verify=False)
-        self.LOG.info("Ressponse: " + self.server_url + (str(body)).strip())
+        self.LOG.info("Response: " + self.server_url + (str(body)).strip())

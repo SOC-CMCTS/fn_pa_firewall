@@ -37,17 +37,17 @@ class FunctionComponent(AppFunctionComponent):
 
         if palo_alto_fw_api.disconnect_a_GlobalProtect_user(gateway=gateway, user=user, reason=reason, computer=computer):
             self.LOG.info(
-                "Disable the Global Protect \"{0}\" user has succeeded.".format(user))
+                "Disable the Global Protect \"{0}\" user has succeeded with reason is: \"{1}\"".format(user, reason))
             results = {
                 "status": "success",
-                "message": "Disable the Global Protect \"{0}\" user has succeeded.".format(user)
+                "message": "Disable the Global Protect \"{0}\" user has succeeded with reason is: \"{1}\"".format(user, reason)
             }
         else:
             self.LOG.info(
-                "Disable the Global Protect \"{0}\" user has failed.".format(user))
+                "Disable the Global Protect \"{0}\" user has failed with reason is: \"{1}\"".format(user, reason))
             results = {
                 "status": "false",
-                "message": "Disable the Global Protect \"{0}\" user has failed.".format(user)
+                "message": "Disable the Global Protect \"{0}\" user has failed with reason is: \"{1}\"".format(user, reason)
             }
 
         yield self.status_message(f"Finished running App Function: '{FN_NAME}'")

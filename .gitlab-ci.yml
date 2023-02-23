@@ -35,7 +35,9 @@ release-product:
     before_script:
       - pip2 install resilient-sdk
     script:
-        - cd dist
+        - mkdir ../temp
+        - cp -r ../dist ../temp
+        - cd ../temp/dist
         - pwd
         - git init
         - git config --local user.email "dmlong@cmc.com.vn"

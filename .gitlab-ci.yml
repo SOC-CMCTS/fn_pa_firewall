@@ -40,6 +40,7 @@ release-product:
         - cp -r dist ../temp
         - cd ../temp/dist
         - pwd
+        - ls -la
         - git init
         - git config --local user.email "dmlong@cmc.com.vn"
         - git config --local user.name "Do Minh Long"

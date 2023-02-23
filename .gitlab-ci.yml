@@ -35,8 +35,9 @@ release-product:
     before_script:
       - pip2 install resilient-sdk
     script:
+        - pwd
         - mkdir ../temp
-        - cp -r ../dist ../temp
+        - cp -r dist ../temp
         - cd ../temp/dist
         - pwd
         - git init

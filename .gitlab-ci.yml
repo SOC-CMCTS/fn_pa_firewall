@@ -45,13 +45,13 @@ release-product:
         - git config --local user.email "dmlong@cmc.com.vn"
         - git config --local user.name "Do Minh Long"
         # - git remote add origin https://$AccessToken@gitlab.cmctssg.vn/tier2/fn_pa_firewall.git
-        - git fetch
+        - git fetch https://dmlong:$AccessToken@gitlab.cmctssg.vn/tier2/fn_pa_firewall.git
         - git checkout product
         - git add .
         - ver=$(cat ../setup.py | grep 'version' | cut -d '=' -f 2 | cut -d '"' -f 2)
         - echo $ver
         - git commit -m 'Release version $ver'
-        - git push -uf 'https://dmlong:$AccessToken@gitlab.cmctssg.vn/tier2/fn_pa_firewall.git'
+        - git push -uf 'https://$AccessToken@gitlab.cmctssg.vn/tier2/fn_pa_firewall.git'
 
 cleanup-project:
   stage: cleanup

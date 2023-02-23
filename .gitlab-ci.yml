@@ -45,7 +45,7 @@ release-product:
         - git config --local user.email "dmlong@cmc.com.vn"
         - git config --local user.name "Do Minh Long"
         # - git remote add origin https://$AccessToken@gitlab.cmctssg.vn/tier2/fn_pa_firewall.git
-        - git fetch https://dmlong:glpat-9jtqFxQ9Sbj8f-DEcRYQ@gitlab.cmctssg.vn/tier2/fn_pa_firewall.git
+        - git fetch https://dmlong:$AccessToken@gitlab.cmctssg.vn/tier2/fn_pa_firewall.git
         - git checkout product
         - git add .
         - ver=$(cat ../setup.py | grep 'version' | cut -d '=' -f 2 | cut -d '"' -f 2)

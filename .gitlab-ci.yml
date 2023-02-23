@@ -36,7 +36,7 @@ release-product:
       - pip2 install resilient-sdk
     script:
         - pwd
-        - mkdir ../temp
+        - mkdir -p ../temp
         - cp -r dist ../temp
         - cd ../temp/dist
         - pwd

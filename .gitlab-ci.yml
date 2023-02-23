@@ -20,9 +20,6 @@ build-job:
     script:
         - pwd
         - resilient-sdk package -p ../$CI_PROJECT_NAME
-        - mkdir ../temp
-        - cp -r dist/ ../temp/
-        - ls ../temp
 
 release-product:
     stage: release
@@ -38,10 +35,18 @@ release-product:
     before_script:
       - pip2 install resilient-sdk
     script:
-        - cd ../temp
+        - cd dist
         - pwd
-        - git clone https://gitlab.cmctssg.vn/tier2/fn_pa_firewall.git
-
+        - git init
+        - git config --local user.email "dmlong@cmc.com.vn"
+        - git config --local user.name "Do Minh Long"
+        - git fetch
+        - git checkout product
+        - git add .
+        - ver=$(cat ../setup.py | grep 'version' | cut -d '=' -f 2 | cut -d '"' -f 2)
+        - echo $ver
+        - git commit -m 'Release version $ver'
+        - git push -uf 'https://$AccessToken@gitlab.cmctssg.vn/tier2/fn_pa_firewall.git'
 
 cleanup-project:
   stage: cleanup
@@ -57,5 +62,5 @@ cleanup-project:
   script:
     - pwd
     - rm -rf ../$CI_PROJECT_NAME
-    - rm -rf ../temp
+    - echo "Done"
 

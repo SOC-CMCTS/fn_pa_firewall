@@ -103,7 +103,7 @@ class xmlAPI:
             "X-PAN-KEY": api_key
         }
 
-    def disconnect_a_GlobalProtect_user(self, gateway, user, reason, computer):
+    def disconnect_a_GlobalProtect_user(self, gateway, user, computer):
         requests.packages.urllib3.disable_warnings()
         body = """
             <request>
@@ -111,22 +111,23 @@ class xmlAPI:
                     <client-logout>
                         <gateway>{0}</gateway>
                         <user>{1}</user>
-                        <reason>{2}</reason>
-                        <computer>{3}</computer>
+                        <reason>force-logout</reason>
+                        <computer>{2}</computer>
                     </client-logout>
                 </global-protect-gateway>
             </request>
-            """.format(gateway, user, reason, computer)
+            """.format(gateway, user, computer)
         try:
             response = requests.post(
                 self.server_url + (str(body)).strip(), headers=self.header, verify=False)
             xml_response_data = ElementTree.fromstring(response.content)
-            # self.LOG.info("Request 313: " + self.server_url +(str(body)).strip())
+            self.LOG.info("Request 1005: " + self.server_url +
+                          (str(body)).strip())
             if response.status_code == 200:
                 for line in xml_response_data.findall('.//line'):
                     self.LOG.info(line.text)
-            self.LOG.info(xml_response_data.attrib.get('status'))
-            if xml_response_data.attrib.get('status') == "success":
+            # self.LOG.info(xml_response_data.find('result/response').get('status'))
+            if xml_response_data.find('result/response').get('status') == "success":
                 return True
             return False
         except Exception as e:

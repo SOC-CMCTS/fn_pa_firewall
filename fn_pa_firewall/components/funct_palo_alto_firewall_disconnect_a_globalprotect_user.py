@@ -27,7 +27,6 @@ class FunctionComponent(AppFunctionComponent):
 
         gateway = fn_inputs.palo_alto_firewall_gateway
         user = fn_inputs.palo_alto_firewall_user
-        reason = fn_inputs.palo_alto_firewall_reason
         computer = fn_inputs.palo_alto_firewall_computer
 
         self.LOG.info(
@@ -36,23 +35,21 @@ class FunctionComponent(AppFunctionComponent):
         palo_alto_fw_api = Palo_Alto_Firewall_API.xmlAPI(
             palo_alto_ip=server_ip, api_key=server_api)
 
-        if palo_alto_fw_api.disconnect_a_GlobalProtect_user(gateway=gateway, user=user, reason=reason, computer=computer) == True:
+        if palo_alto_fw_api.disconnect_a_GlobalProtect_user(gateway=gateway, user=user, computer=computer) == True:
             self.LOG.info(
-                "Disable the Global Protect \"{0}\" user has succeeded with reason is: \"{1}\"".format(user, reason))
+                "Disable the Global Protect \"{0}\" user has succeeded.".format(user))
             results = {
                 "status": "success",
-                "message": "Disable the Global Protect \"{0}\" user has succeeded with reason is: \"{1}\"".format(user, reason)
+                "message": "Disable the Global Protect \"{0}\" user has succeeded.".format(user)
             }
         else:
             self.LOG.info(
-                "Disable the Global Protect \"{0}\" user has failed with reason is: \"{1}\"".format(user, reason))
+                "Disable the Global Protect \"{0}\" user has failed.".format(user))
             results = {
                 "status": "false",
-                "message": "Disable the Global Protect \"{0}\" user has failed with reason is: \"{1}\"".format(user, reason)
+                "message": "Disable the Global Protect \"{0}\" user has failed.".format(user)
             }
-
         yield self.status_message(f"Finished running App Function: '{FN_NAME}'")
 
         yield FunctionResult(results)
         self.LOG.info(results)
-        # yield FunctionResult({}, success=False, reason="Bad call")

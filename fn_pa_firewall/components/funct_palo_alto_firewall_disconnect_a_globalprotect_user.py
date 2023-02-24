@@ -30,12 +30,13 @@ class FunctionComponent(AppFunctionComponent):
         reason = fn_inputs.palo_alto_firewall_reason
         computer = fn_inputs.palo_alto_firewall_computer
 
-        self.LOG.info("[+] Disconnect a GlobalProtect user: {0}".format(user))
+        self.LOG.info(
+            "[+] Disconnecting a GlobalProtect user: {0}".format(user))
 
         palo_alto_fw_api = Palo_Alto_Firewall_API.xmlAPI(
             palo_alto_ip=server_ip, api_key=server_api)
 
-        if palo_alto_fw_api.disconnect_a_GlobalProtect_user(gateway=gateway, user=user, reason=reason, computer=computer):
+        if palo_alto_fw_api.disconnect_a_GlobalProtect_user(gateway=gateway, user=user, reason=reason, computer=computer) == True:
             self.LOG.info(
                 "Disable the Global Protect \"{0}\" user has succeeded with reason is: \"{1}\"".format(user, reason))
             results = {

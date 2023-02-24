@@ -1,6 +1,7 @@
 import logging
 import json
 import requests
+from xml.etree import ElementTree
 
 
 class restAPI:
@@ -96,8 +97,7 @@ class xmlAPI:
         self.api_key = api_key
         self.LOG = logging.getLogger(__name__)
 
-        self.server_url = "https://{0}/api/?type=op&cmd=".format(
-            palo_alto_ip)
+        self.server_url = "https://{0}/api/?type=op&cmd=".format(palo_alto_ip)
         self.header = {
             "Content-type": "application/json",
             "X-PAN-KEY": api_key
@@ -117,6 +117,17 @@ class xmlAPI:
                 </global-protect-gateway>
             </request>
             """.format(gateway, user, reason, computer)
-        response = requests.post(
-            self.server_url + (str(body)).strip(), headers=self.header, verify=False)
-        self.LOG.info("Response: " + self.server_url + (str(body)).strip())
+        try:
+            response = requests.post(
+                self.server_url + (str(body)).strip(), headers=self.header, verify=False)
+            xml_response_data = ElementTree.fromstring(response.content)
+            # self.LOG.info("Request 313: " + self.server_url +(str(body)).strip())
+            if response.status_code == 200:
+                for line in xml_response_data.findall('.//line'):
+                    self.LOG.info(line.text)
+            self.LOG.info(xml_response_data.attrib.get('status'))
+            if xml_response_data.attrib.get('status') == "success":
+                return True
+            return False
+        except Exception as e:
+            return "Error in request: {0}".format(e)

@@ -121,8 +121,7 @@ class xmlAPI:
             response = requests.post(
                 self.server_url + (str(body)).strip(), headers=self.header, verify=False)
             xml_response_data = ElementTree.fromstring(response.content)
-            self.LOG.info("Request 1005: " + self.server_url +
-                          (str(body)).strip())
+            # self.LOG.info("Request 1005: " + self.server_url + (str(body)).strip())
             if response.status_code == 200:
                 for line in xml_response_data.findall('.//line'):
                     self.LOG.info(line.text)

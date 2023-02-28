@@ -21,9 +21,9 @@ def codegen_reload_data():
     return {
         "package": u"fn_pa_firewall",
         "message_destinations": [u"palo_alto_firewall_integration_for_soar"],
-        "functions": [u"palo_alto_firewall_block_ip", u"palo_alto_firewall_create_a_new_tag", u"palo_alto_firewall_disconnect_user", u"palo_alto_firewall_quarantine_device"],
-        "workflows": [u"palo_alto_firewall_block_ip", u"palo_alto_firewall_create_a_new_tag"],
-        "actions": [u"Palo Alto Firewall: Block IP", u"Palo Alto Firewall: Create a new tag"],
+        "functions": [u"palo_alto_firewall_block_ip", u"palo_alto_firewall_create_a_new_tag", u"palo_alto_firewall_disconnect_a_globalprotect_user", u"palo_alto_firewall_quarantine_device"],
+        "workflows": [u"palo_alto_firewall_block_ip", u"palo_alto_firewall_create_a_new_tag", u"palo_alto_firewall_disconnect_a_globalprotect_user", u"palo_alto_firewall_quarantine_device"],
+        "actions": [u"Palo Alto Firewall: Block IP", u"Palo Alto Firewall: Create a new tag", u"Palo Alto Firewall: Disconnect a GlobalProtect user", u"Palo Alto Firewall: Quarantine Device"],
         "incident_fields": [],
         "incident_artifact_types": [],
         "incident_types": [],
@@ -47,14 +47,18 @@ def customization_data(client=None):
     - Functions:
         - palo_alto_firewall_block_ip
         - palo_alto_firewall_create_a_new_tag
-        - palo_alto_firewall_disconnect_user
+        - palo_alto_firewall_disconnect_a_globalprotect_user
         - palo_alto_firewall_quarantine_device
     - Workflows:
         - palo_alto_firewall_block_ip
         - palo_alto_firewall_create_a_new_tag
+        - palo_alto_firewall_disconnect_a_globalprotect_user
+        - palo_alto_firewall_quarantine_device
     - Rules:
         - Palo Alto Firewall: Block IP
         - Palo Alto Firewall: Create a new tag
+        - Palo Alto Firewall: Disconnect a GlobalProtect user
+        - Palo Alto Firewall: Quarantine Device
     """
 
     res_file = os.path.join(os.path.dirname(__file__), RES_FILE)

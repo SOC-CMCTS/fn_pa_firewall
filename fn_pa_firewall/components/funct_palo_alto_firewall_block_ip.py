@@ -37,26 +37,31 @@ class FunctionComponent(AppFunctionComponent):
         self.LOG.info("Black list IP: {0}".format(blacklistIP))
 
         if is_valid_ipv4_address(blacklistIP):
-            pa_fw_api = Palo_Alto_Firewall_API.restAPI(palo_alto_ip=server_ip, palo_alto_version=server_version, api_key=server_api)
+            pa_fw_api = Palo_Alto_Firewall_API.restAPI(
+                palo_alto_ip=server_ip, palo_alto_version=server_version, api_key=server_api)
 
             results = None
-            
+
             if pa_fw_api.getTagName(tagName=tag) == True:
-                response = pa_fw_api.createNewAddress(addressIP=blacklistIP, tagName=tag)
+                response = pa_fw_api.createNewAddress(
+                    addressIP=blacklistIP, tagName=tag)
                 if response == True:
-                    self.LOG.info("[+] Block IP: \"{0}\" succeeded.".format(blacklistIP))
+                    self.LOG.info(
+                        "[+] Block IP: \"{0}\" succeeded.".format(blacklistIP))
                     results = {
                         "status": "success",
                         "message": "Block ip: \"{0}\" succeeded".format(blacklistIP)
                     }
                 else:
-                    self.LOG.info("[+] Block IP: \"{0}\" has failed. {1}".format(blacklistIP, response['message']))
+                    self.LOG.info(
+                        "[+] Block IP: \"{0}\" has failed. {1}".format(blacklistIP, response['message']))
                     results = {
                         "status": "false",
                         "message": "Block IP: \"{0}\" has failed. {1}".format(blacklistIP, response['message'])
                     }
             else:
-                self.LOG.info("Can't block ip: \"{0}\". Not found tag name: \"{1}\"".format(blacklistIP, tag))
+                self.LOG.info(
+                    "Can't block ip: \"{0}\". Not found tag name: \"{1}\"".format(blacklistIP, tag))
                 results = {
                     "status": "false",
                     "message": "Can't block ip: \"{0}\". Not found tag name: \"{1}\"".format(blacklistIP, tag)

@@ -20,7 +20,8 @@ class FunctionComponent(AppFunctionComponent):
     @app_function(FN_NAME)
     def _app_function(self, fn_inputs):
         """
-        Function: None
+        Function: Function to view all GlobalProtect user on Palo Alto Firewall. Then use this infomations to execute Function disconnect a globalprotect user.
+        Inputs: None
         """
 
         yield self.status_message(f"Starting App Function: '{FN_NAME}'")

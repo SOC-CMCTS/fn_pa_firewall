@@ -19,7 +19,7 @@ class FunctionComponent(AppFunctionComponent):
     @app_function(FN_NAME)
     def _app_function(self, fn_inputs):
         """
-        Function: None
+        Function: Function to create a tag on Palo Alto Firewall. Tags allow you to group objects using keywords or phrases.
         Inputs:
             -   fn_inputs.palo_alto_firewall_tag_name
         """
@@ -30,24 +30,24 @@ class FunctionComponent(AppFunctionComponent):
         server_version = str(self.options.get("palo_alto_version", None))
         server_api = str(self.options.get("palo_alto_api_key", None))
 
-        tag = fn_inputs.palo_alto_firewall_tag_name
+        tag_name = fn_inputs.palo_alto_firewall_tag_name
 
-        self.LOG.info("[+] A new tag: {0}".format(tag))
+        self.LOG.info("[+] A new tag: {0}".format(tag_name))
 
         palo_alto_fw_api = Palo_Alto_Firewall_API.restAPI(palo_alto_ip=server_ip, palo_alto_version=server_version, api_key=server_api)
 
-        response = palo_alto_fw_api.createNewTag(tagName=tag)
+        response = palo_alto_fw_api.createNewTag(tagName=tag_name)
         if response:
-            self.LOG.info("Create a new tag \"{0}\" succeeded.".format(tag))
+            self.LOG.info("Create a new tag \"{0}\" succeeded.".format(tag_name))
             results = {
                 "status": "success",
-                "message": "Create a new tag \"{0}\" succeeded.".format(tag)
+                "message": "Create a new tag \"{0}\" succeeded.".format(tag_name)
             }
         else:
-            self.LOG.info("Create a new tag \"{0}\" has failed. {1}".format(tag, response['message']))
+            self.LOG.info("Create a new tag \"{0}\" has failed. {1}".format(tag_name, response['message']))
             results = {
                 "status": "false",
-                "message": "Create a new tag \"{0}\" has failed. {1}".format(tag, response['message'])
+                "message": "Create a new tag \"{0}\" has failed. {1}".format(tag_name, response['message'])
             }
 
         

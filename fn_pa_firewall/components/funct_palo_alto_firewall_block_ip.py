@@ -19,7 +19,7 @@ class FunctionComponent(AppFunctionComponent):
     @app_function(FN_NAME)
     def _app_function(self, fn_inputs):
         """
-        Function: None
+        Function: Function Create an Address Object with a tag name on Palo Alto Firewall
         Inputs:
             -   fn_inputs.palo_alto_firewall_ip
             -   fn_inputs.palo_alto_firewall_tag_name
@@ -30,41 +30,41 @@ class FunctionComponent(AppFunctionComponent):
         server_version = str(self.options.get("palo_alto_version", None))
         server_api = str(self.options.get("palo_alto_api_key", None))
 
-        tag = fn_inputs.palo_alto_firewall_tag_name
-        blacklistIP = fn_inputs.palo_alto_firewall_ip
+        tag_name = fn_inputs.palo_alto_firewall_tag_name
+        ip_address = fn_inputs.palo_alto_firewall_ip
 
-        self.LOG.info("Tag: {}".format(tag))
-        self.LOG.info("Black list IP: {0}".format(blacklistIP))
+        self.LOG.info("Tag Name: {}".format(tag_name))
+        self.LOG.info("IP Address: {0}".format(ip_address))
 
-        if is_valid_ipv4_address(blacklistIP):
+        if is_valid_ipv4_address(ip_address):
             pa_fw_api = Palo_Alto_Firewall_API.restAPI(
                 palo_alto_ip=server_ip, palo_alto_version=server_version, api_key=server_api)
 
             results = None
 
-            if pa_fw_api.getTagName(tagName=tag) == True:
+            if pa_fw_api.getTagName(tagName=tag_name) == True:
                 response = pa_fw_api.createNewAddress(
-                    addressIP=blacklistIP, tagName=tag)
+                    addressIP=ip_address, tagName=tag_name)
                 if response == True:
                     self.LOG.info(
-                        "[+] Block IP: \"{0}\" succeeded.".format(blacklistIP))
+                        "[+] Add IP: \"{0}\" succeeded.".format(ip_address))
                     results = {
                         "status": "success",
-                        "message": "Block ip: \"{0}\" succeeded".format(blacklistIP)
+                        "message": "Add ip: \"{0}\" succeeded".format(ip_address)
                     }
                 else:
                     self.LOG.info(
-                        "[+] Block IP: \"{0}\" has failed. {1}".format(blacklistIP, response['message']))
+                        "[+] Add IP: \"{0}\" has failed. {1}".format(ip_address, response['message']))
                     results = {
                         "status": "false",
-                        "message": "Block IP: \"{0}\" has failed. {1}".format(blacklistIP, response['message'])
+                        "message": "Add IP: \"{0}\" has failed. {1}".format(ip_address, response['message'])
                     }
             else:
                 self.LOG.info(
-                    "Can't block ip: \"{0}\". Not found tag name: \"{1}\"".format(blacklistIP, tag))
+                    "Cannot add IP: \"{0}\". Not found tag name: \"{1}\"".format(ip_address, tag_name))
                 results = {
                     "status": "false",
-                    "message": "Can't block ip: \"{0}\". Not found tag name: \"{1}\"".format(blacklistIP, tag)
+                    "message": "Cannot add IP: \"{0}\". Not found tag name: \"{1}\"".format(ip_address, tag_name)
                 }
         else:
             self.LOG.info("Error! The input is not correct")

@@ -18,7 +18,13 @@ class FunctionComponent(AppFunctionComponent):
 
     @app_function(FN_NAME)
     def _app_function(self, fn_inputs):
-
+        """
+        Function: Function to disconnect a GlobalProtect user on Palo Alto Firewall
+        Inputs:
+            -   fn_inputs.palo_alto_firewall_gateway
+            -   fn_inputs.palo_alto_firewall_user
+            -   fn_inputs.palo_alto_firewall_computer
+        """
         yield self.status_message(f"Starting App Function: '{FN_NAME}'")
 
         server_ip = str(self.options.get("server_palo_alto_ip", None))

@@ -43,8 +43,7 @@ class FunctionComponent(AppFunctionComponent):
                 "[+] Viewing all GlobalProtect users succeeded")
             results = {
                 "status": "success",
-                "message": "Viewing all GlobalProtect users succeeded",
-                "data": json.dumps(list_users)
+                "message": "Viewing all GlobalProtect users succeeded. \n <br>{}".format(list_users)
             }
         else:
             self.LOG.info(

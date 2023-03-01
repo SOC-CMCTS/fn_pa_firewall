@@ -151,20 +151,31 @@ class xmlAPI:
                 entries = []
                 for entry_elem in xml_response.findall(".//entry"):
                     entry = {
-                        "username": entry_elem.find("username").text,
-                        "computer": entry_elem.find("computer").text,
-                        "virtual_ip": entry_elem.find("virtual-ip").text,
-                        "public_ip": entry_elem.find("public-ip").text,
-                        "login_time": entry_elem.find("login-time").text,
+                        "Username": entry_elem.find("username").text,
+                        "Computer": entry_elem.find("computer").text,
+                        "Virtual IP": entry_elem.find("virtual-ip").text,
+                        "Public IP": entry_elem.find("public-ip").text,
+                        "Login Time": entry_elem.find("login-time").text,
                     }
                     entries.append(entry)
-                # display the results in a table
-                #results = "{:<15} {:<20} {:<15} {:<15} {:<20} \n".format("Username", "Computer", "Virtual IP", "Public IP", "Login Time")
-                #self.LOG.info("{:<15} {:<20} {:<15} {:<15} {:<20}".format("Username", "Computer", "Virtual IP", "Public IP", "Login Time"))
-                for entry in entries:
-                    self.LOG.info("{:<15} {:<20} {:<15} {:<15} {:<20}".format(entry["username"], entry["computer"], entry["virtual_ip"], entry["public_ip"], entry["login_time"]))
-                    #results += "{:<15} {:<20} {:<15} {:<15} {:<20} \n".format(entry["username"], entry["computer"], entry["virtual_ip"], entry["public_ip"], entry["login_time"])
-                return json.dumps(entries)
+                
+                data = json.loads(json.dumps(entries))
+
+                header = ["Username", "Computer", "Virtual IP", "Public IP", "Login Time"]
+                col_widths = [max(len(header[i]), max(len(str(row[header[i]])) for row in data)) for i in range(len(header))]
+
+                # print the header row
+                # results_table = ("<pre>+{}+<pre><br>".format("+".join("-" * (col_widths[i] + 2) for i in range(len(header)))))
+                results_table += ("<pre>| {} |<pre><br>".format(" | ".join("{:<{width}}".format(header[i], width=col_widths[i]) for i in range(len(header)))))
+                # results_table += ("<pre>+{}+<pre><br>".format("+".join("-" * (col_widths[i] + 2) for i in range(len(header)))))
+
+                # print the data rows
+                for row in data:
+                    results_table += ("| {} |".format(" | ".join("{:<{width}}".format(str(row[header[i]]), width=col_widths[i]) for i in range(len(header)))))
+                    results_table += ("<br><pre>+{}+<pre><br>".format("+".join("-" * (col_widths[i] + 2) for i in range(len(header)))))
+
+                results_table = results_table.replace(" ", "&nbsp;")
+                return results_table
             return None
         except Exception as e:
             return "Error in request: {0}".format(e)

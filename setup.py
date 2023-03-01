@@ -27,7 +27,7 @@ setup(
     license="MIT",
     author="CMCTSSG SOC",
     author_email="scenterportal@cmc.com.vn",
-    url="https;//cmctssg.v",
+    url="https://cmctssg.vn",
     description="SOAR Components to Integrate with the Palo Alto Firewall",
     long_description="""This integration contains Functions to interact with address groups, addresses, Global Protect User within Palo Alto Firewall.""",
     install_requires=[

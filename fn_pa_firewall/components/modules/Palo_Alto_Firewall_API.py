@@ -166,7 +166,7 @@ class xmlAPI:
 
                 # print the header row
                 # results_table = ("<pre>+{}+<pre><br>".format("+".join("-" * (col_widths[i] + 2) for i in range(len(header)))))
-                results_table += ("<pre>| {} |<pre><br>".format(" | ".join("{:<{width}}".format(header[i], width=col_widths[i]) for i in range(len(header)))))
+                results_table = ("<pre>| {} |<pre><br>".format(" | ".join("{:<{width}}".format(header[i], width=col_widths[i]) for i in range(len(header)))))
                 # results_table += ("<pre>+{}+<pre><br>".format("+".join("-" * (col_widths[i] + 2) for i in range(len(header)))))
 
                 # print the data rows

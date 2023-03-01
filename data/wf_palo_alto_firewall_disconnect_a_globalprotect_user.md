@@ -11,22 +11,21 @@
 `palo_alto_firewall_disconnect_a_globalprotect_user`
 
 ### Output Name
-`None`
+``
 
 ### Message Destination
 `palo_alto_firewall_integration_for_soar`
 
 ### Pre-Processing Script
 ```python
-inputs.palo_alto_firewall_gateway = artifact.value
+inputs.palo_alto_firewall_gateway = rule.properties.palo_alto_firewall_gateway
 inputs.palo_alto_firewall_user = artifact.value
-inputs.palo_alto_firewall_reason = artifact.value
-inputs.palo_alto_firewall_computer = artifact.value
+inputs.palo_alto_firewall_computer = rule.properties.palo_alto_firewall_computer
 ```
 
 ### Post-Processing Script
 ```python
-None
+incident.addNote(results.content['message'])
 ```
 
 ---

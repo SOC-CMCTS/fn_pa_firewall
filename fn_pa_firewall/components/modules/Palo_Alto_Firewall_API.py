@@ -165,9 +165,9 @@ class xmlAPI:
                 col_widths = [max(len(header[i]), max(len(str(row[header[i]])) for row in data)) for i in range(len(header))]
 
                 # print the header row
-                results_table = ("<pre>+{}+<pre><br>".format("+".join("-" * (col_widths[i] + 2) for i in range(len(header)))))
+                # results_table = ("<pre>+{}+<pre><br>".format("+".join("-" * (col_widths[i] + 2) for i in range(len(header)))))
                 results_table += ("<pre>| {} |<pre><br>".format(" | ".join("{:<{width}}".format(header[i], width=col_widths[i]) for i in range(len(header)))))
-                results_table += ("<pre>+{}+<pre><br>".format("+".join("-" * (col_widths[i] + 2) for i in range(len(header)))))
+                # results_table += ("<pre>+{}+<pre><br>".format("+".join("-" * (col_widths[i] + 2) for i in range(len(header)))))
 
                 # print the data rows
                 for row in data:

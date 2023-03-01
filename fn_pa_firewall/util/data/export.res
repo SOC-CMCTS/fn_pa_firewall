@@ -77,23 +77,6 @@
       "uuid": "b3b35155-b12e-40e5-8101-588ac35609a9",
       "view_items": [],
       "workflows": []
-    },
-    {
-      "automations": [],
-      "conditions": [],
-      "enabled": true,
-      "export_key": "Palo Alto Firewall: Quarantine Device",
-      "id": 118,
-      "logic_type": "all",
-      "message_destinations": [],
-      "name": "Palo Alto Firewall: Quarantine Device",
-      "object_type": "artifact",
-      "tags": [],
-      "timeout_seconds": 86400,
-      "type": 1,
-      "uuid": "f4e41ccc-0cf1-4252-9b6f-78fbff58b8af",
-      "view_items": [],
-      "workflows": []
     }
   ],
   "apps": [],
@@ -512,50 +495,6 @@
           "workflow_id": 64
         }
       ]
-    },
-    {
-      "created_date": 1676536644024,
-      "description": {
-        "content": null,
-        "format": "text"
-      },
-      "destination_handle": "palo_alto_firewall_integration_for_soar",
-      "display_name": "Palo Alto Firewall: Quarantine Device",
-      "export_key": "palo_alto_firewall_quarantine_device",
-      "id": 48,
-      "last_modified_by": {
-        "display_name": "Administrator Local",
-        "id": 1,
-        "name": "admin@sctssg.vn",
-        "type": "user"
-      },
-      "last_modified_time": 1676536897507,
-      "name": "palo_alto_firewall_quarantine_device",
-      "tags": [],
-      "uuid": "b4deb8cd-7d2f-4cfc-bb88-6bc1ce8d866e",
-      "version": 2,
-      "view_items": [
-        {
-          "content": "f839d2de-da31-43d8-99ea-d39b74c9cb93",
-          "element": "field_uuid",
-          "field_type": "__function",
-          "show_if": null,
-          "show_link_header": false,
-          "step_label": null
-        }
-      ],
-      "workflows": [
-        {
-          "actions": [],
-          "description": null,
-          "name": "Palo Alto Firewall: Quarantine Device",
-          "object_type": "artifact",
-          "programmatic_name": "palo_alto_firewall_quarantine_device",
-          "tags": [],
-          "uuid": null,
-          "workflow_id": 63
-        }
-      ]
     }
   ],
   "geos": null,
@@ -614,25 +553,6 @@
   "timeframes": null,
   "types": [],
   "workflows": [
-    {
-      "actions": [],
-      "content": {
-        "version": 2,
-        "workflow_id": "palo_alto_firewall_quarantine_device",
-        "xml": "\u003c?xml version=\"1.0\" encoding=\"UTF-8\"?\u003e\u003cdefinitions xmlns=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:omgdc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:omgdi=\"http://www.omg.org/spec/DD/20100524/DI\" xmlns:resilient=\"http://resilient.ibm.com/bpmn\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" targetNamespace=\"http://www.camunda.org/test\"\u003e\u003cprocess id=\"palo_alto_firewall_quarantine_device\" isExecutable=\"true\" name=\"Palo Alto Firewall: Quarantine Device\"\u003e\u003cdocumentation/\u003e\u003cstartEvent id=\"StartEvent_155asxm\"\u003e\u003coutgoing\u003eSequenceFlow_182yhaj\u003c/outgoing\u003e\u003c/startEvent\u003e\u003cserviceTask id=\"ServiceTask_1k27s5u\" name=\"Palo Alto Firewall: Quarantine De...\" resilient:type=\"function\"\u003e\u003cextensionElements\u003e\u003cresilient:function uuid=\"b4deb8cd-7d2f-4cfc-bb88-6bc1ce8d866e\"\u003e{\"inputs\":{},\"post_processing_script_language\":\"python3\",\"pre_processing_script\":\"inputs.palo_alto_firewall_device_name = artifact.value\",\"pre_processing_script_language\":\"python3\",\"result_name\":\"\"}\u003c/resilient:function\u003e\u003c/extensionElements\u003e\u003cincoming\u003eSequenceFlow_182yhaj\u003c/incoming\u003e\u003coutgoing\u003eSequenceFlow_0x4zia6\u003c/outgoing\u003e\u003c/serviceTask\u003e\u003csequenceFlow id=\"SequenceFlow_182yhaj\" sourceRef=\"StartEvent_155asxm\" targetRef=\"ServiceTask_1k27s5u\"/\u003e\u003cendEvent id=\"EndEvent_11oy2fh\"\u003e\u003cincoming\u003eSequenceFlow_0x4zia6\u003c/incoming\u003e\u003c/endEvent\u003e\u003csequenceFlow id=\"SequenceFlow_0x4zia6\" sourceRef=\"ServiceTask_1k27s5u\" targetRef=\"EndEvent_11oy2fh\"/\u003e\u003ctextAnnotation id=\"TextAnnotation_1kxxiyt\"\u003e\u003ctext\u003eStart your workflow here\u003c/text\u003e\u003c/textAnnotation\u003e\u003cassociation id=\"Association_1seuj48\" sourceRef=\"StartEvent_155asxm\" targetRef=\"TextAnnotation_1kxxiyt\"/\u003e\u003c/process\u003e\u003cbpmndi:BPMNDiagram id=\"BPMNDiagram_1\"\u003e\u003cbpmndi:BPMNPlane bpmnElement=\"undefined\" id=\"BPMNPlane_1\"\u003e\u003cbpmndi:BPMNShape bpmnElement=\"StartEvent_155asxm\" id=\"StartEvent_155asxm_di\"\u003e\u003comgdc:Bounds height=\"36\" width=\"36\" x=\"162\" y=\"188\"/\u003e\u003cbpmndi:BPMNLabel\u003e\u003comgdc:Bounds height=\"0\" width=\"90\" x=\"157\" y=\"223\"/\u003e\u003c/bpmndi:BPMNLabel\u003e\u003c/bpmndi:BPMNShape\u003e\u003cbpmndi:BPMNShape bpmnElement=\"TextAnnotation_1kxxiyt\" id=\"TextAnnotation_1kxxiyt_di\"\u003e\u003comgdc:Bounds height=\"30\" width=\"100\" x=\"99\" y=\"254\"/\u003e\u003c/bpmndi:BPMNShape\u003e\u003cbpmndi:BPMNEdge bpmnElement=\"Association_1seuj48\" id=\"Association_1seuj48_di\"\u003e\u003comgdi:waypoint x=\"169\" xsi:type=\"omgdc:Point\" y=\"220\"/\u003e\u003comgdi:waypoint x=\"153\" xsi:type=\"omgdc:Point\" y=\"254\"/\u003e\u003c/bpmndi:BPMNEdge\u003e\u003cbpmndi:BPMNShape bpmnElement=\"ServiceTask_1k27s5u\" id=\"ServiceTask_1k27s5u_di\"\u003e\u003comgdc:Bounds height=\"80\" width=\"100\" x=\"274\" y=\"87\"/\u003e\u003c/bpmndi:BPMNShape\u003e\u003cbpmndi:BPMNEdge bpmnElement=\"SequenceFlow_182yhaj\" id=\"SequenceFlow_182yhaj_di\"\u003e\u003comgdi:waypoint x=\"198\" xsi:type=\"omgdc:Point\" y=\"206\"/\u003e\u003comgdi:waypoint x=\"236\" xsi:type=\"omgdc:Point\" y=\"206\"/\u003e\u003comgdi:waypoint x=\"236\" xsi:type=\"omgdc:Point\" y=\"127\"/\u003e\u003comgdi:waypoint x=\"274\" xsi:type=\"omgdc:Point\" y=\"127\"/\u003e\u003cbpmndi:BPMNLabel\u003e\u003comgdc:Bounds height=\"13\" width=\"0\" x=\"251\" y=\"159.5\"/\u003e\u003c/bpmndi:BPMNLabel\u003e\u003c/bpmndi:BPMNEdge\u003e\u003cbpmndi:BPMNShape bpmnElement=\"EndEvent_11oy2fh\" id=\"EndEvent_11oy2fh_di\"\u003e\u003comgdc:Bounds height=\"36\" width=\"36\" x=\"456.5638808837656\" y=\"109\"/\u003e\u003cbpmndi:BPMNLabel\u003e\u003comgdc:Bounds height=\"13\" width=\"0\" x=\"474.5638808837656\" y=\"148\"/\u003e\u003c/bpmndi:BPMNLabel\u003e\u003c/bpmndi:BPMNShape\u003e\u003cbpmndi:BPMNEdge bpmnElement=\"SequenceFlow_0x4zia6\" id=\"SequenceFlow_0x4zia6_di\"\u003e\u003comgdi:waypoint x=\"374\" xsi:type=\"omgdc:Point\" y=\"127\"/\u003e\u003comgdi:waypoint x=\"457\" xsi:type=\"omgdc:Point\" y=\"127\"/\u003e\u003cbpmndi:BPMNLabel\u003e\u003comgdc:Bounds height=\"13\" width=\"0\" x=\"415.5\" y=\"105\"/\u003e\u003c/bpmndi:BPMNLabel\u003e\u003c/bpmndi:BPMNEdge\u003e\u003c/bpmndi:BPMNPlane\u003e\u003c/bpmndi:BPMNDiagram\u003e\u003c/definitions\u003e"
-      },
-      "content_version": 2,
-      "description": "",
-      "export_key": "palo_alto_firewall_quarantine_device",
-      "last_modified_by": "admin@sctssg.vn",
-      "last_modified_time": 1676536972010,
-      "name": "Palo Alto Firewall: Quarantine Device",
-      "object_type": "artifact",
-      "programmatic_name": "palo_alto_firewall_quarantine_device",
-      "tags": [],
-      "uuid": "ec07c358-3948-424f-8873-14767713a6bc",
-      "workflow_id": 63
-    },
     {
       "actions": [],
       "content": {

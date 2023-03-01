@@ -2,6 +2,7 @@ import logging
 import json
 import requests
 from xml.etree import ElementTree
+from lxml import etree
 
 
 class restAPI:
@@ -129,5 +130,41 @@ class xmlAPI:
             if xml_response_data.find('result/response').get('status') == "success":
                 return True
             return False
+        except Exception as e:
+            return "Error in request: {0}".format(e)
+        
+    def view_all_GlobalProtect_users(self):
+        requests.packages.urllib3.disable_warnings()
+        body = "<show><global-protect-gateway><current-user/></global-protect-gateway></show>"
+        try:
+            # send request
+            response = requests.get(
+                self.server_url + (str(body)).strip(), headers=self.header, verify=False)
+            #self.LOG.info(response.content)
+
+            # parse the XML string
+            xml_response = etree.fromstring(response.content)
+            #self.LOG.info(xml_response.attrib['status'])
+
+            if xml_response.attrib['status'] == "success":
+                # extract the values of interest for each entry and store them in a list of dictionaries
+                entries = []
+                for entry_elem in xml_response.findall(".//entry"):
+                    entry = {
+                        "username": entry_elem.find("username").text,
+                        "computer": entry_elem.find("computer").text,
+                        "virtual_ip": entry_elem.find("virtual-ip").text,
+                        "public_ip": entry_elem.find("public-ip").text,
+                        "login_time": entry_elem.find("login-time").text,
+                    }
+                    entries.append(entry)
+                # display the results in a table
+                #results = "{:<15} {:<20} {:<15} {:<15} {:<20} \n".format("Username", "Computer", "Virtual IP", "Public IP", "Login Time")
+                #self.LOG.info("{:<15} {:<20} {:<15} {:<15} {:<20}".format("Username", "Computer", "Virtual IP", "Public IP", "Login Time"))
+                for entry in entries:
+                    self.LOG.info("{:<15} {:<20} {:<15} {:<15} {:<20}".format(entry["username"], entry["computer"], entry["virtual_ip"], entry["public_ip"], entry["login_time"]))
+                    #results += "{:<15} {:<20} {:<15} {:<15} {:<20} \n".format(entry["username"], entry["computer"], entry["virtual_ip"], entry["public_ip"], entry["login_time"])
+                return json.dumps(entries)
+            return None
         except Exception as e:
             return "Error in request: {0}".format(e)

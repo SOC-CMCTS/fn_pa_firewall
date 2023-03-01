@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# Generated with resilient-sdk v48.0.4034
 """Tests using pytest_resilient_circuits"""
 
 import pytest
@@ -6,7 +7,7 @@ from resilient_circuits.util import get_config_data, get_function_definition
 from resilient_circuits import SubmitTestFunction, FunctionResult
 
 PACKAGE_NAME = "fn_pa_firewall"
-FUNCTION_NAME = "palo_alto_firewall_block_ip"
+FUNCTION_NAME = "palo_alto_firewall_delete_an_ip_address_object"
 
 # Read the default configuration-data section from the package
 config_data = get_config_data(PACKAGE_NAME)
@@ -15,9 +16,9 @@ config_data = get_config_data(PACKAGE_NAME)
 resilient_mock = "pytest_resilient_circuits.BasicResilientMock"
 
 
-def call_palo_alto_firewall_block_ip_function(circuits, function_params, timeout=5):
+def call_palo_alto_firewall_delete_an_ip_address_object_function(circuits, function_params, timeout=5):
     # Create the submitTestFunction event
-    evt = SubmitTestFunction("palo_alto_firewall_block_ip", function_params)
+    evt = SubmitTestFunction("palo_alto_firewall_delete_an_ip_address_object", function_params)
 
     # Fire a message to the function
     circuits.manager.fire(evt)
@@ -32,15 +33,15 @@ def call_palo_alto_firewall_block_ip_function(circuits, function_params, timeout
 
     # else return the FunctionComponent's results
     else:
-        event = circuits.watcher.wait("palo_alto_firewall_block_ip_result", parent=evt, timeout=timeout)
+        event = circuits.watcher.wait("palo_alto_firewall_delete_an_ip_address_object_result", parent=evt, timeout=timeout)
         assert event
         assert isinstance(event.kwargs["result"], FunctionResult)
         pytest.wait_for(event, "complete", True)
         return event.kwargs["result"].value
 
 
-class TestPaloAltoFirewallBlockIp:
-    """ Tests for the palo_alto_firewall_block_ip function"""
+class TestPaloAltoFirewallDeleteAnIpAddressObject:
+    """ Tests for the palo_alto_firewall_delete_an_ip_address_object function"""
 
     def test_function_definition(self):
         """ Test that the package provides customization_data that defines the function """
@@ -48,15 +49,13 @@ class TestPaloAltoFirewallBlockIp:
         assert func is not None
 
     mock_inputs_1 = {
-        "palo_alto_firewall_tag_name": "sample text",
-        "palo_alto_firewall_ip": "sample text"
+        "palo_alto_firewall_address_objects_name": "sample text"
     }
 
     expected_results_1 = {"value": "xyz"}
 
     mock_inputs_2 = {
-        "palo_alto_firewall_tag_name": "sample text",
-        "palo_alto_firewall_ip": "sample text"
+        "palo_alto_firewall_address_objects_name": "sample text"
     }
 
     expected_results_2 = {"value": "xyz"}
@@ -68,5 +67,5 @@ class TestPaloAltoFirewallBlockIp:
     def test_success(self, circuits_app, mock_inputs, expected_results):
         """ Test calling with sample values for the parameters """
 
-        results = call_palo_alto_firewall_block_ip_function(circuits_app, mock_inputs)
+        results = call_palo_alto_firewall_delete_an_ip_address_object_function(circuits_app, mock_inputs)
         assert(expected_results == results)

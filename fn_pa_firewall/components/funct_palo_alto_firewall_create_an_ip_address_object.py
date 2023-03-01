@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# Generated with resilient-sdk v48.0.4034
 
 """AppFunction implementation"""
 
@@ -6,12 +7,13 @@ from resilient_circuits import AppFunctionComponent, app_function, FunctionResul
 from resilient_lib import IntegrationError, validate_fields
 from fn_pa_firewall.components.modules import Palo_Alto_Firewall_API
 from fn_pa_firewall.components.modules.ultils import is_valid_ipv4_address
+
 PACKAGE_NAME = "fn_pa_firewall"
-FN_NAME = "palo_alto_firewall_block_ip"
+FN_NAME = "palo_alto_firewall_create_an_ip_address_object"
 
 
 class FunctionComponent(AppFunctionComponent):
-    """Component that implements function 'palo_alto_firewall_block_ip'"""
+    """Component that implements function 'palo_alto_firewall_create_an_ip_address_object'"""
 
     def __init__(self, opts):
         super(FunctionComponent, self).__init__(opts, PACKAGE_NAME)
@@ -19,13 +21,14 @@ class FunctionComponent(AppFunctionComponent):
     @app_function(FN_NAME)
     def _app_function(self, fn_inputs):
         """
-        Function: Function Create an Address Object with a tag name on Palo Alto Firewall
+        Function: None
         Inputs:
             -   fn_inputs.palo_alto_firewall_ip
             -   fn_inputs.palo_alto_firewall_tag_name
         """
 
         yield self.status_message(f"Starting App Function: '{FN_NAME}'")
+
         server_ip = str(self.options.get("server_palo_alto_ip", None))
         server_version = str(self.options.get("palo_alto_version", None))
         server_api = str(self.options.get("palo_alto_api_key", None))

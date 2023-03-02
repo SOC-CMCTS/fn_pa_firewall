@@ -49,7 +49,7 @@
 -->
 | Version | Date | Notes |
 | ------- | ---- | ----- |
-| 1.0.0 | MM/YYYY | Initial Release | <!-- ::CHANGE_ME:: -->
+| 1.0.0 | 03/2023 | Initial Release | <!-- ::CHANGE_ME:: -->
 
 ---
 
@@ -62,15 +62,17 @@
 
  ![screenshot: main](./doc/screenshots/main.png) <!-- ::CHANGE_ME:: -->
 
-This integration contains Functions to interact with address groups, addresses, Global Protect User within Palo Alto Firewall.
+This integration contains Functions to interact with Tag Name, Address Object, GlobalProtect User within Palo Alto Firewall.
 
 ### Key Features
 <!--
   List the Key Features of the Integration
 -->
-* Key Feature 1 <!-- ::CHANGE_ME:: -->
-* Key Feature 2 <!-- ::CHANGE_ME:: -->
-* Key Feature 3 <!-- ::CHANGE_ME:: -->
+* Create a new tag
+* Create an IP Address Object
+* Delete an IP Address Object
+* View all GlobalProtect users
+* Disconnect a GlobalProtect user
 
 ---
 
@@ -118,44 +120,11 @@ The following Cloud Pak guides provide additional information:
 
 These guides are available on the IBM Documentation website at [ibm.biz/cp4s-docs](https://ibm.biz/cp4s-docs). From this web page, select your IBM Cloud Pak for Security version. From the version-specific IBM Documentation page, select Case Management and Orchestration & Automation.
 
-### Proxy Server
-The app **does/does not** <!-- ::CHANGE_ME:: --> support a proxy server.
 
 ### Python Environment
 Python 3.6 and Python 3.9 are supported.
 Additional package dependencies may exist for each of these packages:
 * resilient-circuits>=47.1.0
-
-### <!-- ::CHANGE_ME:: --> Development Version
-
-This app has been implemented using:
-| Product Name | Product Version | API URL | API Version |
-| ------------ | --------------- | ------- | ----------- |
-| <!-- ::CHANGE_ME:: --> | <!-- ::CHANGE_ME:: --> | <!-- ::CHANGE_ME:: --> | <!-- ::CHANGE_ME:: --> |
-
-#### Prerequisites
-<!--
-List any prerequisites that are needed to use with this endpoint solution. Remove any section that is unnecessary.
--->
-* Prereq A <!-- ::CHANGE_ME:: -->
-* Prereq B <!-- ::CHANGE_ME:: -->
-* Prereq C <!-- ::CHANGE_ME:: -->
-
-#### Configuration
-<!--
-List any steps that are needed to configure the endpoint to use this app.
--->
-* Config A <!-- ::CHANGE_ME:: -->
-* Config B <!-- ::CHANGE_ME:: -->
-* Config C <!-- ::CHANGE_ME:: -->
-
-#### Permissions
-<!--
-List any user permissions that are needed to use this endpoint. For example, list the API key permissions.
--->
-* Permission A <!-- ::CHANGE_ME:: -->
-* Permission B <!-- ::CHANGE_ME:: -->
-* Permission C <!-- ::CHANGE_ME:: -->
 
 
 ---
@@ -171,15 +140,15 @@ The following table provides the settings you need to configure the app. These s
 
 | Config | Required | Example | Description |
 | ------ | :------: | ------- | ----------- |
-| **palo_alto_api_key** | Yes | `<<Enter your API key!>>` | *Enter a description of the config here.* <!-- ::CHANGE_ME:: --> |
-| **palo_alto_version** | Yes | `<<Enter your version>>` | *Enter a description of the config here.* <!-- ::CHANGE_ME:: --> |
-| **server_palo_alto_ip** | Yes | `<<Enter your server ip>>` | *Enter a description of the config here.* <!-- ::CHANGE_ME:: --> |
+| **palo_alto_api_key** | Yes | `LUFRPT*base64 encoded string*` | *Enter the **X-PAN-KEY**.* <!-- ::CHANGE_ME:: --> |
+| **palo_alto_version** | Yes | `10.1` | *Enter the Palo Alto Firewall version. Versions from **10.1** to the latest are supported.* <!-- ::CHANGE_ME:: --> |
+| **palo_alto_ip_address** | Yes | `192.168.1.1` | *Enter the Palo Alto Firewall **IP Address**.* <!-- ::CHANGE_ME:: --> |
 
 
 ---
 
 ## Function - Palo Alto Firewall: Create a new tag
-None
+Function to create a new tag on Palo Alto Firewall.
 
  ![screenshot: fn-palo-alto-firewall-create-a-new-tag ](./doc/screenshots/fn-palo-alto-firewall-create-a-new-tag.png) <!-- ::CHANGE_ME:: -->
 
@@ -188,7 +157,7 @@ None
 
 | Name | Type | Required | Example | Tooltip |
 | ---- | :--: | :------: | ------- | ------- |
-| `palo_alto_firewall_tag_name` | `text` | Yes | `-` | - |
+| `palo_alto_firewall_tag_name` | `text` | Yes | `blacklist` | *Enter tag name you want to create on Palo Alto FW* |
 
 </p>
 </details>
@@ -238,7 +207,7 @@ else:
 
 ---
 ## Function - Palo Alto Firewall: Create an IP Address Object
-None
+Function to create an IP Address Object on Palo Alto Firewall.
 
  ![screenshot: fn-palo-alto-firewall-create-an-ip-address-object ](./doc/screenshots/fn-palo-alto-firewall-create-an-ip-address-object.png) <!-- ::CHANGE_ME:: -->
 
@@ -247,8 +216,8 @@ None
 
 | Name | Type | Required | Example | Tooltip |
 | ---- | :--: | :------: | ------- | ------- |
-| `palo_alto_firewall_ip` | `text` | No | `-` | - |
-| `palo_alto_firewall_tag_name` | `text` | Yes | `-` | - |
+| `palo_alto_firewall_ip` | `text` | Yes | `-` | - |
+| `palo_alto_firewall_tag_name` | `text` | No | `-` | - |
 
 </p>
 </details>
@@ -299,7 +268,7 @@ else:
 
 ---
 ## Function - Palo Alto Firewall: Delete an IP Address Object
-None
+Function to delete an IP Address Object on Palo Alto Firewall.
 
  ![screenshot: fn-palo-alto-firewall-delete-an-ip-address-object ](./doc/screenshots/fn-palo-alto-firewall-delete-an-ip-address-object.png) <!-- ::CHANGE_ME:: -->
 
@@ -308,7 +277,7 @@ None
 
 | Name | Type | Required | Example | Tooltip |
 | ---- | :--: | :------: | ------- | ------- |
-| `palo_alto_firewall_address_objects_name` | `text` | No | `-` | - |
+| `palo_alto_firewall_address_objects_name` | `text` | Yes | `-` | - |
 
 </p>
 </details>
@@ -355,7 +324,7 @@ None
 
 ---
 ## Function - Palo Alto Firewall: Disconnect a GlobalProtect user
-None
+Function to disconnect a GlobalProtect user on Palo Alto Firewall.
 
  ![screenshot: fn-palo-alto-firewall-disconnect-a-globalprotect-user ](./doc/screenshots/fn-palo-alto-firewall-disconnect-a-globalprotect-user.png) <!-- ::CHANGE_ME:: -->
 
@@ -415,7 +384,7 @@ incident.addNote(results.content['message'])
 
 ---
 ## Function - Palo Alto Firewall: View all GlobalProtect users
-None
+Function to view all GlobalProtect Users logging on Palo Alto Firewall.
 
  ![screenshot: fn-palo-alto-firewall-view-all-globalprotect-users ](./doc/screenshots/fn-palo-alto-firewall-view-all-globalprotect-users.png) <!-- ::CHANGE_ME:: -->
 

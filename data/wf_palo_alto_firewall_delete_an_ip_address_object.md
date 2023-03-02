@@ -19,12 +19,12 @@
 
 ### Pre-Processing Script
 ```python
-None
+inputs.palo_alto_firewall_address_objects_name = rule.properties.palo_alto_firewall_object_name
 ```
 
 ### Post-Processing Script
 ```python
-None
+incident.addNote(results.content['message'])
 ```
 
 ---

@@ -61,17 +61,16 @@ class restAPI:
         except:
             return False
 
-    def createNewAddress(self, addressIP, tagName):
+    def createNewAddress(self, addressIP, objectName, tagName):
         requests.packages.urllib3.disable_warnings()
-        path = "/Objects/Addresses?location=vsys&vsys=vsys1&name=blacklist-{0}".format(
-            addressIP)
+        path = "/Objects/Addresses?location=vsys&vsys=vsys1&name={0}".format(objectName)
 
         body = {
             "entry": [
                 {
                     "@location": "vsys",
-                    "@name": "blacklist-{0}".format(addressIP),
-                    "description": "blacklist-{0}".format(addressIP),
+                    "@name": "{0}".format(objectName),
+                    "description": "{0}".format(objectName),
                     "ip-netmask": addressIP,
                     "tag": {
                         "member": [

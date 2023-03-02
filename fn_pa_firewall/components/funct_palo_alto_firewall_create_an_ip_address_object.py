@@ -35,6 +35,7 @@ class FunctionComponent(AppFunctionComponent):
 
         tag_name = fn_inputs.palo_alto_firewall_tag_name
         ip_address = fn_inputs.palo_alto_firewall_ip
+        object_name = fn_inputs.palo_alto_firewall_address_objects_name
 
         self.LOG.info("Tag Name: {}".format(tag_name))
         self.LOG.info("IP Address: {0}".format(ip_address))
@@ -47,7 +48,7 @@ class FunctionComponent(AppFunctionComponent):
 
             if pa_fw_api.getTagName(tagName=tag_name) == True:
                 response = pa_fw_api.createNewAddress(
-                    addressIP=ip_address, tagName=tag_name)
+                    addressIP=ip_address, objectName=object_name, tagName=tag_name)
                 if response == True:
                     self.LOG.info(
                         "[+] Add IP: \"{0}\" succeeded.".format(ip_address))

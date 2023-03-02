@@ -44,9 +44,8 @@ class restAPI:
 
     def createNewTag(self, tagName):
         requests.packages.urllib3.disable_warnings()
-        path = "/objects/tags?location=vsys&vsys=vsys1&name={0}".format(
-            tagName)
-        data = {
+        path = "/Objects/tags?location=vsys&vsys=vsys1&name={0}".format(tagName)
+        body = {
             "entry": {
                 "@name": "{0}".format(tagName),
                 "comments": ""
@@ -54,7 +53,8 @@ class restAPI:
         }
         try:
             response = requests.post(
-                self.server_url + path, headers=self.header, json=data, verify=False)
+                self.server_url + path, headers=self.header, data=json.dumps(body), verify=False)
+     
             if "@status" in response.json() and response.json()["@status"] == "success":
                 return True
             return response.json()
@@ -64,7 +64,7 @@ class restAPI:
     def createNewAddress(self, addressIP, objectName, tagName):
         requests.packages.urllib3.disable_warnings()
         path = "/Objects/Addresses?location=vsys&vsys=vsys1&name={0}".format(objectName)
-
+        
         body = {
             "entry": [
                 {
@@ -73,13 +73,28 @@ class restAPI:
                     "description": "{0}".format(objectName),
                     "ip-netmask": addressIP,
                     "tag": {
-                        "member": [
-                            tagName
-                        ]
                     }
                 }
             ]
         }
+        
+        if not tagName is None:
+            body = {
+                "entry": [
+                    {
+                        "@location": "vsys",
+                        "@name": "{0}".format(objectName),
+                        "description": "{0}".format(objectName),
+                        "ip-netmask": addressIP,
+                        "tag": {
+                            "member": [
+                                tagName
+                            ]
+                        }
+                    }
+                ]
+            }
+        
 
         try:
             response = requests.post(
@@ -91,8 +106,6 @@ class restAPI:
         except Exception as e:
             return "Error in request. {0}".format(e)
 
-
-    #    hàm delete an ip address object
 
     def deleteAddressObject(self, addressName):
         requests.packages.urllib3.disable_warnings()

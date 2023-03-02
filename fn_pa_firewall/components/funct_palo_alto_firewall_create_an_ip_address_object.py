@@ -46,7 +46,24 @@ class FunctionComponent(AppFunctionComponent):
 
             results = None
 
-            if pa_fw_api.getTagName(tagName=tag_name) == True:
+            if tag_name is None:
+                response = pa_fw_api.createNewAddress(
+                    addressIP=ip_address, objectName=object_name, tagName=tag_name)
+                if response == True:
+                    self.LOG.info(
+                        "[+] Add IP: \"{0}\" succeeded.".format(ip_address))
+                    results = {
+                        "status": "success",
+                        "message": "Add ip: \"{0}\" succeeded".format(ip_address)
+                    }
+                else:
+                    self.LOG.info(
+                        "[+] Add IP: \"{0}\" has failed. {1}".format(ip_address, response['message']))
+                    results = {
+                        "status": "false",
+                        "message": "Add IP: \"{0}\" has failed. {1}".format(ip_address, response['message'])
+                    }
+            elif not tag_name is None and pa_fw_api.getTagName(tagName=tag_name) == True:
                 response = pa_fw_api.createNewAddress(
                     addressIP=ip_address, objectName=object_name, tagName=tag_name)
                 if response == True:

@@ -12,7 +12,7 @@
 `palo_alto_firewall_create_a_new_tag`
 
 ### Output Name
-`None`
+``
 
 ### Message Destination
 `palo_alto_firewall_integration_for_soar`

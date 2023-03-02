@@ -21,6 +21,7 @@
 ```python
 inputs.palo_alto_firewall_ip = artifact.value
 inputs.palo_alto_firewall_tag_name = rule.properties.palo_alto_firewall_tag_name
+inputs.palo_alto_firewall_address_objects_name = rule.properties.palo_alto_firewall_object_name
 ```
 
 ### Post-Processing Script

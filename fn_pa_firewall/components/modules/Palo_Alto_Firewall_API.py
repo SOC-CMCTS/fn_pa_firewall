@@ -2,7 +2,6 @@ import logging
 import json
 import requests
 from xml.etree import ElementTree
-from lxml import etree
 
 
 class restAPI:

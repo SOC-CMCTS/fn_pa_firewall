@@ -11,7 +11,7 @@ def config_section_data():
     config_data = None
 
     config_data = u"""[fn_pa_firewall]
-server_palo_alto_ip = <<Enter your server ip>>
+palo_alto_ip_address = <<Enter your server ip>>
 palo_alto_version = <<Enter your version>>
 palo_alto_api_key = <<Enter your API key!>>
 """

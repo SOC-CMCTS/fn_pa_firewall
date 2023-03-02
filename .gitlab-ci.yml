@@ -2,12 +2,10 @@ include:
   - project: 'func-for-soar/gitlab-ci'
     ref: main
     file:
-      - 'ultil/tagging.yml'
       - 'ultil/build_main.yml'
       - 'ultil/release_job.yml'
      
 
 stages:          # List of stages for jobs, and their order of execution
-  # - tagging
   - build
   - release

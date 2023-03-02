@@ -92,6 +92,37 @@ class restAPI:
             return "Error in request. {0}".format(e)
 
 
+    #    hàm delete an ip address object
+
+    def deleteAddressObject(self, addressName):
+        requests.packages.urllib3.disable_warnings()
+        path = "/Objects/Addresses?location=vsys&vsys=vsys1&name=" + addressName
+
+        try:
+            response = requests.delete(self.server_url + path, headers=self.header, verify=False)
+            if "@status" in response.json() and response.json()["@status"] == "success":
+                return True
+            return response.json()
+
+        except Exception as e:
+            return "Error in request. {0}".format(e)
+
+    def getAddressObject(self, addressObject):
+        requests.packages.urllib3.disable_warnings()
+        path = "/Objects/Addresses?location=vsys&vsys=vsys1&name=" + addressObject
+        try:
+            response = requests.get(self.server_url + path, headers=self.header, verify=False)
+            if "@status" in response.json() and response.json()["@status"] == "success":
+            # If the response has a result, return the first address object
+                if "result" in response.json():
+                    return response.json()["result"][0]
+            return None
+
+        except Exception as e:
+            return "Error in request. {0}".format(e)
+
+
+
 class xmlAPI:
     def __init__(self, palo_alto_ip, api_key):
         self.api_key = api_key

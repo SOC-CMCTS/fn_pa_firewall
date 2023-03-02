@@ -1,72 +1,13 @@
+include:
+  - project: 'func-for-soar/gitlab-ci'
+    ref: main
+    file:
+      - 'ultil/tagging.yml'
+      - 'ultil/build_main.yml'
+      - 'ultil/release_job.yml'
+     
+
 stages:          # List of stages for jobs, and their order of execution
-    - build
-    - release
-    - cleanup
-
-build-job:
-    stage: build
-    tags:
-        - build-product
-    rules:
-        - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-          when: never
-        - if: $CI_PIPELINE_SOURCE == "schedule"
-          when: never
-        - when: on_success
-    
-    before_script:
-      - pip2 install resilient-sdk
-
-    script:
-        - pwd
-        - ls
-        - resilient-sdk package -p ../$CI_PROJECT_NAME
-
-release-product:
-    stage: release
-    tags:
-        - build-product
-    rules:
-        - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-          when: never
-        - if: $CI_PIPELINE_SOURCE == "schedule"
-          when: never
-        - when: on_success
-    
-    before_script:
-      - pip2 install resilient-sdk
-    script:
-        - pwd
-        - mkdir -p ../temp
-        - cp -r dist ../temp
-        - cd ../temp/dist
-        - pwd
-        - ls -la
-        - git init
-        - git config --local user.email "dmlong@cmc.com.vn"
-        - git config --local user.name "Do Minh Long"
-        # - git remote add origin https://$AccessToken@gitlab.cmctssg.vn/tier2/fn_pa_firewall.git
-        - git fetch https://dmlong:$AccessToken@gitlab.cmctssg.vn/tier2/fn_pa_firewall.git product
-        - git checkout product
-        - git add .
-        - ver=$(cat ../setup.py | grep 'version' | cut -d '=' -f 2 | cut -d '"' -f 2)
-        - echo $ver
-        - git commit -m 'Release version $ver'
-        - git push -uf 'https://$AccessToken@gitlab.cmctssg.vn/tier2/fn_pa_firewall.git'
-
-cleanup-project:
-  stage: cleanup
-  tags:
-    - build-product
-
-  rules:
-        - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-          when: never
-        - if: $CI_PIPELINE_SOURCE == "schedule"
-          when: never
-        - when: on_success
-  script:
-    - pwd
-    - rm -rf ../$CI_PROJECT_NAME
-    - echo "Done"
-
+  - tagging
+  - build
+  - release

@@ -27,7 +27,7 @@ class FunctionComponent(AppFunctionComponent):
         """
         yield self.status_message(f"Starting App Function: '{FN_NAME}'")
 
-        server_ip = str(self.options.get("server_palo_alto_ip", None))
+        server_ip = str(self.options.get("palo_alto_ip_address", None))
         server_version = str(self.options.get("palo_alto_version", None))
         server_api = str(self.options.get("palo_alto_api_key", None))
 

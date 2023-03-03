@@ -185,7 +185,7 @@ class xmlAPI:
             #self.LOG.info(response.content)
 
             # parse the XML string
-            xml_response = etree.fromstring(response.content)
+            xml_response = ElementTree.fromstring(response.content)
             #self.LOG.info(xml_response.attrib['status'])
 
             if xml_response.attrib['status'] == "success":

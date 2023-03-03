@@ -5,6 +5,11 @@ apikey_permissions.txt
 entrypoint.sh
 setup.py
 tox.ini
+doc/screenshots/fn-palo-alto-firewall-create-a-new-tag.png
+doc/screenshots/fn-palo-alto-firewall-create-an-ip-address-object.png
+doc/screenshots/fn-palo-alto-firewall-delete-an-ip-address-object.png
+doc/screenshots/fn-palo-alto-firewall-disconnect-a-globalprotect-user.png
+doc/screenshots/fn-palo-alto-firewall-view-all-globalprotect-users.png
 doc/screenshots/main.png
 fn_pa_firewall/LICENSE
 fn_pa_firewall/__init__.py

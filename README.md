@@ -176,13 +176,14 @@ Function to create a new tag on Palo Alto Firewall.
 
 <!-- ::CHANGE_ME:: -->
 ```python
-results = {
-    # TODO: Generate an example of the Function Output within this code block.
-    # To get the output of a Function:
-    #   1. Run resilient-circuits in DEBUG mode: $ resilient-circuits run --loglevel=DEBUG
-    #   2. Invoke the Function in SOAR
-    #   3. Gather the results using: $ resilient-sdk codegen -p fn_pa_firewall --gather-results
-    #   4. Run docgen again: $ resilient-sdk docgen -p fn_pa_firewall
+Result: {
+  'version': 2.0, 
+  'success': True, 
+  'reason': None, 
+  'content': {
+    'status': 'success', 
+    'message': 'Create a new tag "blacklist" succeeded.'
+  }
 } 
 ```
 
@@ -243,14 +244,15 @@ Function to create an IP Address Object on Palo Alto Firewall.
 
 <!-- ::CHANGE_ME:: -->
 ```python
-results = {
-    # TODO: Generate an example of the Function Output within this code block.
-    # To get the output of a Function:
-    #   1. Run resilient-circuits in DEBUG mode: $ resilient-circuits run --loglevel=DEBUG
-    #   2. Invoke the Function in SOAR
-    #   3. Gather the results using: $ resilient-sdk codegen -p fn_pa_firewall --gather-results
-    #   4. Run docgen again: $ resilient-sdk docgen -p fn_pa_firewall
-} 
+Result: {
+  'version': 2.0, 
+  'success': True, 
+  'reason': None, 
+  'content': {
+    'status': 'success', 
+    'message': 'Add ip: "192.168.1.1" succeeded'
+  }
+}
 ```
 
 </p>
@@ -303,14 +305,15 @@ Function to delete an IP Address Object on Palo Alto Firewall.
 
 <!-- ::CHANGE_ME:: -->
 ```python
-results = {
-    # TODO: Generate an example of the Function Output within this code block.
-    # To get the output of a Function:
-    #   1. Run resilient-circuits in DEBUG mode: $ resilient-circuits run --loglevel=DEBUG
-    #   2. Invoke the Function in SOAR
-    #   3. Gather the results using: $ resilient-sdk codegen -p fn_pa_firewall --gather-results
-    #   4. Run docgen again: $ resilient-sdk docgen -p fn_pa_firewall
-} 
+Result: {
+  'version': 2.0, 
+  'success': True, 
+  'reason': None, 
+  'content': {
+    'status': 'success', 
+    'message': 'Delete IP address object "blacklist-192.168.1.1" succeeded.'
+  }
+}
 ```
 
 </p>
@@ -320,7 +323,7 @@ results = {
 <p>
 
 ```python
-None
+inputs.palo_alto_firewall_address_objects_name = rule.properties.palo_alto_firewall_object_name
 ```
 
 </p>
@@ -330,7 +333,7 @@ None
 <p>
 
 ```python
-None
+incident.addNote(results.content['message'])
 ```
 
 </p>
@@ -361,13 +364,14 @@ Function to disconnect a GlobalProtect user on Palo Alto Firewall.
 
 <!-- ::CHANGE_ME:: -->
 ```python
-results = {
-    # TODO: Generate an example of the Function Output within this code block.
-    # To get the output of a Function:
-    #   1. Run resilient-circuits in DEBUG mode: $ resilient-circuits run --loglevel=DEBUG
-    #   2. Invoke the Function in SOAR
-    #   3. Gather the results using: $ resilient-sdk codegen -p fn_pa_firewall --gather-results
-    #   4. Run docgen again: $ resilient-sdk docgen -p fn_pa_firewall
+Result: {
+  'version': 2.0, 
+  'success': True, 
+  'reason': None, 
+  'content': {
+    'status': 'success', 
+    'message': 'Disable the Global Protect "test" user has succeeded.'
+  }
 } 
 ```
 
@@ -418,13 +422,14 @@ Function to view all GlobalProtect Users logging on Palo Alto Firewall.
 
 <!-- ::CHANGE_ME:: -->
 ```python
-results = {
-    # TODO: Generate an example of the Function Output within this code block.
-    # To get the output of a Function:
-    #   1. Run resilient-circuits in DEBUG mode: $ resilient-circuits run --loglevel=DEBUG
-    #   2. Invoke the Function in SOAR
-    #   3. Gather the results using: $ resilient-sdk codegen -p fn_pa_firewall --gather-results
-    #   4. Run docgen again: $ resilient-sdk docgen -p fn_pa_firewall
+Result: {
+  'version': 2.0, 
+  'success': True, 
+  'reason': None, 
+  'content': {
+    'status': 'success', 
+    'message': 'Viewing all GlobalProtect users succeeded. \n <br><pre>|&nbsp;Username&nbsp;|&nbsp;Computer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Virtual&nbsp;IP&nbsp;&nbsp;|&nbsp;Public&nbsp;IP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Login&nbsp;Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<pre><br>|&nbsp;mg11_kim&nbsp;|&nbsp;SDS-7XD-3280&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;10.79.14.22&nbsp;|&nbsp;203.244.197.254&nbsp;|&nbsp;Mar.03&nbsp;04:31:07&nbsp;|<br><pre>+----------+-------------------+-------------+-----------------+-----------------+<pre><br>|&nbsp;dhhai&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Dinhs-MacBook-Pro&nbsp;|&nbsp;10.79.14.12&nbsp;|&nbsp;171.252.154.150&nbsp;|&nbsp;Mar.03&nbsp;15:20:14&nbsp;|<br><pre>+----------+-------------------+-------------+-----------------+-----------------+<pre><br>|&nbsp;npdai&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;S-CSGLANBK-11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;10.79.14.14&nbsp;|&nbsp;14.161.27.90&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Mar.03&nbsp;09:47:37&nbsp;|<br><pre>+----------+-------------------+-------------+-----------------+-----------------+<pre><br>|&nbsp;bxthai&nbsp;&nbsp;&nbsp;|&nbsp;CSGLANBK-759&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;10.79.14.36&nbsp;|&nbsp;203.205.29.5&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Mar.03&nbsp;08:07:30&nbsp;|<br><pre>+----------+-------------------+-------------+-----------------+-----------------+<pre><br>|&nbsp;dmlong&nbsp;&nbsp;&nbsp;|&nbsp;DMLONG-LAP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;10.79.14.15&nbsp;|&nbsp;14.161.27.90&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Mar.03&nbsp;13:59:05&nbsp;|<br><pre>+----------+-------------------+-------------+-----------------+-----------------+<pre><br>'
+  }
 } 
 ```
 

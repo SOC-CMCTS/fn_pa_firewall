@@ -27,7 +27,6 @@
 - [Requirements](#requirements)
   - [SOAR platform](#soar-platform)
   - [Cloud Pak for Security](#cloud-pak-for-security)
-  - [Proxy Server](#proxy-server)
   - [Python Environment](#python-environment)
 - [Installation](#installation)
   - [Install](#install)
@@ -141,7 +140,7 @@ The following table provides the settings you need to configure the app. These s
 | Config | Required | Example | Description |
 | ------ | :------: | ------- | ----------- |
 | **palo_alto_api_key** | Yes | `LUFRPT*base64 encoded string*` | *Enter the **X-PAN-KEY**.* <!-- ::CHANGE_ME:: --> |
-| **palo_alto_version** | Yes | `10.1` | *Enter the Palo Alto Firewall version. Versions from **10.1** to the latest are supported.* <!-- ::CHANGE_ME:: --> |
+| **palo_alto_version** | Yes | `10.1` | *Enter the Palo Alto Firewall **Version**. Versions from **10.1** to the latest are supported.* <!-- ::CHANGE_ME:: --> |
 | **palo_alto_ip_address** | Yes | `192.168.1.1` | *Enter the Palo Alto Firewall **IP Address**.* <!-- ::CHANGE_ME:: --> |
 
 
@@ -149,6 +148,14 @@ The following table provides the settings you need to configure the app. These s
 
 ## Function - Palo Alto Firewall: Create a new tag
 Function to create a new tag on Palo Alto Firewall.
+
+* We created a new tag, then create dynamic address groups and define the tags to filter on the firewall. 
+* Finally, Use dynamic address groups in policy.
+
+*Usecase*: 
+> We want to create a **blacklist** address group. In the Palo Alto Firewall, we can use a dynamic address group with a tag name **blacklist**. Please refer link: [Use Dynamic Address Groups in Policy](https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-admin/policy/monitor-changes-in-the-virtual-environment/use-dynamic-address-groups-in-policy)
+
+> To do this, we create a tag first, then create a dynamic group with the match criteria '**blacklist**'. Then, for any new address that we want to add automatically to the dynamic group, we just create a new address with the **blacklist** tag.
 
  ![screenshot: fn-palo-alto-firewall-create-a-new-tag ](./doc/screenshots/fn-palo-alto-firewall-create-a-new-tag.png) <!-- ::CHANGE_ME:: -->
 
@@ -209,6 +216,12 @@ else:
 ## Function - Palo Alto Firewall: Create an IP Address Object
 Function to create an IP Address Object on Palo Alto Firewall.
 
+*Usecase*: 
+> We want to create a **blacklist** address group. In the Palo Alto Firewall, we can use a dynamic address group with a tag name **blacklist**. Please refer link: [Use Dynamic Address Groups in Policy](https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-admin/policy/monitor-changes-in-the-virtual-environment/use-dynamic-address-groups-in-policy)
+
+
+> To do this, we create a tag first, then create a dynamic group with the match criteria '**blacklist**'. Then, for any new address that we want to add automatically to the dynamic group, we just create a new address with the **blacklist** tag.
+
  ![screenshot: fn-palo-alto-firewall-create-an-ip-address-object ](./doc/screenshots/fn-palo-alto-firewall-create-an-ip-address-object.png) <!-- ::CHANGE_ME:: -->
 
 <details><summary>Inputs:</summary>
@@ -216,8 +229,9 @@ Function to create an IP Address Object on Palo Alto Firewall.
 
 | Name | Type | Required | Example | Tooltip |
 | ---- | :--: | :------: | ------- | ------- |
-| `palo_alto_firewall_ip` | `text` | Yes | `-` | - |
-| `palo_alto_firewall_tag_name` | `text` | No | `-` | - |
+| `palo_alto_firewall_address_objects_name` | `text` | Yes | `Host_192.168.1.1` | Enter Address Object Name |
+| `palo_alto_firewall_ip` | `text` | Yes | `192.168.1.1` | Enter IP Address |
+| `palo_alto_firewall_tag_name` | `text` | No | `blacklist` | Enter Tag name (if you want to assign) |
 
 </p>
 </details>

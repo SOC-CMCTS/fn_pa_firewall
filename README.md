@@ -467,7 +467,7 @@ incident.addNote(results.content['message'])
 
 ---
 ### Notes:
-> The functions work with two types of API - Rest API and XML API - based on Palo Alto Firewall.
+ The functions work with two types of API - Rest API and XML API - based on Palo Alto Firewall.
 
 Rest API:
 * Create a new tag
@@ -478,7 +478,13 @@ XML API:
 * View all GlobalProtect users
 * Disconnect a GlobalProtect user
 
-> With the Rest API, if you use a virtual system on a Palo Alto Firewall please edit **vsys1** in file path "*components > modules > Palo_Alto_Firewall_API.py*" to match your desired vsys.
+For the function using the Rest API, if you use more than one virtual system on a Palo Alto Firewall please edit **vsys1** in file path "*components > modules > Palo_Alto_Firewall_API.py*" to match your desired vsys.
+
+For the function: *Disconnect a GlobalProtect user*, the input: *palo_alto_firewall_gateway*, needs to have "**-N**" at the end of the GlobalProtect gateway name.
+>  
+> Example: 
+> - If your GlobalProtect gateway name : **GlobalProtect-Gateway**
+> - Then input needs to be change to:  **GlobalProtect-Gateway-N**
 ---
 
 

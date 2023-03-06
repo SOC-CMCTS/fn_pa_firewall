@@ -34,8 +34,9 @@
 - [Function - Palo Alto Firewall: Create a new tag](#function---palo-alto-firewall-create-a-new-tag)
 - [Function - Palo Alto Firewall: Create an IP Address Object](#function---palo-alto-firewall-create-an-ip-address-object)
 - [Function - Palo Alto Firewall: Delete an IP Address Object](#function---palo-alto-firewall-delete-an-ip-address-object)
-- [Function - Palo Alto Firewall: Disconnect a GlobalProtect user](#function---palo-alto-firewall-disconnect-a-globalprotect-user)
 - [Function - Palo Alto Firewall: View all GlobalProtect users](#function---palo-alto-firewall-view-all-globalprotect-users)
+- [Function - Palo Alto Firewall: Disconnect a GlobalProtect user](#function---palo-alto-firewall-disconnect-a-globalprotect-user)
+- [Notes](#notes)
 - [Rules](#rules)
 - [Troubleshooting & Support](#troubleshooting--support)
 
@@ -293,7 +294,7 @@ Function to delete an IP Address Object on Palo Alto Firewall.
 
 | Name | Type | Required | Example | Tooltip |
 | ---- | :--: | :------: | ------- | ------- |
-| `palo_alto_firewall_address_objects_name` | `text` | Yes | `-` | - |
+| `palo_alto_firewall_address_objects_name` | `text` | Yes | `Host_192.168.1.1` | Enter Address Object Name |
 
 </p>
 </details>
@@ -311,7 +312,7 @@ Result: {
   'reason': None, 
   'content': {
     'status': 'success', 
-    'message': 'Delete IP address object "blacklist-192.168.1.1" succeeded.'
+    'message': 'Delete IP address object "Host_192.168.1.1" succeeded.'
   }
 }
 ```
@@ -339,6 +340,71 @@ incident.addNote(results.content['message'])
 </p>
 </details>
 
+
+---
+## Function - Palo Alto Firewall: View all GlobalProtect users
+Function to view all GlobalProtect Users logging on Palo Alto Firewall.
+
+ ![screenshot: fn-palo-alto-firewall-view-all-globalprotect-users ](./doc/screenshots/fn-palo-alto-firewall-view-all-globalprotect-users.png) <!-- ::CHANGE_ME:: -->
+
+<details><summary>Inputs:</summary>
+<p>
+
+```python
+None
+```
+
+</p>
+</details>
+
+<details><summary>Outputs:</summary>
+<p>
+
+> **NOTE:** This example might be in JSON format, but `results` is a Python Dictionary on the SOAR platform.
+
+<!-- ::CHANGE_ME:: -->
+```python
+Result: {
+  'version': 2.0, 
+  'success': True, 
+  'reason': None, 
+  'content': {
+    'status': 'success', 
+    'message': 'Viewing all GlobalProtect users succeeded. \n 
+    | Username | Computer   | Virtual IP  | Public IP      | Login Time      |
+    | Johndoe  | John-PC    | 192.168.10.11 | 172.217.160.78 | Mar.03 04:31:07 |
+    | Richard  | Richard-PC | 192.168.10.12 | 104.16.181.15  | Mar.03 15:20:14 |
+    | Janie    | Janie-PC   | 192.168.10.14 | 15.162.27.93   | Mar.03 09:47:37 |'
+  }
+} 
+```
+
+</p>
+</details>
+
+<details><summary>Example Pre-Process Script:</summary>
+<p>
+
+```python
+None
+```
+
+</p>
+</details>
+
+<details><summary>Example Post-Process Script:</summary>
+<p>
+
+```python
+message = results.content['message']
+message = message.replace(" ", "&nbsp;")
+
+incident.addNote(message)
+```
+
+</p>
+</details>
+
 ---
 ## Function - Palo Alto Firewall: Disconnect a GlobalProtect user
 Function to disconnect a GlobalProtect user on Palo Alto Firewall.
@@ -350,10 +416,9 @@ Function to disconnect a GlobalProtect user on Palo Alto Firewall.
 
 | Name | Type | Required | Example | Tooltip |
 | ---- | :--: | :------: | ------- | ------- |
-| `palo_alto_firewall_computer` | `text` | Yes | `-` | - |
-| `palo_alto_firewall_gateway` | `text` | Yes | `-` | - |
-| `palo_alto_firewall_user` | `text` | Yes | `-` | - |
-
+| `palo_alto_firewall_gateway` | `text` | Yes | `-` | Enter GlobalProtect Gateway name |
+| `palo_alto_firewall_user` | `text` | Yes | `-` | Enter GlobalProtect User name |
+| `palo_alto_firewall_computer` | `text` | Yes | `-` | Enter Computer Name  |
 </p>
 </details>
 
@@ -401,64 +466,25 @@ incident.addNote(results.content['message'])
 </details>
 
 ---
-## Function - Palo Alto Firewall: View all GlobalProtect users
-Function to view all GlobalProtect Users logging on Palo Alto Firewall.
+### Notes:
+ The functions work with two types of API - Rest API and XML API - based on Palo Alto Firewall.
 
- ![screenshot: fn-palo-alto-firewall-view-all-globalprotect-users ](./doc/screenshots/fn-palo-alto-firewall-view-all-globalprotect-users.png) <!-- ::CHANGE_ME:: -->
+Rest API:
+* Create a new tag
+* Create an IP Address Object
+* Delete an IP Address Object
 
-<details><summary>Inputs:</summary>
-<p>
+XML API:
+* View all GlobalProtect users
+* Disconnect a GlobalProtect user
 
-| Name | Type | Required | Example | Tooltip |
-| ---- | :--: | :------: | ------- | ------- |
+For the function using the Rest API, if you use more than one virtual system on a Palo Alto Firewall please edit **vsys1** in file path "*components > modules > Palo_Alto_Firewall_API.py*" to match your desired vsys.
 
-</p>
-</details>
-
-<details><summary>Outputs:</summary>
-<p>
-
-> **NOTE:** This example might be in JSON format, but `results` is a Python Dictionary on the SOAR platform.
-
-<!-- ::CHANGE_ME:: -->
-```python
-Result: {
-  'version': 2.0, 
-  'success': True, 
-  'reason': None, 
-  'content': {
-    'status': 'success', 
-    'message': 'Viewing all GlobalProtect users succeeded. \n <br><pre>|&nbsp;Username&nbsp;|&nbsp;Computer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Virtual&nbsp;IP&nbsp;&nbsp;|&nbsp;Public&nbsp;IP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Login&nbsp;Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<pre><br>|&nbsp;mg11_kim&nbsp;|&nbsp;SDS-7XD-3280&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;10.79.14.22&nbsp;|&nbsp;203.244.197.254&nbsp;|&nbsp;Mar.03&nbsp;04:31:07&nbsp;|<br><pre>+----------+-------------------+-------------+-----------------+-----------------+<pre><br>|&nbsp;dhhai&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Dinhs-MacBook-Pro&nbsp;|&nbsp;10.79.14.12&nbsp;|&nbsp;171.252.154.150&nbsp;|&nbsp;Mar.03&nbsp;15:20:14&nbsp;|<br><pre>+----------+-------------------+-------------+-----------------+-----------------+<pre><br>|&nbsp;npdai&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;S-CSGLANBK-11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;10.79.14.14&nbsp;|&nbsp;14.161.27.90&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Mar.03&nbsp;09:47:37&nbsp;|<br><pre>+----------+-------------------+-------------+-----------------+-----------------+<pre><br>|&nbsp;bxthai&nbsp;&nbsp;&nbsp;|&nbsp;CSGLANBK-759&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;10.79.14.36&nbsp;|&nbsp;203.205.29.5&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Mar.03&nbsp;08:07:30&nbsp;|<br><pre>+----------+-------------------+-------------+-----------------+-----------------+<pre><br>|&nbsp;dmlong&nbsp;&nbsp;&nbsp;|&nbsp;DMLONG-LAP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;10.79.14.15&nbsp;|&nbsp;14.161.27.90&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Mar.03&nbsp;13:59:05&nbsp;|<br><pre>+----------+-------------------+-------------+-----------------+-----------------+<pre><br>'
-  }
-} 
-```
-
-</p>
-</details>
-
-<details><summary>Example Pre-Process Script:</summary>
-<p>
-
-```python
-None
-```
-
-</p>
-</details>
-
-<details><summary>Example Post-Process Script:</summary>
-<p>
-
-```python
-message = results.content['message']
-message = message.replace(" ", "&nbsp;")
-
-incident.addNote(message)
-```
-
-</p>
-</details>
-
+For the function: *Disconnect a GlobalProtect user*, the input: *palo_alto_firewall_gateway*, needs to have "**-N**" at the end of the GlobalProtect gateway name.
+>  
+> Example: 
+> - If your GlobalProtect gateway name : **GlobalProtect-Gateway**
+> - Then input needs to be change to:  **GlobalProtect-Gateway-N**
 ---
 
 
@@ -471,8 +497,9 @@ incident.addNote(message)
 | Palo Alto Firewall: Create a new tag | incident | `palo_alto_firewall_create_a_new_tag` |
 | Palo Alto Firewall: Create an IP Address Object | artifact | `palo_alto_firewall_create_an_ip_address_object` |
 | Palo Alto Firewall: Delete an IP Address Object | artifact | `palo_alto_firewall_delete_an_ip_address_object` |
-| Palo Alto Firewall: Disconnect a GlobalProtect user | artifact | `palo_alto_firewall_disconnect_a_globalprotect_user` |
 | Palo Alto Firewall: View all GlobalProtect users | incident | `palo_alto_firewall_view_all_globalprotect_users` |
+| Palo Alto Firewall: Disconnect a GlobalProtect user | artifact | `palo_alto_firewall_disconnect_a_globalprotect_user` |
+
 
 ---
 
@@ -482,3 +509,4 @@ Refer to the documentation listed in the Requirements section for troubleshootin
 
 ### For Support
 This is a IBM Community provided App. Please search the Community [ibm.biz/soarcommunity](https://ibm.biz/soarcommunity) for assistance.
+Or contact us through github

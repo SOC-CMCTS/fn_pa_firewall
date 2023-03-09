@@ -16,9 +16,10 @@ class FunctionComponent(AppFunctionComponent):
         super(FunctionComponent, self).__init__(opts, PACKAGE_NAME)
 
     @app_function(FN_NAME)
-    def _app_function(self, fn_inputs):
+    def _app_function(self):
         """
-        Function: Function to view all globalprotect users on Palo Alto Firewall. This will give info about current logging globalprotect users.
+        Function: Function to view all globalprotect users on Palo Alto Firewall.
+        This will give info about current logging globalprotect users.
         Inputs: None
         """
 
@@ -37,12 +38,12 @@ class FunctionComponent(AppFunctionComponent):
         list_users = palo_alto_fw_api.view_all_GlobalProtect_users()
         self.LOG.info(list_users)
 
-        if list_users != None:
+        if list_users is not None:
             self.LOG.info(
                 "[+] Viewing all GlobalProtect users succeeded")
             results = {
                 "status": "success",
-                "message": "Viewing all GlobalProtect users succeeded. \n <br>{}".format(list_users)
+                "message": "Viewing all GlobalProtect users succeeded. \n <br>{list_users}"
             }
         else:
             self.LOG.info(

@@ -31,8 +31,7 @@ class FunctionComponent(AppFunctionComponent):
 
         address_object_name = fn_inputs.palo_alto_firewall_address_objects_name
 
-        self.LOG.info("Address Object Name: {}".format(address_object_name))
-
+        self.LOG.info(f"Address Object Name: {address_object_name}")
         pa_fw_api = Palo_Alto_Firewall_API.RestAPI(
             palo_alto_ip=server_ip, palo_alto_version=server_version, api_key=server_api)
 
@@ -50,14 +49,12 @@ class FunctionComponent(AppFunctionComponent):
                     "message": f"Delete IP address object \"{address_object_name}\" succeeded."
                 }
             else:
-                self.LOG.info(
-                    f"[+] Delete IP address object \"{address_object_name}\" has failed."
-                    f"{response['message']}")              
+                self.LOG.info(f"[+] Delete IP address object \"{address_object_name}\" has failed. {response['message']}")
                 results = {
                     "status": "false",
-                    "message": f"Delete IP address object \"{address_object_name}\" has failed."
-                    f"{response['message']}"
-                }
+                    "message": f"Delete IP address object \"{address_object_name}\" has failed. {response['message']}"
+}
+
         else:
             self.LOG.info(
                 f"IP address object \"{address_object_name}\" does not exist.")

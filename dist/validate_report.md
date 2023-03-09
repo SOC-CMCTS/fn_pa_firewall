@@ -4,7 +4,15 @@
 
 | SDK Version       | Generation Time          | Command Line Arguments Provided |
 | :---------------- | ------------------------ | ------------------------------- |
-| 47.1.3780 | 2023/03/01 10:16:33 | `cmd`: validate, `package`: fn_pa_firewall, `validate`: True |
+| 48.0.4034 | 2023/03/09 13:52:14 | `cmd`: validate, `package`: fn_pa_firewall, `tests`: True |
+
+## Results
+| **Severity** | **Count** |
+| :----------- | --------- |
+| Critical Issues:    | <span style="color:red"> 1 </span> |
+| Warnings:           | <span style="color:orange"> 0 </span>  |
+| Validations Passed: | <span style="color:green"> 3  </span>   |
+
 
 ## App Details
 | Attribute | Value |
@@ -17,8 +25,8 @@
 | `install_requires` | ['resilient-circuits>=47.1.0'] |
 | `description` | SOAR Components to Integrate with the Palo Alto Firewall |
 | `long_description` | This integration contains Functions to interact with address groups, addresses, Global Protect User within Palo Alto Firewall. |
-| `url` | https;//cmctssg.v |
-| `entry_points` | {'resilient.circuits.configsection': '/Users/dinhhai/VSCode '<br>                                     'Temp/SOAR/fn_pa_firewall/fn_pa_firewall/util/config.py',<br> 'resilient.circuits.customize': '/Users/dinhhai/VSCode '<br>                                 'Temp/SOAR/fn_pa_firewall/fn_pa_firewall/util/customize.py',<br> 'resilient.circuits.selftest': '/Users/dinhhai/VSCode '<br>                                'Temp/SOAR/fn_pa_firewall/fn_pa_firewall/util/selftest.py'} |
+| `url` | https://cmctssg.vn |
+| `entry_points` | {'resilient.circuits.configsection': 'D:\\Code '<br>                                     'CMC\\fn_pa_firewall\\fn_pa_firewall\\util\\config.py',<br> 'resilient.circuits.customize': 'D:\\Code '<br>                                 'CMC\\fn_pa_firewall\\fn_pa_firewall\\util\\customize.py',<br> 'resilient.circuits.selftest': 'D:\\Code '<br>                                'CMC\\fn_pa_firewall\\fn_pa_firewall\\util\\selftest.py'} |
 | `python_requires` | >=3.6 |
 | `SOAR version` | 41.2.41 |
 | `Proxy support` | Proxies supported if running on AppHost>=1.6 |
@@ -26,97 +34,31 @@
 ---
 
 
-## `setup.py` file validation
-| Severity | Name | Description | Solution |
-| --- | --- | --- | --- |
-| <span style="color:orange">WARNING</span> | invalid value in `setup.py` | `https;//cmctssg.v` is not a valid `url` | Include a valid URL for your organization |
+
+
+ 
+
+ 
+
+ 
+
+## tox tests
+<span style="color:red">CRITICAL</span>: Something went wrong... Details:
+
+	py36: skipped because could not find python interpreter with spec(s): py36
+	py36: SKIP ? in 0.56 seconds
+	py39: skipped because could not find python interpreter with spec(s): py39
+	  py36: SKIP (0.56 seconds)
+	  py39: SKIP (0.02 seconds)
+	  evaluation failed :( (0.92 seconds)
+	
+
+
+Run with the `-v` flag to see more information
+
 
 
 ---
-
-
-## Package files validation
-
-### `README.md`
-<span style="color:red">CRITICAL</span>: `README.md` is still the `codegen` template
-
-Be sure that you run ```resilient-sdk docgen -p /Users/dinhhai/VSCode Temp/SOAR/fn_pa_firewall``` when you are done developing
-
-
-### LICENSE
-<span style="color:red">CRITICAL</span>: `LICENSE` is the default license file
-
-Provide a `LICENSE` file in your package directory. Suggested formats: MIT, Apache, and BSD
-
-
-### `app_logo.png`
-<span style="color:teal">INFO</span>: `app_logo.png` is the default icon. Consider using your own logo
-
-Icons appear in SOAR when your app is installed with App Host
-
-
-### `company_logo.png`
-<span style="color:teal">INFO</span>: `company_logo.png` is the default icon. Consider using your own logo
-
-Icons appear in SOAR when your app is installed with App Host
-
-
-### `MANIFEST.in`
-<span style="color:green">Pass</span>
-
-
-### `apikey_permissions.txt`
-<span style="color:green">Pass</span>
-
-
-### `Dockerfile, template match`
-<span style="color:green">Pass</span>
-
-
-### `Dockerfile, base image`
-<span style="color:green">Pass</span>
-
-
-### `entrypoint.sh`
-<span style="color:green">Pass</span>
-
-
-### ``config.py``
-<span style="color:green">Pass</span>
-
-
-### ``customize.py``
-<span style="color:green">Pass</span>
-
- 
----
- 
-
-## Payload samples validation
-
-### `payload_samples/palo_alto_firewall_block_ip`
-<span style="color:red">CRITICAL</span>: `output_json_example.json` and `output_json_schema.json` for `palo_alto_firewall_block_ip` empty
-
-Fill in values manually or by using ```resilient-sdk codegen -p /Users/dinhhai/VSCode Temp/SOAR/fn_pa_firewall --gather-results```
-
-
-### `payload_samples/palo_alto_firewall_create_a_new_tag`
-<span style="color:red">CRITICAL</span>: `output_json_example.json` and `output_json_schema.json` for `palo_alto_firewall_create_a_new_tag` empty
-
-Fill in values manually or by using ```resilient-sdk codegen -p /Users/dinhhai/VSCode Temp/SOAR/fn_pa_firewall --gather-results```
-
-
-### `payload_samples/palo_alto_firewall_disconnect_a_globalprotect_user`
-<span style="color:red">CRITICAL</span>: `output_json_example.json` and `output_json_schema.json` for `palo_alto_firewall_disconnect_a_globalprotect_user` empty
-
-Fill in values manually or by using ```resilient-sdk codegen -p /Users/dinhhai/VSCode Temp/SOAR/fn_pa_firewall --gather-results```
-
- 
----
- 
-
- 
-
  
 
  

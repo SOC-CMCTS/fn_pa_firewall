@@ -15,15 +15,8 @@
 - [Function - Palo Alto Firewall: Create an IP Address Object](#function---palo-alto-firewall-create-an-ip-address-object)
 - [Function - Palo Alto Firewall: Delete an IP Address Object](#function---palo-alto-firewall-delete-an-ip-address-object)
 - [Function - Palo Alto Firewall: View all GlobalProtect users](#function---palo-alto-firewall-view-all-globalprotect-users)
-<<<<<<< HEAD
-- [Function - Palo Alto Firewall: View all GlobalProtect users](#function---palo-alto-firewall-view-all-globalprotect-users)
 - [Function - Palo Alto Firewall: Disconnect a GlobalProtect user](#function---palo-alto-firewall-disconnect-a-globalprotect-user)
 - [Notes](#notes)
-- [Notes](#notes)
-=======
-- [Function - Palo Alto Firewall: Disconnect a GlobalProtect user](#function---palo-alto-firewall-disconnect-a-globalprotect-user)
-- [Notes](#notes)
->>>>>>> c251951c8a4a8a9947b6554c87bc346a6a1a82eb
 - [Rules](#rules)
 - [Troubleshooting & Support](#troubleshooting--support)
 
@@ -42,10 +35,6 @@
  ![screenshot: main](./doc/screenshots/main.png)
 
 This integration contains Functions to interact with Tag Name, Address Object, GlobalProtect User within Palo Alto Firewall.
-<<<<<<< HEAD
-This integration contains Functions to interact with Tag Name, Address Object, GlobalProtect User within Palo Alto Firewall.
-=======
->>>>>>> c251951c8a4a8a9947b6554c87bc346a6a1a82eb
 
 ### Key Features
 * Create a new tag
@@ -133,18 +122,6 @@ Function to create a new tag on Palo Alto Firewall.
 > We want to create a **blacklist** address group. In the Palo Alto Firewall, we can use a dynamic address group with a tag name **blacklist**. Please refer link: [Use Dynamic Address Groups in Policy](https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-admin/policy/monitor-changes-in-the-virtual-environment/use-dynamic-address-groups-in-policy)
 
 > To do this, we create a tag first, then create a dynamic group with the match criteria '**blacklist**'. Then, for any new address that we want to add automatically to the dynamic group, we just create a new address with the **blacklist** tag.
-<<<<<<< HEAD
-Function to create a new tag on Palo Alto Firewall.
-
-* We created a new tag, then create dynamic address groups and define the tags to filter on the firewall. 
-* Finally, Use dynamic address groups in policy.
-
-*Usecase*: 
-> We want to create a **blacklist** address group. In the Palo Alto Firewall, we can use a dynamic address group with a tag name **blacklist**. Please refer link: [Use Dynamic Address Groups in Policy](https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-admin/policy/monitor-changes-in-the-virtual-environment/use-dynamic-address-groups-in-policy)
-
-> To do this, we create a tag first, then create a dynamic group with the match criteria '**blacklist**'. Then, for any new address that we want to add automatically to the dynamic group, we just create a new address with the **blacklist** tag.
-=======
->>>>>>> c251951c8a4a8a9947b6554c87bc346a6a1a82eb
 
  ![screenshot: fn-palo-alto-firewall-create-a-new-tag ](./doc/screenshots/fn-palo-alto-firewall-create-a-new-tag.png)
 
@@ -154,10 +131,6 @@ Function to create a new tag on Palo Alto Firewall.
 | Name | Type | Required | Example | Tooltip |
 | ---- | :--: | :------: | ------- | ------- |
 | `palo_alto_firewall_tag_name` | `text` | Yes | `blacklist` | *Enter tag name you want to create on Palo Alto FW* |
-<<<<<<< HEAD
-| `palo_alto_firewall_tag_name` | `text` | Yes | `blacklist` | *Enter tag name you want to create on Palo Alto FW* |
-=======
->>>>>>> c251951c8a4a8a9947b6554c87bc346a6a1a82eb
 
 </p>
 </details>
@@ -176,17 +149,6 @@ Result: {
     'status': 'success', 
     'message': 'Create a new tag "blacklist" succeeded.'
   }
-<<<<<<< HEAD
-Result: {
-  'version': 2.0, 
-  'success': True, 
-  'reason': None, 
-  'content': {
-    'status': 'success', 
-    'message': 'Create a new tag "blacklist" succeeded.'
-  }
-=======
->>>>>>> c251951c8a4a8a9947b6554c87bc346a6a1a82eb
 } 
 ```
 
@@ -225,16 +187,6 @@ Function to create an IP Address Object on Palo Alto Firewall.
 
 
 > To do this, we create a tag first, then create a dynamic group with the match criteria '**blacklist**'. Then, for any new address that we want to add automatically to the dynamic group, we just create a new address with the **blacklist** tag.
-<<<<<<< HEAD
-Function to create an IP Address Object on Palo Alto Firewall.
-
-*Usecase*: 
-> We want to create a **blacklist** address group. In the Palo Alto Firewall, we can use a dynamic address group with a tag name **blacklist**. Please refer link: [Use Dynamic Address Groups in Policy](https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-admin/policy/monitor-changes-in-the-virtual-environment/use-dynamic-address-groups-in-policy)
-
-
-> To do this, we create a tag first, then create a dynamic group with the match criteria '**blacklist**'. Then, for any new address that we want to add automatically to the dynamic group, we just create a new address with the **blacklist** tag.
-=======
->>>>>>> c251951c8a4a8a9947b6554c87bc346a6a1a82eb
 
  ![screenshot: fn-palo-alto-firewall-create-an-ip-address-object ](./doc/screenshots/fn-palo-alto-firewall-create-an-ip-address-object.png)
 
@@ -246,12 +198,6 @@ Function to create an IP Address Object on Palo Alto Firewall.
 | `palo_alto_firewall_address_objects_name` | `text` | Yes | `Host_192.168.1.1` | Enter Address Object Name |
 | `palo_alto_firewall_ip` | `text` | Yes | `192.168.1.1` | Enter IP Address |
 | `palo_alto_firewall_tag_name` | `text` | No | `blacklist` | Enter Tag name (if you want to assign) |
-<<<<<<< HEAD
-| `palo_alto_firewall_address_objects_name` | `text` | Yes | `Host_192.168.1.1` | Enter Address Object Name |
-| `palo_alto_firewall_ip` | `text` | Yes | `192.168.1.1` | Enter IP Address |
-| `palo_alto_firewall_tag_name` | `text` | No | `blacklist` | Enter Tag name (if you want to assign) |
-=======
->>>>>>> c251951c8a4a8a9947b6554c87bc346a6a1a82eb
 
 </p>
 </details>
@@ -271,18 +217,6 @@ Result: {
     'message': 'Add ip: "192.168.1.1" succeeded'
   }
 }
-<<<<<<< HEAD
-Result: {
-  'version': 2.0, 
-  'success': True, 
-  'reason': None, 
-  'content': {
-    'status': 'success', 
-    'message': 'Add ip: "192.168.1.1" succeeded'
-  }
-}
-=======
->>>>>>> c251951c8a4a8a9947b6554c87bc346a6a1a82eb
 ```
 
 </p>
@@ -315,10 +249,6 @@ else:
 ---
 ## Function - Palo Alto Firewall: Delete an IP Address Object
 Function to delete an IP Address Object on Palo Alto Firewall.
-<<<<<<< HEAD
-Function to delete an IP Address Object on Palo Alto Firewall.
-=======
->>>>>>> c251951c8a4a8a9947b6554c87bc346a6a1a82eb
 
  ![screenshot: fn-palo-alto-firewall-delete-an-ip-address-object ](./doc/screenshots/fn-palo-alto-firewall-delete-an-ip-address-object.png)
 
@@ -347,7 +277,6 @@ Result: {
     'message': 'Delete IP address object "Host_192.168.1.1" succeeded.'
   }
 }
-<<<<<<< HEAD
 ```
 
 </p>
@@ -380,179 +309,6 @@ Function to view all GlobalProtect Users logging on Palo Alto Firewall.
 
  ![screenshot: fn-palo-alto-firewall-view-all-globalprotect-users ](./doc/screenshots/fn-palo-alto-firewall-view-all-globalprotect-users.png)
 
-<details><summary>Inputs:</summary>
-<p>
-
-```python
-None
-```
-
-</p>
-</details>
-
-<details><summary>Outputs:</summary>
-<p>
-
-> **NOTE:** This example might be in JSON format, but `results` is a Python Dictionary on the SOAR platform.
-
-```python
-Result: {
-  'version': 2.0, 
-  'success': True, 
-  'reason': None, 
-  'content': {
-    'status': 'success', 
-    'message': 'Viewing all GlobalProtect users succeeded. \n 
-    | Username | Computer   | Virtual IP  | Public IP      | Login Time      |
-    | Johndoe  | John-PC    | 192.168.10.11 | 172.217.160.78 | Mar.03 04:31:07 |
-    | Richard  | Richard-PC | 192.168.10.12 | 104.16.181.15  | Mar.03 15:20:14 |
-    | Janie    | Janie-PC   | 192.168.10.14 | 15.162.27.93   | Mar.03 09:47:37 |'
-  }
-Result: {
-  'version': 2.0, 
-  'success': True, 
-  'reason': None, 
-  'content': {
-    'status': 'success', 
-    'message': 'Viewing all GlobalProtect users succeeded. \n 
-    | Username | Computer   | Virtual IP  | Public IP      | Login Time      |
-    | Johndoe  | John-PC    | 192.168.10.11 | 172.217.160.78 | Mar.03 04:31:07 |
-    | Richard  | Richard-PC | 192.168.10.12 | 104.16.181.15  | Mar.03 15:20:14 |
-    | Janie    | Janie-PC   | 192.168.10.14 | 15.162.27.93   | Mar.03 09:47:37 |'
-  }
-} 
-=======
->>>>>>> c251951c8a4a8a9947b6554c87bc346a6a1a82eb
-```
-
-</p>
-</details>
-
-<details><summary>Example Pre-Process Script:</summary>
-<p>
-
-```python
-<<<<<<< HEAD
-None
-```
-
-</p>
-</details>
-
-<details><summary>Example Post-Process Script:</summary>
-<p>
-
-```python
-message = results.content['message']
-message = message.replace(" ", "&nbsp;")
-
-incident.addNote(message)
-message = results.content['message']
-message = message.replace(" ", "&nbsp;")
-
-incident.addNote(message)
-```
-
-</p>
-</details>
-
----
-## Function - Palo Alto Firewall: Disconnect a GlobalProtect user
-Function to disconnect a GlobalProtect user on Palo Alto Firewall.
-Function to disconnect a GlobalProtect user on Palo Alto Firewall.
-
- ![screenshot: fn-palo-alto-firewall-disconnect-a-globalprotect-user ](./doc/screenshots/fn-palo-alto-firewall-disconnect-a-globalprotect-user.png)
-
-<details><summary>Inputs:</summary>
-<p>
-
-| Name | Type | Required | Example | Tooltip |
-| ---- | :--: | :------: | ------- | ------- |
-| `palo_alto_firewall_gateway` | `text` | Yes | `-` | Enter GlobalProtect Gateway name |
-| `palo_alto_firewall_user` | `text` | Yes | `-` | Enter GlobalProtect User name |
-| `palo_alto_firewall_computer` | `text` | Yes | `-` | Enter Computer Name  |
-| `palo_alto_firewall_gateway` | `text` | Yes | `-` | Enter GlobalProtect Gateway name |
-| `palo_alto_firewall_user` | `text` | Yes | `-` | Enter GlobalProtect User name |
-| `palo_alto_firewall_computer` | `text` | Yes | `-` | Enter Computer Name  |
-</p>
-</details>
-
-<details><summary>Outputs:</summary>
-<p>
-
-> **NOTE:** This example might be in JSON format, but `results` is a Python Dictionary on the SOAR platform.
-
-```python
-Result: {
-  'version': 2.0, 
-  'success': True, 
-  'reason': None, 
-  'content': {
-    'status': 'success', 
-    'message': 'Disable the Global Protect "test" user has succeeded.'
-  }
-Result: {
-  'version': 2.0, 
-  'success': True, 
-  'reason': None, 
-  'content': {
-    'status': 'success', 
-    'message': 'Disable the Global Protect "test" user has succeeded.'
-  }
-} 
-```
-
-</p>
-</details>
-
-<details><summary>Example Pre-Process Script:</summary>
-<p>
-
-```python
-inputs.palo_alto_firewall_gateway = rule.properties.palo_alto_firewall_gateway
-inputs.palo_alto_firewall_user = artifact.value
-inputs.palo_alto_firewall_computer = rule.properties.palo_alto_firewall_computer
-=======
-inputs.palo_alto_firewall_address_objects_name = rule.properties.palo_alto_firewall_object_name
->>>>>>> c251951c8a4a8a9947b6554c87bc346a6a1a82eb
-```
-
-</p>
-</details>
-
-<details><summary>Example Post-Process Script:</summary>
-<p>
-
-```python
-incident.addNote(results.content['message'])
-```
-
-</p>
-</details>
-
-
----
-<<<<<<< HEAD
-### Notes:
- The functions work with two types of API - Rest API and XML API - based on Palo Alto Firewall.
-### Notes:
- The functions work with two types of API - Rest API and XML API - based on Palo Alto Firewall.
-
-Rest API:
-* Create a new tag
-* Create an IP Address Object
-* Delete an IP Address Object
-Rest API:
-* Create a new tag
-* Create an IP Address Object
-* Delete an IP Address Object
-=======
-## Function - Palo Alto Firewall: View all GlobalProtect users
-Function to view all GlobalProtect Users logging on Palo Alto Firewall.
-
- ![screenshot: fn-palo-alto-firewall-view-all-globalprotect-users ](./doc/screenshots/fn-palo-alto-firewall-view-all-globalprotect-users.png)
->>>>>>> c251951c8a4a8a9947b6554c87bc346a6a1a82eb
-
 XML API:
 * View all GlobalProtect users
 * Disconnect a GlobalProtect user
@@ -560,10 +316,6 @@ XML API:
 * View all GlobalProtect users
 * Disconnect a GlobalProtect user
 
-<<<<<<< HEAD
-For the function using the Rest API, if you use more than one virtual system on a Palo Alto Firewall please edit **vsys1** in file path "*components > modules > Palo_Alto_Firewall_API.py*" to match your desired vsys.
-For the function using the Rest API, if you use more than one virtual system on a Palo Alto Firewall please edit **vsys1** in file path "*components > modules > Palo_Alto_Firewall_API.py*" to match your desired vsys.
-=======
 ```python
 None
 ```
@@ -617,7 +369,6 @@ incident.addNote(message)
 
 </p>
 </details>
->>>>>>> c251951c8a4a8a9947b6554c87bc346a6a1a82eb
 
 For the function: *Disconnect a GlobalProtect user*, the input: *palo_alto_firewall_gateway*, needs to have "**-N**" at the end of the GlobalProtect gateway name.
 >  

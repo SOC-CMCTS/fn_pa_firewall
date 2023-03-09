@@ -3,9 +3,7 @@
 """AppFunction implementation"""
 
 from resilient_circuits import AppFunctionComponent, app_function, FunctionResult
-from resilient_lib import IntegrationError, validate_fields
 from fn_pa_firewall.components.modules import Palo_Alto_Firewall_API
-import json
 
 PACKAGE_NAME = "fn_pa_firewall"
 FN_NAME = "palo_alto_firewall_view_all_globalprotect_users"
@@ -27,13 +25,13 @@ class FunctionComponent(AppFunctionComponent):
         yield self.status_message(f"Starting App Function: '{FN_NAME}'")
 
         server_ip = str(self.options.get("palo_alto_ip_address", None))
-        server_version = str(self.options.get("palo_alto_version", None))
+        #server_version = str(self.options.get("palo_alto_version", None))
         server_api = str(self.options.get("palo_alto_api_key", None))
 
         self.LOG.info(
             "[+] Executing action: view all GlobalProtect users...")
 
-        palo_alto_fw_api = Palo_Alto_Firewall_API.xmlAPI(
+        palo_alto_fw_api = Palo_Alto_Firewall_API.XmlAPI(
             palo_alto_ip=server_ip, api_key=server_api)
 
         list_users = palo_alto_fw_api.view_all_GlobalProtect_users()

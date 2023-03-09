@@ -37,7 +37,7 @@ class FunctionComponent(AppFunctionComponent):
         self.LOG.info(
             "[+] Disconnecting a GlobalProtect user: {0}".format(user))
 
-        palo_alto_fw_api = Palo_Alto_Firewall_API.xmlAPI(
+        palo_alto_fw_api = Palo_Alto_Firewall_API.XmlAPI(
             palo_alto_ip=server_ip, api_key=server_api)
 
         if palo_alto_fw_api.disconnect_a_GlobalProtect_user(gateway=gateway, user=user, computer=computer) == True:

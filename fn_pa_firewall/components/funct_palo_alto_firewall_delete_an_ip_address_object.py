@@ -33,7 +33,7 @@ class FunctionComponent(AppFunctionComponent):
 
         self.LOG.info("Address Object Name: {}".format(address_object_name))
 
-        pa_fw_api = Palo_Alto_Firewall_API.restAPI(
+        pa_fw_api = Palo_Alto_Firewall_API.RestAPI(
             palo_alto_ip=server_ip, palo_alto_version=server_version, api_key=server_api)
 
         results = None

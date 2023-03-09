@@ -31,7 +31,7 @@ class FunctionComponent(AppFunctionComponent):
         self.LOG.info(
             "[+] Executing action: view all GlobalProtect users...")
 
-        palo_alto_fw_api = Palo_Alto_Firewall_API.xmlAPI(
+        palo_alto_fw_api = Palo_Alto_Firewall_API.XmlAPI(
             palo_alto_ip=server_ip, api_key=server_api)
 
         list_users = palo_alto_fw_api.view_all_GlobalProtect_users()

@@ -70,4 +70,12 @@ class FunctionComponent(AppFunctionComponent):
             )
 
         yield self.status_message(f"Finished running App Function: '{FN_NAME}'")
+<<<<<<< HEAD
+=======
+
+        # Note this is only used for demo purposes!
+        # Put your own key/value pairs here that you want to access on the Platform
+        results = {"mock_key": "Mock Value!"}
+
+>>>>>>> c251951c8a4a8a9947b6554c87bc346a6a1a82eb
         yield FunctionResult(results)

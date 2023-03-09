@@ -4,7 +4,7 @@ import requests
 import defusedxml.ElementTree as ET
 
 
-class restAPI:
+class RestAPI:
     def __init__(self, palo_alto_ip, palo_alto_version, api_key):
         self.api_key = api_key
         self.LOG = logging.getLogger(__name__)
@@ -135,7 +135,7 @@ class restAPI:
 
 
 
-class xmlAPI:
+class XmlAPI:
     def __init__(self, palo_alto_ip, api_key):
         self.api_key = api_key
         self.LOG = logging.getLogger(__name__)

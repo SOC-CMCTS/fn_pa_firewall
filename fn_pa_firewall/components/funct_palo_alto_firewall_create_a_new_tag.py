@@ -33,7 +33,7 @@ class FunctionComponent(AppFunctionComponent):
 
         self.LOG.info("[+] A new tag: {0}".format(tag_name))
 
-        palo_alto_fw_api = Palo_Alto_Firewall_API.restAPI(palo_alto_ip=server_ip, palo_alto_version=server_version, api_key=server_api)
+        palo_alto_fw_api = Palo_Alto_Firewall_API.RestAPI(palo_alto_ip=server_ip, palo_alto_version=server_version, api_key=server_api)
 
         response = palo_alto_fw_api.createNewTag(tagName=tag_name)
         if response is True:

@@ -40,7 +40,7 @@ class FunctionComponent(AppFunctionComponent):
         self.LOG.info("IP Address: {0}".format(ip_address))
 
         if is_valid_ipv4_address(ip_address):
-            pa_fw_api = Palo_Alto_Firewall_API.restAPI(
+            pa_fw_api = Palo_Alto_Firewall_API.RestAPI(
                 palo_alto_ip=server_ip, palo_alto_version=server_version, api_key=server_api)
 
             results = None

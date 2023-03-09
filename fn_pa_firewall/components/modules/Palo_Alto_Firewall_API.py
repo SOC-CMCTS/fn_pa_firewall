@@ -36,14 +36,15 @@ class RestAPI:
         try:
             response = requests.get(
                 self.server_url + path, headers=self.header)
-            if response.json()["@status"] == "success":
+            if response.json()["@status"] is "success":
                 return True
         except:
             return False
 
     def createNewTag(self, tagName):
         requests.packages.urllib3.disable_warnings()
-        path = "/Objects/tags?location=vsys&vsys=vsys1&name={0}".format(tagName)
+        path = "/Objects/tags?location=vsys&vsys=vsys1&name={0}".format(
+            tagName)
         body = {
             "entry": {
                 "@name": "{0}".format(tagName),
@@ -53,8 +54,8 @@ class RestAPI:
         try:
             response = requests.post(
                 self.server_url + path, headers=self.header, data=json.dumps(body))
-     
-            if "@status" in response.json() and response.json()["@status"] == "success":
+
+            if "@status" in response.json() and response.json()["@status"] is "success":
                 return True
             return response.json()
         except:
@@ -62,8 +63,9 @@ class RestAPI:
 
     def createNewAddress(self, addressIP, objectName, tagName):
         requests.packages.urllib3.disable_warnings()
-        path = "/Objects/Addresses?location=vsys&vsys=vsys1&name={0}".format(objectName)
-        
+        path = "/Objects/Addresses?location=vsys&vsys=vsys1&name={0}".format(
+            objectName)
+
         body = {
             "entry": [
                 {
@@ -76,7 +78,7 @@ class RestAPI:
                 }
             ]
         }
-        
+
         if not tagName is None:
             body = {
                 "entry": [
@@ -93,26 +95,25 @@ class RestAPI:
                     }
                 ]
             }
-        
 
         try:
             response = requests.post(
                 self.server_url + path, headers=self.header, data=json.dumps(body))
-            if "@status" in response.json() and response.json()["@status"] == "success":
+            if "@status" in response.json() and response.json()["@status"] is "success":
                 return True
             return response.json()
 
         except Exception as e:
             return "Error in request. {0}".format(e)
 
-
     def deleteAddressObject(self, addressName):
         requests.packages.urllib3.disable_warnings()
         path = "/Objects/Addresses?location=vsys&vsys=vsys1&name=" + addressName
 
         try:
-            response = requests.delete(self.server_url + path, headers=self.header)
-            if "@status" in response.json() and response.json()["@status"] == "success":
+            response = requests.delete(
+                self.server_url + path, headers=self.header)
+            if "@status" in response.json() and response.json()["@status"] is "success":
                 return True
             return response.json()
 
@@ -123,16 +124,16 @@ class RestAPI:
         requests.packages.urllib3.disable_warnings()
         path = "/Objects/Addresses?location=vsys&vsys=vsys1&name=" + addressObject
         try:
-            response = requests.get(self.server_url + path, headers=self.header)
-            if "@status" in response.json() and response.json()["@status"] == "success":
-            # If the response has a result, return the first address object
+            response = requests.get(
+                self.server_url + path, headers=self.header)
+            if "@status" in response.json() and response.json()["@status"] is "success":
+                # If the response has a result, return the first address object
                 if "result" in response.json():
                     return response.json()["result"][0]
             return None
 
         except Exception as e:
             return "Error in request. {0}".format(e)
-
 
 
 class XmlAPI:
@@ -164,17 +165,13 @@ class XmlAPI:
             response = requests.post(
                 self.server_url + (str(body)).strip(), headers=self.header)
             xml_response_data = ET.fromstring(response.content)
-            # self.LOG.info("Request 1005: " + self.server_url + (str(body)).strip())
-            if response.status_code == 200:
-                for line in xml_response_data.findall('.//line'):
-                    self.LOG.info(line.text)
-            # self.LOG.info(xml_response_data.find('result/response').get('status'))
-            if xml_response_data.find('result/response').get('status') == "success":
+            # Check value of the 'status' attribute of the 'response' element
+            if xml_response_data.find('result/response').get('status') is "success":
                 return True
             return False
         except Exception as e:
             return "Error in request: {0}".format(e)
-        
+
     def view_all_GlobalProtect_users(self):
         requests.packages.urllib3.disable_warnings()
         body = "<show><global-protect-gateway><current-user/></global-protect-gateway></show>"
@@ -182,13 +179,13 @@ class XmlAPI:
             # send request
             response = requests.get(
                 self.server_url + (str(body)).strip(), headers=self.header)
-            #self.LOG.info(response.content)
+            # self.LOG.info(response.content)
 
             # parse the XML string
             xml_response = ET.fromstring(response.content)
-            #self.LOG.info(xml_response.attrib['status'])
+            # self.LOG.info(xml_response.attrib['status'])
 
-            if xml_response.attrib['status'] == "success":
+            if xml_response.attrib['status'] is "success":
                 # extract the values of interest for each entry and store them in a list of dictionaries
                 entries = []
                 for entry_elem in xml_response.findall(".//entry"):
@@ -200,21 +197,26 @@ class XmlAPI:
                         "Login Time": entry_elem.find("login-time").text,
                     }
                     entries.append(entry)
-                
+
                 data = json.loads(json.dumps(entries))
 
-                header = ["Username", "Computer", "Virtual IP", "Public IP", "Login Time"]
-                col_widths = [max(len(header[i]), max(len(str(row[header[i]])) for row in data)) for i in range(len(header))]
+                header = ["Username", "Computer",
+                          "Virtual IP", "Public IP", "Login Time"]
+                col_widths = [max(len(header[i]), max(
+                    len(str(row[header[i]])) for row in data)) for i in range(len(header))]
 
                 # print the header row
                 # results_table = ("<pre>+{}+<pre><br>".format("+".join("-" * (col_widths[i] + 2) for i in range(len(header)))))
-                results_table = ("<pre>| {} |<pre><br>".format(" | ".join("{:<{width}}".format(header[i], width=col_widths[i]) for i in range(len(header)))))
+                results_table = ("<pre>| {} |<pre><br>".format(" | ".join("{:<{width}}".format(
+                    header[i], width=col_widths[i]) for i in range(len(header)))))
                 # results_table += ("<pre>+{}+<pre><br>".format("+".join("-" * (col_widths[i] + 2) for i in range(len(header)))))
 
                 # print the data rows
                 for row in data:
-                    results_table += ("| {} |".format(" | ".join("{:<{width}}".format(str(row[header[i]]), width=col_widths[i]) for i in range(len(header)))))
-                    results_table += ("<br><pre>+{}+<pre><br>".format("+".join("-" * (col_widths[i] + 2) for i in range(len(header)))))
+                    results_table += ("| {} |".format(" | ".join("{:<{width}}".format(
+                        str(row[header[i]]), width=col_widths[i]) for i in range(len(header)))))
+                    results_table += ("<br><pre>+{}+<pre><br>".format(
+                        "+".join("-" * (col_widths[i] + 2) for i in range(len(header)))))
 
                 results_table = results_table.replace(" ", "&nbsp;")
                 return results_table

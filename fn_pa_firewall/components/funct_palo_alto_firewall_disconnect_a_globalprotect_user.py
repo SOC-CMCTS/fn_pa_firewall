@@ -3,7 +3,6 @@
 """AppFunction implementation"""
 
 from resilient_circuits import AppFunctionComponent, app_function, FunctionResult
-from resilient_lib import IntegrationError, validate_fields
 from fn_pa_firewall.components.modules import Palo_Alto_Firewall_API
 
 PACKAGE_NAME = "fn_pa_firewall"

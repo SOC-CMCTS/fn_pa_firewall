@@ -1,7 +1,7 @@
 import logging
 import json
 import requests
-from xml.etree import ElementTree
+import defusedxml.ElementTree as ET
 
 
 class restAPI:
@@ -23,7 +23,7 @@ class restAPI:
             address_name)
         try:
             response = requests.get(
-                self.server_url + path, headers=self.header, verify=False)
+                self.server_url + path, headers=self.header)
             return response.json()
         except:
             return None
@@ -35,7 +35,7 @@ class restAPI:
 
         try:
             response = requests.get(
-                self.server_url + path, headers=self.header, verify=False)
+                self.server_url + path, headers=self.header)
             if response.json()["@status"] == "success":
                 return True
         except:
@@ -52,7 +52,7 @@ class restAPI:
         }
         try:
             response = requests.post(
-                self.server_url + path, headers=self.header, data=json.dumps(body), verify=False)
+                self.server_url + path, headers=self.header, data=json.dumps(body))
      
             if "@status" in response.json() and response.json()["@status"] == "success":
                 return True
@@ -97,7 +97,7 @@ class restAPI:
 
         try:
             response = requests.post(
-                self.server_url + path, headers=self.header, data=json.dumps(body), verify=False)
+                self.server_url + path, headers=self.header, data=json.dumps(body))
             if "@status" in response.json() and response.json()["@status"] == "success":
                 return True
             return response.json()
@@ -111,7 +111,7 @@ class restAPI:
         path = "/Objects/Addresses?location=vsys&vsys=vsys1&name=" + addressName
 
         try:
-            response = requests.delete(self.server_url + path, headers=self.header, verify=False)
+            response = requests.delete(self.server_url + path, headers=self.header)
             if "@status" in response.json() and response.json()["@status"] == "success":
                 return True
             return response.json()
@@ -123,7 +123,7 @@ class restAPI:
         requests.packages.urllib3.disable_warnings()
         path = "/Objects/Addresses?location=vsys&vsys=vsys1&name=" + addressObject
         try:
-            response = requests.get(self.server_url + path, headers=self.header, verify=False)
+            response = requests.get(self.server_url + path, headers=self.header)
             if "@status" in response.json() and response.json()["@status"] == "success":
             # If the response has a result, return the first address object
                 if "result" in response.json():
@@ -162,8 +162,8 @@ class xmlAPI:
             """.format(gateway, user, computer)
         try:
             response = requests.post(
-                self.server_url + (str(body)).strip(), headers=self.header, verify=False)
-            xml_response_data = ElementTree.fromstring(response.content)
+                self.server_url + (str(body)).strip(), headers=self.header)
+            xml_response_data = ET.fromstring(response.content)
             # self.LOG.info("Request 1005: " + self.server_url + (str(body)).strip())
             if response.status_code == 200:
                 for line in xml_response_data.findall('.//line'):
@@ -181,11 +181,11 @@ class xmlAPI:
         try:
             # send request
             response = requests.get(
-                self.server_url + (str(body)).strip(), headers=self.header, verify=False)
+                self.server_url + (str(body)).strip(), headers=self.header)
             #self.LOG.info(response.content)
 
             # parse the XML string
-            xml_response = ElementTree.fromstring(response.content)
+            xml_response = ET.fromstring(response.content)
             #self.LOG.info(xml_response.attrib['status'])
 
             if xml_response.attrib['status'] == "success":

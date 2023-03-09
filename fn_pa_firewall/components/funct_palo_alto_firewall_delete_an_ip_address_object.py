@@ -4,9 +4,7 @@
 """AppFunction implementation"""
 
 from resilient_circuits import AppFunctionComponent, app_function, FunctionResult
-from resilient_lib import IntegrationError, validate_fields
 from fn_pa_firewall.components.modules import Palo_Alto_Firewall_API
-from fn_pa_firewall.components.modules.ultils import is_valid_ipv4_address
 
 PACKAGE_NAME = "fn_pa_firewall"
 FN_NAME = "palo_alto_firewall_delete_an_ip_address_object"
@@ -44,22 +42,21 @@ class FunctionComponent(AppFunctionComponent):
         if pa_fw_api.getAddressObject(addressObject=address_object_name) is not None:
             response = pa_fw_api.deleteAddressObject(
                 addressName=address_object_name)
-
             if response is True:
                 self.LOG.info(
-                    
-                    f"[+] Delete IP address object \"{address_object_name}\" succeeded.")   
+                    f"[+] Delete IP address object \"{address_object_name}\" succeeded.")
                 results = {
                     "status": "success",
                     "message": f"Delete IP address object \"{address_object_name}\" succeeded."
                 }
             else:
                 self.LOG.info(
-                    f"[+] Delete IP address object \"{address_object_name}\" has failed. {response['message']}")
-                    
+                    f"[+] Delete IP address object \"{address_object_name}\" has failed."
+                    f"{response['message']}")              
                 results = {
                     "status": "false",
-                    "message": f"Delete IP address object \"{address_object_name}\" has failed. {response['message']}"
+                    "message": f"Delete IP address object \"{address_object_name}\" has failed."
+                    f"{response['message']}"
                 }
         else:
             self.LOG.info(
@@ -74,7 +71,8 @@ class FunctionComponent(AppFunctionComponent):
 
         yield self.status_message(f"Finished running App Function: '{FN_NAME}'")
 
-        # Note this is only used for demo purposes! Put your own key/value pairs here that you want to access on the Platform
+        # Note this is only used for demo purposes!
+        # Put your own key/value pairs here that you want to access on the Platform
         results = {"mock_key": "Mock Value!"}
 
         yield FunctionResult(results)

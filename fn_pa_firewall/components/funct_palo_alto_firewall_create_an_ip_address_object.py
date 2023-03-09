@@ -36,8 +36,8 @@ class FunctionComponent(AppFunctionComponent):
         ip_address = fn_inputs.palo_alto_firewall_ip
         object_name = fn_inputs.palo_alto_firewall_address_objects_name
 
-        self.LOG.info("Tag Name: {}".format(tag_name))
-        self.LOG.info("IP Address: {0}".format(ip_address))
+        self.LOG.info(f"Tag Name: {tag_name}")
+        self.LOG.info(f"IP Address: {ip_address}")
 
         if is_valid_ipv4_address(ip_address):
             pa_fw_api = Palo_Alto_Firewall_API.RestAPI(
@@ -48,43 +48,42 @@ class FunctionComponent(AppFunctionComponent):
             if tag_name is None:
                 response = pa_fw_api.createNewAddress(
                     addressIP=ip_address, objectName=object_name, tagName=tag_name)
-                if response == True:
+                if response is True:
                     self.LOG.info(
-                        "[+] Add IP: \"{0}\" succeeded.".format(ip_address))
+                        "[+] Add IP: \"{ip_address}\" succeeded.")
                     results = {
                         "status": "success",
-                        "message": "Add ip: \"{0}\" succeeded".format(ip_address)
+                        "message": "Add ip: \"{ip_address}\" succeeded"
                     }
                 else:
                     self.LOG.info(
-                        "[+] Add IP: \"{0}\" has failed. {1}".format(ip_address, response['message']))
+                        f"[+] Add IP: \"{ip_address}\" has failed. {response['message']}")
                     results = {
                         "status": "false",
-                        "message": "Add IP: \"{0}\" has failed. {1}".format(ip_address, response['message'])
+                        "message": f"Add IP: \"{ip_address}\" has failed. {response['message']}"
                     }
-            elif not tag_name is None and pa_fw_api.getTagName(tagName=tag_name) == True:
+            elif not tag_name is None and pa_fw_api.getTagName(tagName=tag_name) is True:
                 response = pa_fw_api.createNewAddress(
                     addressIP=ip_address, objectName=object_name, tagName=tag_name)
-                if response == True:
+                if response is True:
                     self.LOG.info(
-                        "[+] Add IP: \"{0}\" succeeded.".format(ip_address))
+                        "[+] Add IP: \"{ip_address}\" succeeded.")
                     results = {
                         "status": "success",
-                        "message": "Add ip: \"{0}\" succeeded".format(ip_address)
+                        "message": "Add ip: \"{ip_address}\" succeeded"
                     }
                 else:
-                    self.LOG.info(
-                        "[+] Add IP: \"{0}\" has failed. {1}".format(ip_address, response['message']))
+                    self.LOG.info(f"[+] Add IP: \"{ip_address}\" has failed. {response['message']}")
                     results = {
                         "status": "false",
-                        "message": "Add IP: \"{0}\" has failed. {1}".format(ip_address, response['message'])
+                        "message": f"Add IP: \"{ip_address}\" has failed. {response['message']}"
                     }
             else:
                 self.LOG.info(
-                    "Cannot add IP: \"{0}\". Not found tag name: \"{1}\"".format(ip_address, tag_name))
+                    "Cannot add IP: \"{ip_address}\". Not found tag name: \"{tag_name}\"")
                 results = {
                     "status": "false",
-                    "message": "Cannot add IP: \"{0}\". Not found tag name: \"{1}\"".format(ip_address, tag_name)
+                    "message": "Cannot add IP: \"{ip_address}\". Not found tag name: \"{tag_name}\""                    
                 }
         else:
             self.LOG.info("Error! The input is not correct")

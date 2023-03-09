@@ -47,25 +47,30 @@ class FunctionComponent(AppFunctionComponent):
 
             if response is True:
                 self.LOG.info(
-                    "[+] Delete IP address object \"{0}\" succeeded.".format(address_object_name))
+                    
+                    f"[+] Delete IP address object \"{address_object_name}\" succeeded.")   
                 results = {
                     "status": "success",
-                    "message": "Delete IP address object \"{0}\" succeeded.".format(address_object_name)
+                    "message": f"Delete IP address object \"{address_object_name}\" succeeded."
                 }
             else:
                 self.LOG.info(
-                    "[+] Delete IP address object \"{0}\" has failed. {1}".format(address_object_name, response['message']))
+                    f"[+] Delete IP address object \"{address_object_name}\" has failed. {response['message']}")
+                    
                 results = {
                     "status": "false",
-                    "message": "Delete IP address object \"{0}\" has failed. {1}".format(address_object_name, response['message'])
+                    "message": f"Delete IP address object \"{address_object_name}\" has failed. {response['message']}"
                 }
         else:
             self.LOG.info(
-                "IP address object \"{0}\" does not exist.".format(address_object_name))
+                f"IP address object \"{address_object_name}\" does not exist.")
             results = {
                 "status": "false",
-                "message": "IP address object \"{0}\" does not exist.".format(address_object_name)
+                "message": f"IP address object \"{address_object_name}\" does not exist."
             }
+            self.LOG.info(
+                print (results)
+            )
 
         yield self.status_message(f"Finished running App Function: '{FN_NAME}'")
         yield FunctionResult(results)

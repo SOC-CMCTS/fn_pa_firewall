@@ -27,9 +27,7 @@
         "palo_alto_firewall_ip": {
           "type": "string"
         },
-        "palo_alto_firewall_tag_name": {
-          "type": "string"
-        },
+        "palo_alto_firewall_tag_name": {},
         "palo_alto_firewall_address_objects_name": {
           "type": "string"
         }

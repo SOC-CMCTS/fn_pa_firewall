@@ -1,19 +1,19 @@
 {
-  "version": 2.0,
-  "success": true,
-  "reason": null,
-  "content": {
-    "status": "success",
-    "message": "Viewing all GlobalProtect users succeeded. \n <br><pre>|&nbsp;Username&nbsp;&nbsp;&nbsp;|&nbsp;Computer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Virtual&nbsp;IP&nbsp;&nbsp;|&nbsp;Public&nbsp;IP&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Login&nbsp;Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<pre><br>|&nbsp;dhhai&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Dinhs-MacBook-Pro&nbsp;|&nbsp;10.79.14.12&nbsp;|&nbsp;203.205.29.5&nbsp;|&nbsp;Mar.09&nbsp;09:52:59&nbsp;|<br><pre>+------------+-------------------+-------------+--------------+-----------------+<pre><br>|&nbsp;ltienphong&nbsp;|&nbsp;CSGLANBK-833&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;10.79.14.43&nbsp;|&nbsp;203.205.29.5&nbsp;|&nbsp;Mar.09&nbsp;08:01:20&nbsp;|<br><pre>+------------+-------------------+-------------+--------------+-----------------+<pre><br>|&nbsp;tnduan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;CSGLANBK-726&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;10.79.14.37&nbsp;|&nbsp;203.205.29.5&nbsp;|&nbsp;Mar.09&nbsp;08:01:44&nbsp;|<br><pre>+------------+-------------------+-------------+--------------+-----------------+<pre><br>|&nbsp;htsi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;S-CSGLANBK-03&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;10.79.14.13&nbsp;|&nbsp;203.205.29.5&nbsp;|&nbsp;Mar.09&nbsp;10:17:38&nbsp;|<br><pre>+------------+-------------------+-------------+--------------+-----------------+<pre><br>|&nbsp;dmlong&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;DMLONG-LAP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;10.79.14.15&nbsp;|&nbsp;14.161.27.90&nbsp;|&nbsp;Mar.09&nbsp;09:16:20&nbsp;|<br><pre>+------------+-------------------+-------------+--------------+-----------------+<pre><br>"
-  },
-  "raw": null,
-  "inputs": {},
-  "metrics": {
-    "version": "1.0",
-    "package": "fn-pa-firewall",
-    "package_version": "1.0.0",
-    "host": "DMLONG-LAP",
-    "execution_time_ms": 360,
-    "timestamp": "2023-03-09 10:17:46"
-  }
+    "version": 2.0,
+    "success": true,
+    "reason": null,
+    "content": {
+        "status": "success",
+        "message": "Viewing all GlobalProtect users succeeded. \n <br><pre>|&nbsp;Username&nbsp;&nbsp;&nbsp;|&nbsp;Computer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Virtual&nbsp;IP&nbsp;&nbsp;|&nbsp;Public&nbsp;IP&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Login&nbsp;Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<pre><br>|&nbsp;Johndoe&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;LAPTOP-1&nbsp;|&nbsp;192.168.16.12&nbsp;|&nbsp;123.123.123.132&nbsp;|&nbsp;Mar.09&nbsp;09:52:59&nbsp;|<br><pre>+------------+-------------------+-------------+--------------+-----------------+<pre><br>|&nbsp;Johndoe&nbsp;|&nbsp;LAPTOP-2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;192.168.16.43&nbsp;|&nbsp;123.123.123.132&nbsp;|&nbsp;Mar.09&nbsp;08:01:20&nbsp;|<br><pre>+------------+-------------------+-------------+--------------+-----------------+<pre><br>|&nbsp;Johndoe&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;LAPTOP-3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;192.168.16.37&nbsp;|&nbsp;123.123.123.132&nbsp;|&nbsp;Mar.09&nbsp;08:01:44&nbsp;|<br><pre>+------------+-------------------+-------------+--------------+-----------------+<pre><br>|&nbsp;Janie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;LAPTOP-4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;192.168.16.13&nbsp;|&nbsp;123.123.123.132&nbsp;|&nbsp;Mar.09&nbsp;10:17:38&nbsp;|<br><pre>+------------+-------------------+-------------+--------------+-----------------+<pre><br>|&nbsp;thegun&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;LAPTOP-5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;192.168.16.15&nbsp;|&nbsp;123.123.123.132&nbsp;|&nbsp;Mar.09&nbsp;09:16:20&nbsp;|<br><pre>+------------+-------------------+-------------+--------------+-----------------+<pre><br>"
+    },
+    "raw": null,
+    "inputs": {},
+    "metrics": {
+        "version": "1.0",
+        "package": "fn-pa-firewall",
+        "package_version": "1.0.0",
+        "host": "LAPTOP-5",
+        "execution_time_ms": 360,
+        "timestamp": "2023-03-09 10:17:46"
+    }
 }

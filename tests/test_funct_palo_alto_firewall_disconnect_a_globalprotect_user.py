@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# Generated with resilient-sdk v48.0.4034
 """Tests using pytest_resilient_circuits"""
 
 import pytest
@@ -49,18 +50,16 @@ class TestPaloAltoFirewallDisconnectAGlobalprotectUser:
 
     mock_inputs_1 = {
         "palo_alto_firewall_computer": "sample text",
-        "palo_alto_firewall_gateway": "sample text",
-        "palo_alto_firewall_reason": "sample text",
-        "palo_alto_firewall_user": "sample text"
+        "palo_alto_firewall_user": "sample text",
+        "palo_alto_firewall_gateway": "sample text"
     }
 
     expected_results_1 = {"value": "xyz"}
 
     mock_inputs_2 = {
         "palo_alto_firewall_computer": "sample text",
-        "palo_alto_firewall_gateway": "sample text",
-        "palo_alto_firewall_reason": "sample text",
-        "palo_alto_firewall_user": "sample text"
+        "palo_alto_firewall_user": "sample text",
+        "palo_alto_firewall_gateway": "sample text"
     }
 
     expected_results_2 = {"value": "xyz"}

@@ -38,7 +38,7 @@ class FunctionComponent(AppFunctionComponent):
         palo_alto_fw_api = Palo_Alto_Firewall_API.RestAPI(palo_alto_ip=server_ip, 
                                                           palo_alto_version=server_version, 
                                                           api_key=server_api,
-                                                          verify = cert_file)
+                                                          verify=cert_file)
 
         response = palo_alto_fw_api.create_a_new_tag(tagName=tag_name)
 

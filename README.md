@@ -108,7 +108,7 @@ The following table provides the settings you need to configure the app. These s
 | **palo_alto_api_key** | Yes | `LUFRPT*base64 encoded string*` | *Enter the **X-PAN-KEY**.* |
 | **palo_alto_version** | Yes | `10.1` | *Enter the Palo Alto Firewall **Version**. Versions from **10.1** to the latest are supported.* |
 | **palo_alto_ip_address** | Yes | `192.168.1.1` | *Enter the Palo Alto Firewall **IP Address**.* |
-| **palo_alto_verify** | Yes | `/path/to/cert.cer \| False` | *Enter the path to certificate or **False**.* |
+| **palo_alto_verify** | Yes | `/path/to/cert.cer | False` | *Enter the path to certificate or **False**.* |
 
 
 ---

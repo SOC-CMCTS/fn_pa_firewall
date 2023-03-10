@@ -14,5 +14,6 @@ def config_section_data():
 palo_alto_ip_address = <<Enter your server ip>>
 palo_alto_version = <<Enter your version>>
 palo_alto_api_key = <<Enter your API key!>>
+verify = <<path to cert file | False>>
 """
     return config_data

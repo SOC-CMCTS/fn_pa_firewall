@@ -3,7 +3,7 @@ Name: fn-pa-firewall
 Version: 1.0.0
 Summary: SOAR Components to Integrate with the Palo Alto Firewall
 Home-page: https://cmctssg.vn
-Author: CMCTSSG SOC
+Author: CMC TS SOC
 Author-email: scenterportal@cmc.com.vn
 License: MIT
 Platform: any

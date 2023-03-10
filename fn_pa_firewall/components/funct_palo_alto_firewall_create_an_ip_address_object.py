@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Generated with resilient-sdk v48.0.4034
+# pragma pylint: disable=unused-argument, no-self-use
 
 """AppFunction implementation"""
 
@@ -31,6 +31,7 @@ class FunctionComponent(AppFunctionComponent):
         server_ip = str(self.options.get("palo_alto_ip_address", None))
         server_version = str(self.options.get("palo_alto_version", None))
         server_api = str(self.options.get("palo_alto_api_key", None))
+        cert_file = str(self.options.get("verify", False))
 
         tag_name = fn_inputs.palo_alto_firewall_tag_name
         ip_address = fn_inputs.palo_alto_firewall_ip
@@ -41,19 +42,20 @@ class FunctionComponent(AppFunctionComponent):
 
         if is_valid_ipv4_address(ip_address):
             pa_fw_api = Palo_Alto_Firewall_API.RestAPI(
-                palo_alto_ip=server_ip, palo_alto_version=server_version, api_key=server_api)
+                palo_alto_ip=server_ip, palo_alto_version=server_version, api_key=server_api, verify=cert_file)
 
             results = None
 
+            # Create a new ip address object withowt tag name
             if tag_name is None:
-                response = pa_fw_api.createNewAddress(
+                response = pa_fw_api.create_a_new_address(
                     addressIP=ip_address, objectName=object_name, tagName=tag_name)
                 if response is True:
                     self.LOG.info(
-                        "[+] Add IP: \"{ip_address}\" succeeded.")
+                        f"[+] Add IP: \"{ip_address}\" succeeded.")
                     results = {
                         "status": "success",
-                        "message": "Add ip: \"{ip_address}\" succeeded"
+                        "message": f"Add ip: \"{ip_address}\" succeeded"
                     }
                 else:
                     self.LOG.info(
@@ -62,15 +64,17 @@ class FunctionComponent(AppFunctionComponent):
                         "status": "false",
                         "message": f"Add IP: \"{ip_address}\" has failed. {response['message']}"
                     }
-            elif not tag_name is None and pa_fw_api.getTagName(tagName=tag_name) is True:
+            # If tag_name is not None
+            # Check tag name must be isset on Palo Alto Firewall
+            elif not tag_name is None and pa_fw_api.get_tagName(tagName=tag_name) is True:
                 response = pa_fw_api.createNewAddress(
                     addressIP=ip_address, objectName=object_name, tagName=tag_name)
                 if response is True:
                     self.LOG.info(
-                        "[+] Add IP: \"{ip_address}\" succeeded.")
+                        f"[+] Add IP: \"{ip_address}\" succeeded.")
                     results = {
                         "status": "success",
-                        "message": "Add ip: \"{ip_address}\" succeeded"
+                        "message": f"Add ip: \"{ip_address}\" succeeded"
                     }
                 else:
                     self.LOG.info(f"[+] Add IP: \"{ip_address}\" has failed. {response['message']}")
@@ -80,10 +84,10 @@ class FunctionComponent(AppFunctionComponent):
                     }
             else:
                 self.LOG.info(
-                    "Cannot add IP: \"{ip_address}\". Not found tag name: \"{tag_name}\"")
+                    f"Cannot add IP: \"{ip_address}\". Not found tag name: \"{tag_name}\"")
                 results = {
                     "status": "false",
-                    "message": "Cannot add IP: \"{ip_address}\". Not found tag name: \"{tag_name}\""                    
+                    "message": f"Cannot add IP: \"{ip_address}\". Not found tag name: \"{tag_name}\""                    
                 }
         else:
             self.LOG.info("Error! The input is not correct")

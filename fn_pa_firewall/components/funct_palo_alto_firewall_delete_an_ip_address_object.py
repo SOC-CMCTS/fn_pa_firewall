@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Generated with resilient-sdk v48.0.4034
+# pragma pylint: disable=unused-argument, no-self-use
 
 """AppFunction implementation"""
 
@@ -28,19 +28,20 @@ class FunctionComponent(AppFunctionComponent):
         server_ip = str(self.options.get("palo_alto_ip_address", None))
         server_version = str(self.options.get("palo_alto_version", None))
         server_api = str(self.options.get("palo_alto_api_key", None))
-
+        cert_file = str(self.options.get("verify", None))
+        
         address_object_name = fn_inputs.palo_alto_firewall_address_objects_name
 
         self.LOG.info(f"Address Object Name: {address_object_name}")
         pa_fw_api = Palo_Alto_Firewall_API.RestAPI(
-            palo_alto_ip=server_ip, palo_alto_version=server_version, api_key=server_api)
+            palo_alto_ip=server_ip, palo_alto_version=server_version, api_key=server_api, verify=cert_file)
 
         results = None
 
         # Check if the address object exists before deleting it
-        if pa_fw_api.getAddressObject(addressObject=address_object_name) is not None:
-            response = pa_fw_api.deleteAddressObject(
-                addressName=address_object_name)
+        if pa_fw_api.get_address_object(address_object=address_object_name) is True:
+            response = pa_fw_api.delete_address_object(
+                address_name=address_object_name)
             if response is True:
                 self.LOG.info(
                     f"[+] Delete IP address object \"{address_object_name}\" succeeded.")
@@ -53,8 +54,7 @@ class FunctionComponent(AppFunctionComponent):
                 results = {
                     "status": "false",
                     "message": f"Delete IP address object \"{address_object_name}\" has failed. {response['message']}"
-}
-
+            }
         else:
             self.LOG.info(
                 f"IP address object \"{address_object_name}\" does not exist.")

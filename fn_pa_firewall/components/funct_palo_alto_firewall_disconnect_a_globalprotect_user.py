@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# pragma pylint: disable=unused-argument, no-self-use
 
 """AppFunction implementation"""
 
@@ -28,18 +29,19 @@ class FunctionComponent(AppFunctionComponent):
 
         server_ip = str(self.options.get("palo_alto_ip_address", None))
         server_api = str(self.options.get("palo_alto_api_key", None))
+        cert_file = str(self.options.get("verify", None))
 
         gateway = fn_inputs.palo_alto_firewall_gateway
         user = fn_inputs.palo_alto_firewall_user
         computer = fn_inputs.palo_alto_firewall_computer
 
-        self.LOG.info("[+] Disconnecting a GlobalProtect user: {0}".format(user))
+        self.LOG.info(f"[+] Disconnecting a GlobalProtect user: {user}")
 
         palo_alto_fw_api = Palo_Alto_Firewall_API.XmlAPI(
-            palo_alto_ip=server_ip, api_key=server_api)
+            palo_alto_ip=server_ip, api_key=server_api, verify=cert_file)
 
-        if palo_alto_fw_api.disconnect_a_GlobalProtect_user(gateway=gateway, user=user, computer=computer) is True:
-            self.LOG.info("Disable the Global Protect \"{0}\" user has succeeded.".format(user))
+        if palo_alto_fw_api.disconnect_a_global_potect_user(gateway=gateway, user=user, computer=computer) is True:
+            self.LOG.info(f"Disable the Global Protect \"{user}\" user has succeeded.")
             results = {
                 "status": "success",
                 "message": f"Disable the Global Protect \"{user}\" user has succeeded."

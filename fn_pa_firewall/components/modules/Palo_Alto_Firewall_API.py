@@ -71,7 +71,7 @@ class RestAPI:
             }
         }
         try:
-            response = requests.post(self.server_url + path, headers=self.header, data=json.dumps(body), verify=self.verify)
+            response = requests.post(self.server_url + path, headers=self.header, data=json.dumps(body), timeout=5, verify=self.verify)
             if "@status" in response.json() and response.json()["@status"] == "success":
                 return True
             return response.json()["message"]

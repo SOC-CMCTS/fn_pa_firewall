@@ -16,6 +16,7 @@ USER 0
 
 # Update to latest pip
 RUN pip install --upgrade pip
+RUN pip install defusedxml
 
 # install resilient-circuits
 RUN pip install "resilient-circuits>=${RESILIENT_CIRCUITS_VERSION}"

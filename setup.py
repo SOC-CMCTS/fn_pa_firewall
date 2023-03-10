@@ -25,7 +25,7 @@ setup(
     display_name="Palo Alto Firewall",
     version="1.0.0",
     license="MIT",
-    author="CMCTSSG SOC",
+    author="CMC TS SOC",
     author_email="scenterportal@cmc.com.vn",
     url="https://cmctssg.vn",
     description="SOAR Components to Integrate with the Palo Alto Firewall",

@@ -28,7 +28,7 @@ class FunctionComponent(AppFunctionComponent):
         server_ip = str(self.options.get("palo_alto_ip_address", None))
         server_version = str(self.options.get("palo_alto_version", None))
         server_api = str(self.options.get("palo_alto_api_key", None))
-        cert_file = str(self.options.get("verify", None))
+        cert_file = str(self.options.get("palo_alto_verify", None))
         
         address_object_name = fn_inputs.palo_alto_firewall_address_objects_name
 

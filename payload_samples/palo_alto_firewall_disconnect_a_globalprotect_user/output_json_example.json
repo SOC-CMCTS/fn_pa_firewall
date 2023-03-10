@@ -1,23 +1,23 @@
 {
-  "version": 2.0,
-  "success": true,
-  "reason": null,
-  "content": {
-    "status": "success",
-    "message": "Disable the Global Protect \"lvanloi\" user has succeeded."
-  },
-  "raw": null,
-  "inputs": {
-    "palo_alto_firewall_user": "lvanloi",
-    "palo_alto_firewall_computer": "S-VANLOISC1",
-    "palo_alto_firewall_gateway": "SOC_DC_Gateway-N"
-  },
-  "metrics": {
-    "version": "1.0",
-    "package": "fn-pa-firewall",
-    "package_version": "1.0.0",
-    "host": "DMLONG-LAP",
-    "execution_time_ms": 440,
-    "timestamp": "2023-03-09 10:17:19"
-  }
+    "version": 2.0,
+    "success": true,
+    "reason": null,
+    "content": {
+        "status": "success",
+        "message": "Disable the Global Protect \"Johndoe\" user has succeeded."
+    },
+    "raw": null,
+    "inputs": {
+        "palo_alto_firewall_user": "Johndoe",
+        "palo_alto_firewall_computer": "LAPTOP-1",
+        "palo_alto_firewall_gateway": "SOC_DC_Gateway-N"
+    },
+    "metrics": {
+        "version": "1.0",
+        "package": "fn-pa-firewall",
+        "package_version": "1.0.0",
+        "host": "LAPTOP-5",
+        "execution_time_ms": 440,
+        "timestamp": "2023-03-09 10:17:19"
+    }
 }

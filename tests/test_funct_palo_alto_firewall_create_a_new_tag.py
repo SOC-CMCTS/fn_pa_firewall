@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# Generated with resilient-sdk v48.0.4034
 """Tests using pytest_resilient_circuits"""
 
 import pytest
@@ -48,13 +49,13 @@ class TestPaloAltoFirewallCreateANewTag:
         assert func is not None
 
     mock_inputs_1 = {
-        "palo_alto_tag": "sample text"
+        "palo_alto_firewall_tag_name": "sample text"
     }
 
     expected_results_1 = {"value": "xyz"}
 
     mock_inputs_2 = {
-        "palo_alto_tag": "sample text"
+        "palo_alto_firewall_tag_name": "sample text"
     }
 
     expected_results_2 = {"value": "xyz"}

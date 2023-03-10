@@ -1,23 +1,23 @@
 {
-  "version": 2.0,
-  "success": true,
-  "reason": null,
-  "content": {
-    "status": "success",
-    "message": "Add ip: \"45.150.64.88\" succeeded"
-  },
-  "raw": null,
-  "inputs": {
-    "palo_alto_firewall_ip": "45.150.64.88",
-    "palo_alto_firewall_tag_name": "blacklist",
-    "palo_alto_firewall_address_objects_name": "blacklist-45.150.64.88"
-  },
-  "metrics": {
-    "version": "1.0",
-    "package": "fn-pa-firewall",
-    "package_version": "1.0.0",
-    "host": "DMLONG-LAP",
-    "execution_time_ms": 1049,
-    "timestamp": "2023-03-09 10:15:46"
-  }
+    "version": 2.0,
+    "success": true,
+    "reason": null,
+    "content": {
+        "status": "false",
+        "message": "Add IP: \"45.150.64.88\" has failed. Object Not Unique"
+    },
+    "raw": null,
+    "inputs": {
+        "palo_alto_firewall_ip": "45.150.64.88",
+        "palo_alto_firewall_tag_name": null,
+        "palo_alto_firewall_address_objects_name": "blacklist-45.150.64.88"
+    },
+    "metrics": {
+        "version": "1.0",
+        "package": "fn-pa-firewall",
+        "package_version": "1.0.0",
+        "host": "LAPTOP-5",
+        "execution_time_ms": 407,
+        "timestamp": "2023-03-10 14:41:54"
+    }
 }

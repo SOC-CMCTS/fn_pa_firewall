@@ -67,7 +67,7 @@ class FunctionComponent(AppFunctionComponent):
             # If tag_name is not None
             # Check tag name must be isset on Palo Alto Firewall
             elif not tag_name is None and pa_fw_api.get_tagName(tagName=tag_name) is True:
-                response = pa_fw_api.createNewAddress(
+                response = pa_fw_api.create_a_new_address(
                     addressIP=ip_address, objectName=object_name, tagName=tag_name)
                 if response is True:
                     self.LOG.info(

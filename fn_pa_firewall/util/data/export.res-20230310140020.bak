@@ -1,0 +1,512 @@
+{
+  "action_order": [],
+  "actions": [],
+  "apps": [],
+  "automatic_tasks": [],
+  "export_date": 1678431595375,
+  "export_format_version": 2,
+  "fields": [
+    {
+      "allow_default_value": false,
+      "blank_option": false,
+      "calculated": false,
+      "changeable": true,
+      "chosen": false,
+      "default_chosen_by_server": false,
+      "deprecated": false,
+      "export_key": "__function/palo_alto_firewall_address_objects_name",
+      "hide_notification": false,
+      "id": 1222,
+      "input_type": "text",
+      "internal": false,
+      "is_tracked": false,
+      "name": "palo_alto_firewall_address_objects_name",
+      "operation_perms": {},
+      "operations": [],
+      "placeholder": "",
+      "prefix": null,
+      "read_only": false,
+      "required": "always",
+      "rich_text": false,
+      "tags": [],
+      "templates": [],
+      "text": "palo_alto_firewall_address_objects_name",
+      "tooltip": "",
+      "type_id": 11,
+      "uuid": "dcbbd8aa-f209-482b-b43b-d7de988eb63c",
+      "values": []
+    },
+    {
+      "allow_default_value": false,
+      "blank_option": false,
+      "calculated": false,
+      "changeable": true,
+      "chosen": false,
+      "default_chosen_by_server": false,
+      "deprecated": false,
+      "export_key": "__function/palo_alto_firewall_ip",
+      "hide_notification": false,
+      "id": 1223,
+      "input_type": "text",
+      "internal": false,
+      "is_tracked": false,
+      "name": "palo_alto_firewall_ip",
+      "operation_perms": {},
+      "operations": [],
+      "placeholder": "",
+      "prefix": null,
+      "read_only": false,
+      "required": "always",
+      "rich_text": false,
+      "tags": [],
+      "templates": [],
+      "text": "palo_alto_firewall_ip",
+      "tooltip": "",
+      "type_id": 11,
+      "uuid": "e473e641-626c-424d-9c98-17a23a449795",
+      "values": []
+    },
+    {
+      "allow_default_value": false,
+      "blank_option": false,
+      "calculated": false,
+      "changeable": true,
+      "chosen": false,
+      "default_chosen_by_server": false,
+      "deprecated": false,
+      "export_key": "__function/palo_alto_firewall_tag_name",
+      "hide_notification": false,
+      "id": 1224,
+      "input_type": "text",
+      "internal": false,
+      "is_tracked": false,
+      "name": "palo_alto_firewall_tag_name",
+      "operation_perms": {},
+      "operations": [],
+      "placeholder": "",
+      "prefix": null,
+      "read_only": false,
+      "rich_text": false,
+      "tags": [],
+      "templates": [],
+      "text": "palo_alto_firewall_tag_name",
+      "tooltip": "",
+      "type_id": 11,
+      "uuid": "f3e65d85-8d17-48f3-a50e-477e7fb94270",
+      "values": []
+    },
+    {
+      "allow_default_value": false,
+      "blank_option": false,
+      "calculated": false,
+      "changeable": true,
+      "chosen": false,
+      "default_chosen_by_server": false,
+      "deprecated": false,
+      "export_key": "__function/palo_alto_firewall_user",
+      "hide_notification": false,
+      "id": 1225,
+      "input_type": "text",
+      "internal": false,
+      "is_tracked": false,
+      "name": "palo_alto_firewall_user",
+      "operation_perms": {},
+      "operations": [],
+      "placeholder": "",
+      "prefix": null,
+      "read_only": false,
+      "required": "always",
+      "rich_text": false,
+      "tags": [],
+      "templates": [],
+      "text": "palo_alto_firewall_user",
+      "tooltip": "",
+      "type_id": 11,
+      "uuid": "0cc402ac-aa50-4213-833b-5daae2de1665",
+      "values": []
+    },
+    {
+      "allow_default_value": false,
+      "blank_option": false,
+      "calculated": false,
+      "changeable": true,
+      "chosen": false,
+      "default_chosen_by_server": false,
+      "deprecated": false,
+      "export_key": "__function/palo_alto_firewall_computer",
+      "hide_notification": false,
+      "id": 1226,
+      "input_type": "text",
+      "internal": false,
+      "is_tracked": false,
+      "name": "palo_alto_firewall_computer",
+      "operation_perms": {},
+      "operations": [],
+      "placeholder": "",
+      "prefix": null,
+      "read_only": false,
+      "required": "always",
+      "rich_text": false,
+      "tags": [],
+      "templates": [],
+      "text": "palo_alto_firewall_computer",
+      "tooltip": "",
+      "type_id": 11,
+      "uuid": "10599e1e-9dd6-4fd1-b633-0a9b29e2462d",
+      "values": []
+    },
+    {
+      "allow_default_value": false,
+      "blank_option": false,
+      "calculated": false,
+      "changeable": true,
+      "chosen": false,
+      "default_chosen_by_server": false,
+      "deprecated": false,
+      "export_key": "__function/palo_alto_firewall_gateway",
+      "hide_notification": false,
+      "id": 1227,
+      "input_type": "text",
+      "internal": false,
+      "is_tracked": false,
+      "name": "palo_alto_firewall_gateway",
+      "operation_perms": {},
+      "operations": [],
+      "placeholder": "",
+      "prefix": null,
+      "read_only": false,
+      "required": "always",
+      "rich_text": false,
+      "tags": [],
+      "templates": [],
+      "text": "palo_alto_firewall_gateway",
+      "tooltip": "",
+      "type_id": 11,
+      "uuid": "18befdc2-1af8-4f38-b50d-1b87182c2456",
+      "values": []
+    },
+    {
+      "export_key": "incident/internal_customizations_field",
+      "id": 0,
+      "input_type": "text",
+      "internal": true,
+      "name": "internal_customizations_field",
+      "read_only": true,
+      "text": "Customizations Field (internal)",
+      "type_id": 0,
+      "uuid": "bfeec2d4-3770-11e8-ad39-4a0004044aa1"
+    }
+  ],
+  "functions": [
+    {
+      "created_date": 1677837237928,
+      "description": {
+        "content": "Create a new tag on Palo Alto Firewall",
+        "format": "text"
+      },
+      "destination_handle": "palo_alto_firewall_integration_for_soar",
+      "display_name": "Palo Alto Firewall: Create a new tag",
+      "export_key": "palo_alto_firewall_create_a_new_tag",
+      "id": 63,
+      "last_modified_by": {
+        "display_name": "Resilient Sysadmin",
+        "id": 20,
+        "name": "dmlong@cmc.com.vn",
+        "type": "user"
+      },
+      "last_modified_time": 1677837464328,
+      "name": "palo_alto_firewall_create_a_new_tag",
+      "output_json_example": "{}",
+      "output_json_schema": "{}",
+      "tags": [],
+      "uuid": "5af191f7-2b15-4475-b199-661cd6416e04",
+      "version": 2,
+      "view_items": [
+        {
+          "content": "f3e65d85-8d17-48f3-a50e-477e7fb94270",
+          "element": "field_uuid",
+          "field_type": "__function",
+          "show_if": null,
+          "show_link_header": false,
+          "step_label": null
+        }
+      ],
+      "workflows": [
+        {
+          "actions": [],
+          "description": null,
+          "name": "Palo Alto Firewall: Create a new tag",
+          "object_type": "incident",
+          "programmatic_name": "palo_alto_firewall_create_a_new_tag",
+          "tags": [],
+          "uuid": null,
+          "workflow_id": 82
+        }
+      ]
+    },
+    {
+      "created_date": 1677837237993,
+      "description": {
+        "content": "Create an IP Address Object on Palo Alto Firewall.",
+        "format": "text"
+      },
+      "destination_handle": "palo_alto_firewall_integration_for_soar",
+      "display_name": "Palo Alto Firewall: Create an IP Address Object",
+      "export_key": "palo_alto_firewall_create_an_ip_address_object",
+      "id": 64,
+      "last_modified_by": {
+        "display_name": "Resilient Sysadmin",
+        "id": 20,
+        "name": "dmlong@cmc.com.vn",
+        "type": "user"
+      },
+      "last_modified_time": 1677837487863,
+      "name": "palo_alto_firewall_create_an_ip_address_object",
+      "output_json_example": "{}",
+      "output_json_schema": "{}",
+      "tags": [],
+      "uuid": "12c44c81-e91b-45fa-bd12-b2a524d23134",
+      "version": 2,
+      "view_items": [
+        {
+          "content": "e473e641-626c-424d-9c98-17a23a449795",
+          "element": "field_uuid",
+          "field_type": "__function",
+          "show_if": null,
+          "show_link_header": false,
+          "step_label": null
+        },
+        {
+          "content": "f3e65d85-8d17-48f3-a50e-477e7fb94270",
+          "element": "field_uuid",
+          "field_type": "__function",
+          "show_if": null,
+          "show_link_header": false,
+          "step_label": null
+        },
+        {
+          "content": "dcbbd8aa-f209-482b-b43b-d7de988eb63c",
+          "element": "field_uuid",
+          "field_type": "__function",
+          "show_if": null,
+          "show_link_header": false,
+          "step_label": null
+        }
+      ],
+      "workflows": [
+        {
+          "actions": [],
+          "description": null,
+          "name": "Palo Alto Firewall: Create an IP Address Object",
+          "object_type": "artifact",
+          "programmatic_name": "palo_alto_firewall_create_an_ip_address_object",
+          "tags": [],
+          "uuid": null,
+          "workflow_id": 84
+        }
+      ]
+    },
+    {
+      "created_date": 1677837238062,
+      "description": {
+        "content": "Delete an IP Address Object on Palo Alto Firewall.",
+        "format": "text"
+      },
+      "destination_handle": "palo_alto_firewall_integration_for_soar",
+      "display_name": "Palo Alto Firewall: Delete an IP Address Object",
+      "export_key": "palo_alto_firewall_delete_an_ip_address_object",
+      "id": 65,
+      "last_modified_by": {
+        "display_name": "Resilient Sysadmin",
+        "id": 20,
+        "name": "dmlong@cmc.com.vn",
+        "type": "user"
+      },
+      "last_modified_time": 1677837498422,
+      "name": "palo_alto_firewall_delete_an_ip_address_object",
+      "output_json_example": "{}",
+      "output_json_schema": "{}",
+      "tags": [],
+      "uuid": "7d81ed68-1555-4573-9970-39a845a086c8",
+      "version": 2,
+      "view_items": [
+        {
+          "content": "dcbbd8aa-f209-482b-b43b-d7de988eb63c",
+          "element": "field_uuid",
+          "field_type": "__function",
+          "show_if": null,
+          "show_link_header": false,
+          "step_label": null
+        }
+      ],
+      "workflows": [
+        {
+          "actions": [],
+          "description": null,
+          "name": "Palo Alto Firewall: Delete an IP Address Object",
+          "object_type": "artifact",
+          "programmatic_name": "palo_alto_firewall_delete_an_ip_address_object",
+          "tags": [],
+          "uuid": null,
+          "workflow_id": 85
+        }
+      ]
+    },
+    {
+      "created_date": 1677837238126,
+      "description": {
+        "content": "Disconnect a GlobalProtect user on Palo Alto Firewall.",
+        "format": "text"
+      },
+      "destination_handle": "palo_alto_firewall_integration_for_soar",
+      "display_name": "Palo Alto Firewall: Disconnect a GlobalProtect user",
+      "export_key": "palo_alto_firewall_disconnect_a_globalprotect_user",
+      "id": 66,
+      "last_modified_by": {
+        "display_name": "Resilient Sysadmin",
+        "id": 20,
+        "name": "dmlong@cmc.com.vn",
+        "type": "user"
+      },
+      "last_modified_time": 1677837507277,
+      "name": "palo_alto_firewall_disconnect_a_globalprotect_user",
+      "output_json_example": "{}",
+      "output_json_schema": "{}",
+      "tags": [],
+      "uuid": "7a3ffcb7-e552-4705-898b-60e23153be22",
+      "version": 2,
+      "view_items": [
+        {
+          "content": "18befdc2-1af8-4f38-b50d-1b87182c2456",
+          "element": "field_uuid",
+          "field_type": "__function",
+          "show_if": null,
+          "show_link_header": false,
+          "step_label": null
+        },
+        {
+          "content": "0cc402ac-aa50-4213-833b-5daae2de1665",
+          "element": "field_uuid",
+          "field_type": "__function",
+          "show_if": null,
+          "show_link_header": false,
+          "step_label": null
+        },
+        {
+          "content": "10599e1e-9dd6-4fd1-b633-0a9b29e2462d",
+          "element": "field_uuid",
+          "field_type": "__function",
+          "show_if": null,
+          "show_link_header": false,
+          "step_label": null
+        }
+      ],
+      "workflows": [
+        {
+          "actions": [],
+          "description": null,
+          "name": "Palo Alto Firewall: Disconnect a GlobalProtect user",
+          "object_type": "artifact",
+          "programmatic_name": "palo_alto_firewall_disconnect_a_globalprotect_user",
+          "tags": [],
+          "uuid": null,
+          "workflow_id": 83
+        }
+      ]
+    },
+    {
+      "created_date": 1677837238190,
+      "description": {
+        "content": "View all GlobalProtect Users are logging on Palo Alto Firewall.",
+        "format": "text"
+      },
+      "destination_handle": "palo_alto_firewall_integration_for_soar",
+      "display_name": "Palo Alto Firewall: View all GlobalProtect users",
+      "export_key": "palo_alto_firewall_view_all_globalprotect_users",
+      "id": 67,
+      "last_modified_by": {
+        "display_name": "Resilient Sysadmin",
+        "id": 20,
+        "name": "dmlong@cmc.com.vn",
+        "type": "user"
+      },
+      "last_modified_time": 1677837516989,
+      "name": "palo_alto_firewall_view_all_globalprotect_users",
+      "output_json_example": "{}",
+      "output_json_schema": "{}",
+      "tags": [],
+      "uuid": "bdd86fac-4c56-4b60-bc3e-50664bb94e92",
+      "version": 2,
+      "view_items": [],
+      "workflows": [
+        {
+          "actions": [],
+          "description": null,
+          "name": "Palo Alto Firewall: View all GlobalProtect users",
+          "object_type": "incident",
+          "programmatic_name": "palo_alto_firewall_view_all_globalprotect_users",
+          "tags": [],
+          "uuid": null,
+          "workflow_id": 86
+        }
+      ]
+    }
+  ],
+  "geos": null,
+  "groups": null,
+  "id": 151,
+  "inbound_destinations": [],
+  "inbound_mailboxes": null,
+  "incident_artifact_types": [],
+  "incident_types": [
+    {
+      "create_date": 1678431593883,
+      "description": "Customization Packages (internal)",
+      "enabled": false,
+      "export_key": "Customization Packages (internal)",
+      "hidden": false,
+      "id": 0,
+      "name": "Customization Packages (internal)",
+      "parent_id": null,
+      "system": false,
+      "update_date": 1678431593883,
+      "uuid": "bfeec2d4-3770-11e8-ad39-4a0004044aa0"
+    }
+  ],
+  "industries": null,
+  "layouts": [],
+  "locale": null,
+  "message_destinations": [
+    {
+      "api_keys": [],
+      "destination_type": 0,
+      "expect_ack": true,
+      "export_key": "palo_alto_firewall_integration_for_soar",
+      "name": "Palo Alto Firewall Integration for SOAR",
+      "programmatic_name": "palo_alto_firewall_integration_for_soar",
+      "tags": [],
+      "users": [
+        "admin@sctssg.vn"
+      ],
+      "uuid": "12bba083-4a12-452a-9fa9-d91d7b722b5d"
+    }
+  ],
+  "notifications": null,
+  "overrides": null,
+  "phases": [],
+  "regulators": null,
+  "roles": [],
+  "scripts": [],
+  "server_version": {
+    "build_number": 41,
+    "major": 41,
+    "minor": 2,
+    "version": "41.2.41"
+  },
+  "tags": [],
+  "task_order": [],
+  "timeframes": null,
+  "types": [],
+  "workflows": [],
+  "workspaces": []
+}

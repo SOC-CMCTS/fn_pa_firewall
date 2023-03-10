@@ -20,9 +20,9 @@ class RestAPI:
     def __init__(self, palo_alto_ip, palo_alto_version, api_key, verify):
         self.api_key = api_key
         self.log = logging.getLogger(__name__)
-        self.cert = verify
+        self.verify = verify
         if verify == "False" or verify is None:
-            self.cert = False
+            self.verify = False
         self.server_url = f"https://{palo_alto_ip}/restapi/v{palo_alto_version}"
         self.header = {
             "Content-type": "application/json",
@@ -36,7 +36,7 @@ class RestAPI:
         path = f"/Objects/Addresses?location=vsys&vsys=vsys1&name={address_object}"
         try:
             response = requests.get(
-                self.server_url + path, headers=self.header, timeout=5, verify=self.cert)
+                self.server_url + path, headers=self.header, timeout=5, verify=self.verify)
             self.log.info(response.json())
             if "@status" in response.json() and response.json()["@status"] == "success":
                 return True
@@ -153,7 +153,7 @@ class XmlAPI:
         self.log = logging.getLogger(__name__)
         self.verify = verify
         if verify == "False" or verify is None:
-            self.cert = False
+            self.verify = False
 
         self.server_url = f"https://{palo_alto_ip}/api/?type=op&cmd="
         self.header = {

@@ -49,15 +49,17 @@ class TestPaloAltoFirewallCreateAnIpAddressObject:
         assert func is not None
 
     mock_inputs_1 = {
-        "palo_alto_firewall_ip": "sample text",
-        "palo_alto_firewall_tag_name": "sample text"
+        "palo_alto_firewall_tag_name": "sample text",
+        "palo_alto_firewall_address_objects_name": "sample text",
+        "palo_alto_firewall_ip": "sample text"
     }
 
     expected_results_1 = {"value": "xyz"}
 
     mock_inputs_2 = {
-        "palo_alto_firewall_ip": "sample text",
-        "palo_alto_firewall_tag_name": "sample text"
+        "palo_alto_firewall_tag_name": "sample text",
+        "palo_alto_firewall_address_objects_name": "sample text",
+        "palo_alto_firewall_ip": "sample text"
     }
 
     expected_results_2 = {"value": "xyz"}

@@ -28,7 +28,7 @@ class FunctionComponent(AppFunctionComponent):
 
         server_ip = str(self.options.get("palo_alto_ip_address", None))
         server_api = str(self.options.get("palo_alto_api_key", None))
-        cert_file = str(self.options.get("verify", None))
+        cert_file = str(self.options.get("palo_alto_verify", None))
 
         self.LOG.info(
             "[+] Executing action: view all GlobalProtect users...")

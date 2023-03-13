@@ -90,6 +90,7 @@ These guides are available on the IBM Documentation website at [ibm.biz/cp4s-doc
 Python 3.6 and Python 3.9 are supported.
 Additional package dependencies may exist for each of these packages:
 * resilient-circuits>=47.1.0
+* defusedxml==0.7.1
 
 
 ---

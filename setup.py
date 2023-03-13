@@ -31,7 +31,8 @@ setup(
     description="SOAR Components to Integrate with the Palo Alto Firewall",
     long_description="""This integration contains Functions to interact with address groups, addresses, Global Protect User within Palo Alto Firewall.""",
     install_requires=[
-        "resilient-circuits>=47.1.0"
+        "resilient-circuits>=47.1.0",
+        "defusedxml==0.7.1"
     ],
     python_requires='>=3.6',
     packages=find_packages(),
